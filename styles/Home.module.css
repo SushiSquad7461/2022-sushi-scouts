@@ -1,9 +1,15 @@
+@font-face { font-family: JuneBug; src: url('font.ttf'); } 
+
+
 .container {
   padding: 0 2rem;
+  font-family: JuneBug;
+  background-color: white;
+  color: #4F4F4F;
 }
 
 .main {
-  min-height: 100vh;
+  height: 87vh;
   padding: 4rem 0;
   flex: 1;
   display: flex;
@@ -13,6 +19,7 @@
 }
 
 .footer {
+  height: 13vh;
   display: flex;
   flex: 1;
   padding: 2rem 0;
