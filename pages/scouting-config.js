@@ -1,28 +1,42 @@
 /*
     Format for adding data point:
 
-    "name" : {
+    {
+        "name": "Team Number",
         "type": "number",
-        "label": "Team Number",
-        "default": "12" (null for no default),
+        "default": "12" (undefined for no default: DO NOT USE NULL),
         "values" (if applicable, if not leave as empty array): ["low climb", "no climb", "high climb"]
     }
 
 */
 
-const data = {
-    "MatchData": [
-
-    ],
-    "Auto": [
-
-    ],
-    "TeleOp": [
-
-    ],
-    "Endgame": [
-
-    ]
-};
+const data = [
+    {
+        "name" : "Match Info",
+        "inputs": [
+            {
+                "name": "Team Number",
+                "type": "number",
+                "default": undefined,
+                "values": []
+            }
+        ]
+    },
+    {
+        "name" : "Auto",
+        "inputs": [
+        ]
+    },
+    {
+        "name" : "Teleop",
+        "inputs": [
+        ]
+    },
+    {
+        "name" : "End Game",
+        "inputs": [
+        ]
+    }
+];
 
 module.exports = data;
