@@ -1,14 +1,13 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import { useState } from 'react'
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react'
 import styles from '../styles/EventsScouting.module.css'
 import scoutingConfig from "./scouting-config.js";
 
 const EventScouting: NextPage = () => {
   const [index, setIndex] = useState(0);
-
-  console.log(scoutingConfig);
+  const router = useRouter()
+  const {c, tm} = router.query
 
   function next() {
     if (index === scoutingConfig.length-1) {
@@ -18,24 +17,20 @@ const EventScouting: NextPage = () => {
     }
   }
 
+  useEffect(() => {
+    console.log(c);
+    console.log(tm);
+  }, [c, tm]);
+
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Sushi Squad Scouting</title>
-        <meta name="description" content="Sushi Squad Scouting" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" color="white" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" color="white" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" color="white" />
-        <link rel="manifest" href="/site.webmanifest" />
-      </Head>
-
       <main className={styles.main}>
             <h1>{scoutingConfig[index].name}:</h1>
 
             {
               scoutingConfig[index].inputs.map((element, index) => {
                   return (
-                    <input type={element.type} placeholder={element.name} key={index} defaultValue={element.default}/>
+                    <input type={element.type} placeholder={element.name} key={index}/>
                   );
               })
             }

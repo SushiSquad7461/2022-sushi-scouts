@@ -25,16 +25,100 @@ const data = [
     {
         "name" : "Auto",
         "inputs": [
+            {
+                "name": "No Show",
+                "type": "checkbox",
+                "default": false,
+                "values": []
+            },
+            {
+                "name": "Move Off Tarmac",
+                "type": "checkbox",
+                "default": false,
+                "values": []
+            },
+            {
+                "name": "Scored Lower Hub",
+                "type": "number",
+                "default": undefined,
+                "values": []
+            },
+            {
+                "name": "Missed Lower Hub",
+                "type": "number",
+                "default": undefined,
+                "values": []
+            },
+            {
+                "name": "Scored Upper Hub",
+                "type": "number",
+                "default": undefined,
+                "values": []
+            },
+            {
+                "name": "Missed Upper Hub",
+                "type": "number",
+                "default": undefined,
+                "values": []
+            }
         ]
     },
     {
         "name" : "Teleop",
         "inputs": [
+            {
+                "name": "Ground Pickup",
+                "type": "checkbox",
+                "default": false,
+                "values": []
+            },
+            {
+                "name": "Terminal Pickup",
+                "type": "checkbox",
+                "default": false,
+                "values": []
+            },
+            {
+                "name": "Scored Lower Hub",
+                "type": "number",
+                "default": undefined,
+                "values": []
+            },
+            {
+                "name": "Missed Lower Hub",
+                "type": "number",
+                "default": undefined,
+                "values": []
+            },
+            {
+                "name": "Scored Upper Hub",
+                "type": "number",
+                "default": undefined,
+                "values": []
+            },
+            {
+                "name": "Missed Upper Hub",
+                "type": "number",
+                "default": undefined,
+                "values": []
+            },
+            {
+                "name": "Scored by Human Player",
+                "type": "number",
+                "default": undefined,
+                "values": []
+            }
         ]
     },
     {
         "name" : "End Game",
         "inputs": [
+            {
+                "name": "Attempted Climb",
+                "type": "checkbox",
+                "default": false,
+                "values": []
+            },
         ]
     }
 ];

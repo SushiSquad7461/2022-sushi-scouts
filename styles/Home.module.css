@@ -4,9 +4,10 @@
   height: 100vh;
   width: 100vw;
   background-color: #000000;
-  /* overflow-x: hidden;
-  overflow-y: hidden; */
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
+
 .text1 {
   font-family: JuneBug;
   position: absolute;
@@ -20,55 +21,15 @@
   left: 42vw;
   width: 58vw;
 }
-.colorbar {
-  position: absolute;
-  height: 3vh;
-  left: 58vw;
-  width: 37vw;
-  top: 7vh;
-
-  display: flex;
-}
-.rectangle1 {
-  height: 3vh;
-  width: 8vw;
-  background-color: #4f4f4f;
-}
-.rectangle2 {
-  height: 3vh;
-  width: 8vw;
-  background-color: #ffffff;
-}
-.rectangle3 {
-  height: 3vh;
-  width: 8vw;
-  background-color: #81f4e1;
-}
-.rectangle4 {
-  height: 3vh;
-  width: 8vw;
-  background-color: #56cbf9;
-}
-.rectangle5 {
-  height: 3vh;
-  width: 4vw;
-  background-color: #ff729f;
-}
-.rectangle6 {
-  height: 3vh;
-  width: 2.5vw;
-  background-color: #fcd6f6;
-}
 .text2 {
   text-align: left;
   vertical-align: top;
-  font-size: 35px;
-  font-family: Inter;
+  font-size: 1.8rem;
   line-height: auto;
   color: #ffffff;
 }
 .button1 {
-  border-radius: 25px;
+  border-radius: 15px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -78,9 +39,14 @@
   border: 0.3rem solid #56cbf9;
   position: absolute;
   top:80%;
-  left:72%;
-  height: 13vh;
-  width: 24vw;
+  left:76%;
+  height: 12vh;
+  width: 19vw;
+}
+
+.homecolorbar * {
+  left: 58vw;
+  top: 7vh;
 }
 
 .button1:hover, .button2:hover {
@@ -88,7 +54,7 @@
   cursor: pointer;
 }
 .button2 {
-  border-radius: 25px;
+  border-radius: 15px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -98,15 +64,14 @@
   border: 0.3rem solid #56cbf9;
   position: absolute;
   top:80%;
-  left:45%;
-  height: 13vh;
-  width: 20vw;
+  left:52%;
+  height: 12vh;
+  width: 19vw;
 }
 .text3 {
   text-align: left;
   vertical-align: top;
   font-size: 1.8rem;
-  font-family: Inter;
   line-height: auto;
   color: #ffffff;
 }
