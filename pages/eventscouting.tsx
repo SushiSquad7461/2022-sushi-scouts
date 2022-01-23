@@ -1,12 +1,12 @@
 import type { NextPage } from 'next'
-import { useRouter } from 'next/router';
+import { NextRouter, useRouter } from 'next/router';
 import { useEffect, useState } from 'react'
 import styles from '../styles/EventsScouting.module.css'
 import scoutingConfig from "./scouting-config.js";
 
 const EventScouting: NextPage = () => {
   const [index, setIndex] = useState(0);
-  const router = useRouter();
+  const router: NextRouter = useRouter();
 
   function next() {
     if (index === scoutingConfig.length-1) {
@@ -17,16 +17,19 @@ const EventScouting: NextPage = () => {
   }
 
   useEffect(() => {
-    let query_params = window.location.search;
+    let query_params: string = window.location.search;
     if (query_params.length == 0 || 
-      query_params.substring(1, query_params.length-1).split("&")[0].substring(0,2) != "tm" ||
-      query_params.substring(1, query_params.length-1).split("&").length <= 1 ||
-      query_params.substring(1, query_params.length-1).split("&")[1][0] != "c") {
+      query_params.substring(1, query_params.length).split("&")[0].substring(0,2) != "tm" ||
+      query_params.substring(1, query_params.length).split("&").length <= 1 ||
+      query_params.substring(1, query_params.length).split("&")[1][0] != "c") {
       router.push({
         pathname: '/scoutinfo'
       });
+    } else {
+      localStorage.setItem("TM", query_params.substring(1, query_params.length).split("&")[0].split("=")[1]);
+      localStorage.setItem("C", query_params.substring(1, query_params.length).split("&")[1].split("=")[1]);
+  
     }
-
   }, [router]);
 
   return (

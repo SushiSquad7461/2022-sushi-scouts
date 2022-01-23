@@ -2,13 +2,34 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import internal from 'stream'
 import ColorBar from '../components/colorbar'
 import styles from '../styles/ScoutInfo.module.css'
 
 const ScoutInfo: NextPage = () => {
-    const [clicked, setClicked] = useState(0);
-    const [teamNum, setTeamNum] = useState<string | undefined>(undefined);
-    const comps = ["GC", "SD", "PDC"]
+    const [clicked, setClicked] = useState<number>(0);
+    const [teamNum, setTeamNum] = useState<string>("");
+    const comps : Array<string> = ["GC", "SD", "PDC"]
+
+
+    useEffect(() => {
+        if (localStorage.getItem("TM") !== null) {
+            // Or in their because typescript is dumb and thinks localStorage can be null
+            setTeamNum(localStorage.getItem("TM") || "");
+            console.log(teamNum);
+        }
+
+        if (localStorage.getItem("C") !== null) {
+            console.log("Hello");
+            for (let i: number = 0; i < comps.length; ++i) {
+                console.log(localStorage.getItem("C"))
+                if (comps[i] === localStorage.getItem("C")) {
+                    console.log("In");
+                    setClicked(i);
+                }
+            }
+        }
+    }, []);
 
     return (
       <div className={styles.title}>
