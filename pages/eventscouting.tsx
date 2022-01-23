@@ -39,9 +39,18 @@ const EventScouting: NextPage = () => {
 
             {
               scoutingConfig[index].inputs.map((element, index) => {
-                  return (
-                    <input type={element.type} placeholder={element.name} key={index}/>
-                  );
+                  if (element.type === "number") {
+                      return (
+                        <input type={element.type} placeholder={element.name} key={index}/>
+                      );
+                  } else {
+                      return (
+                        <div>
+                          <span>{element.name}</span>
+                          <input type={element.type} placeholder={element.name} key={index}/>
+                        </div>
+                      );
+                  }
               })
             }
 
@@ -52,7 +61,9 @@ const EventScouting: NextPage = () => {
       </main>
 
       <footer className={styles.footer}>
-        <p>Sushi Scouts</p>
+        <a href="/">
+          <p>Sushi Scouts</p>
+        </a>
       </footer>
     </div>
   )
