@@ -6,8 +6,7 @@ import scoutingConfig from "./scouting-config.js";
 
 const EventScouting: NextPage = () => {
   const [index, setIndex] = useState(0);
-  const router = useRouter()
-  const {c, tm} = router.query
+  const router = useRouter();
 
   function next() {
     if (index === scoutingConfig.length-1) {
@@ -18,9 +17,17 @@ const EventScouting: NextPage = () => {
   }
 
   useEffect(() => {
-    console.log(c);
-    console.log(tm);
-  }, [c, tm]);
+    let query_params = window.location.search;
+    if (query_params.length == 0 || 
+      query_params.substring(1, query_params.length-1).split("&")[0].substring(0,2) != "tm" ||
+      query_params.substring(1, query_params.length-1).split("&").length <= 1 ||
+      query_params.substring(1, query_params.length-1).split("&")[1][0] != "c") {
+      router.push({
+        pathname: '/scoutinfo'
+      });
+    }
+
+  }, [router]);
 
   return (
     <div className={styles.container}>
