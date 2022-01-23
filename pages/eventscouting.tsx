@@ -46,7 +46,7 @@ const EventScouting: NextPage = () => {
                   } else {
                       return (
                         <div>
-                          <span>{element.name}</span>
+                          <p>{element.name}</p>
                           <input type={element.type} placeholder={element.name} key={index}/>
                         </div>
                       );
@@ -61,9 +61,7 @@ const EventScouting: NextPage = () => {
       </main>
 
       <footer className={styles.footer}>
-        <a href="/">
           <p>Sushi Scouts</p>
-        </a>
       </footer>
     </div>
   )
