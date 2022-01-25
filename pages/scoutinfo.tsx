@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import internal from 'stream'
 import ColorBar from '../components/colorbar'
 import styles from '../styles/ScoutInfo.module.css'
@@ -9,27 +9,22 @@ import styles from '../styles/ScoutInfo.module.css'
 const ScoutInfo: NextPage = () => {
     const [clicked, setClicked] = useState<number>(0);
     const [teamNum, setTeamNum] = useState<string>("");
-    const comps : Array<string> = ["GC", "SD", "PDC"]
-
+    const comps : Array<string> = useMemo(() => { return ["GC", "SD", "PDC"]; }, []);
 
     useEffect(() => {
         if (localStorage.getItem("TM") !== null) {
             // Or in their because typescript is dumb and thinks localStorage can be null
             setTeamNum(localStorage.getItem("TM") || "");
-            console.log(teamNum);
         }
 
         if (localStorage.getItem("C") !== null) {
-            console.log("Hello");
             for (let i: number = 0; i < comps.length; ++i) {
-                console.log(localStorage.getItem("C"))
                 if (comps[i] === localStorage.getItem("C")) {
-                    console.log("In");
                     setClicked(i);
                 }
             }
         }
-    }, []);
+    }, [comps, teamNum]);
 
     return (
       <div className={styles.title}>
@@ -43,7 +38,10 @@ const ScoutInfo: NextPage = () => {
           </section>
 
           <form onSubmit={e => e.preventDefault()}>
-            <input type="number" placeholder="YOUR TEAM NUMBER" value={teamNum} onChange={e => setTeamNum(e.currentTarget.value)}/>
+            <article>
+                <h1>YOUR TEAM NUMBER</h1>
+                <input type="number" value={teamNum} onChange={e => setTeamNum(e.currentTarget.value)}/>
+            </article>
 
             <section>
                 <article>

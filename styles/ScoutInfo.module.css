@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Mohave&display=swap');
 @font-face { font-family: SushiSans; src: url('font.ttf'); } 
 
 .title {
@@ -6,20 +7,22 @@
 }
 
 .title article {
-    font-family: SushiSans;
+    font-family: 'Mohave', sans-serif;
     position: absolute;
     left: 5%;
     top: 7%;
     height: 30vh;
 }
 
-.title article h1 {
-    font-size: 5rem;
+.title > article h1 {
+    font-size: 6rem;
     letter-spacing: -5%;
     font-stretch: ultra-expanded;
     height: 30vh;
     width: auto;
     margin-top: 10vh;
+    font-weight: 200;
+    font-family: SushiSans;
 }
 
 .image {
@@ -31,14 +34,28 @@
 .title form {
     display: flex;
     position: absolute;
-    top: 65%;
+    top: 55%;
     width: 100vw;
+    align-items: center;
+}
+
+.title form > article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 38vw;
+    margin-top: 1vh;
+}
+
+.title form > article h1 {
+    font-size: 3.8rem;
+    font-weight: 200;
 }
 
 .title form input[type=number] {
-    height: 20vh;
-    width: 27vw;
-    margin-left: 5vw;
+    height: 8vh;
+    width: 38vw;
+    /* margin-left: 5vw; */
     border-top: hidden;
     border-left: hidden;
     border-right: hidden;
@@ -46,7 +63,7 @@
     border-color: #4F4F4F;
     /* padding-left: 2vw;
     padding-right: 2vw; */
-    padding-bottom: 8vh;
+    padding-bottom: 2vh;
 }
 
 .title form input[type=number]::placeholder, .title form input[type=number] {
@@ -60,19 +77,20 @@
 
 .title form section {
     width: 35vw;
-    height: 20vh;
+    height: 32vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     position: absolute;
-    top: 0%;
-    left: 35%;
+    top: 50%;
+    left: 45%;
+    margin-top: 6vh;
 }
 
-.title form article {
+.title form section article {
     width: 35vw;
-    height: 4vh;
+    height: 12vh;
     position: relative;
     display: flex;
     align-items: center;
@@ -80,14 +98,15 @@
 
 .title form article Label {
     margin-left: 1vw;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
+    font-family: 'Mohave', sans-serif;
 }
 
 .title form input[type=checkbox] {
 	-webkit-appearance: none;
 	background-color: #fafafa;
 	border: 0.3rem solid #56CBF9;
-	padding: 0.5rem;
+	padding: 0.6rem;
 	display: inline-block;
 	position: relative;
 }
@@ -115,24 +134,26 @@
     justify-content: center;
     align-items: center;
     padding: 0px 16px;
-    background-color: #4f4f4f;
+    background-color: white;
     border: 0.3rem solid #56cbf9;
     position: absolute;
-    top:50%;
-    left:78%;
+    left:82%;
     height: 10vh;
     width: 15vw;
+    margin-top: 65vh;
+    color: black;
 }
 
 .button2:hover {
     cursor: pointer;
-    opacity: 0.9;
+    opacity: 0.7;
 }
 .text3 {
     text-align: left;
     vertical-align: top;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     line-height: auto;
-    color: #ffffff;
+    color: black;
     padding: 2vw;
+    font-family: 'Mohave', sans-serif;
 }

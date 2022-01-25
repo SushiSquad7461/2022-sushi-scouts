@@ -5,18 +5,34 @@
         "name": "Team Number",
         "type": "number",
         "default": "12" (undefined for no default: DO NOT USE NULL),
-        "values" (if applicable, if not leave as empty array): ["low climb", "no climb", "high climb"]
+        "values" (if applicable, if not leave as empty array): ["low climb", "no climb", "high climb"],
+        "className" ("" for no className): ""
     }
 
 */
 
 const data = [{
-        "name": "Match Info",
+        "name": "MATCH INFO",
         "inputs": [{
-            "name": "Team Number",
+            "name": "MATCH #",
             "type": "number",
             "default": undefined,
-            "values": []
+            "values": [],
+            "className": ""
+        },
+        {
+            "name": "MATCH TYPE",
+            "type": "checkbox",
+            "default": undefined,
+            "values": ["REGULAR MATCH", "SEMI-FINALS", "QUARTERFINALS", "FINALS"],
+            "className": "matchtype"
+        },
+        {
+            "name": " TEAM # YOU'RE SCOUTING",
+            "type": "number",
+            "default": undefined,
+            "values": [],
+            "className": ""
         }]
     },
     {
@@ -25,43 +41,50 @@ const data = [{
                 "name": "No Show",
                 "type": "checkbox",
                 "default": false,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Move Off Tarmac",
                 "type": "checkbox",
                 "default": false,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Scored Lower Hub",
                 "type": "number",
                 "default": undefined,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Missed Lower Hub",
                 "type": "number",
                 "default": undefined,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Scored Upper Hub",
                 "type": "number",
                 "default": undefined,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Missed Upper Hub",
                 "type": "number",
                 "default": undefined,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Scored by Human Player",
                 "type": "number",
                 "default": undefined,
-                "values": []
+                "values": [],
+                "className": ""
             }
         ]
     },
@@ -71,37 +94,43 @@ const data = [{
                 "name": "Ground Pickup",
                 "type": "checkbox",
                 "default": false,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Terminal Pickup",
                 "type": "checkbox",
                 "default": false,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Scored Lower Hub",
                 "type": "number",
                 "default": undefined,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Missed Lower Hub",
                 "type": "number",
                 "default": undefined,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Scored Upper Hub",
                 "type": "number",
                 "default": undefined,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Missed Upper Hub",
                 "type": "number",
                 "default": undefined,
-                "values": []
+                "values": [],
+                "className": ""
             }
         ]
     },
@@ -111,31 +140,36 @@ const data = [{
                 "name": "Attempted Climb",
                 "type": "checkbox",
                 "default": false,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Scored Lower Hub",
                 "type": "number",
                 "default": undefined,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Missed Lower Hub",
                 "type": "number",
                 "default": undefined,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Scored Upper Hub",
                 "type": "number",
                 "default": undefined,
-                "values": []
+                "values": [],
+                "className": ""
             },
             {
                 "name": "Missed Upper Hub",
                 "type": "number",
                 "default": undefined,
-                "values": []
+                "values": [],
+                "className": ""
             }
         ]
     }

@@ -1,32 +1,36 @@
-@font-face { font-family: JuneBug; src: url('font.ttf'); } 
+@import url('https://fonts.googleapis.com/css2?family=Mohave&display=swap');
+@font-face { font-family: SushiSans; src: url('font.ttf'); } 
 
 .title {
   height: 100vh;
   width: 100vw;
-  background-color: #000000;
+  background-color: white;
   overflow-x: hidden;
   overflow-y: hidden;
 }
 
 .text1 {
-  font-family: JuneBug;
+  /* font-family: 'Mohave', sans-serif; */
   position: absolute;
   text-align: center;
   vertical-align: top;
-  font-size: 5.5rem;
+  font-size: 5rem;
   letter-spacing: -5%;
   line-height: auto;
-  color: #ffffff;
-  top: 12vh;
-  left: 42vw;
-  width: 58vw;
+  color: black;
+  top: 3vh;
+  left: 51.3vw;
+  width: auto;
+  font-family: SushiSans;
 }
 .text2 {
   text-align: left;
   vertical-align: top;
-  font-size: 1.8rem;
+  font-size: 2rem;
   line-height: auto;
-  color: #ffffff;
+  color: black;
+  font-weight: bold;
+  font-family: 'Mohave', sans-serif;
 }
 .button1 {
   border-radius: 15px;
@@ -35,11 +39,11 @@
   justify-content: center;
   align-items: center;
   padding: 0px 16px;
-  background-color: #4f4f4f;
+  background-color: white;
   border: 0.3rem solid #56cbf9;
   position: absolute;
-  top:80%;
-  left:76%;
+  top:84%;
+  left:78%;
   height: 12vh;
   width: 19vw;
 }
@@ -50,7 +54,7 @@
 }
 
 .button1:hover, .button2:hover {
-  opacity: 0.8;
+  opacity: 0.7;
   cursor: pointer;
 }
 .button2 {
@@ -60,20 +64,22 @@
   justify-content: center;
   align-items: center;
   padding: 0px 16px;
-  background-color: #4f4f4f;
+  background-color: white;
   border: 0.3rem solid #56cbf9;
   position: absolute;
-  top:80%;
-  left:52%;
+  top:84%;
+  left:54%;
   height: 12vh;
   width: 19vw;
 }
 .text3 {
   text-align: left;
   vertical-align: top;
-  font-size: 1.8rem;
+  font-size: 2rem;
   line-height: auto;
-  color: #ffffff;
+  color: black;
+  font-weight: bold;
+  font-family: 'Mohave', sans-serif;
 }
 .maki7 {
   height: 67vh;

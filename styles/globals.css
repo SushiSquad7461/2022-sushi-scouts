@@ -27,7 +27,7 @@ a {
 .rectangle2 {
   height: 3vh;
   width: 8vw;
-  background-color: #ffffff;
+  background-color: black;
 }
 .rectangle3 {
   height: 3vh;
@@ -48,4 +48,25 @@ a {
   height: 3vh;
   width: 2.5vw;
   background-color: #fcd6f6;
+}
+
+.matchtype {
+  position: absolute;
+  top: 43%;
+  left: 20%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2vw;
+  row-gap: 6vh;
+}
+
+.matchtype section {
+  display: flex;
+  align-items: center;
+}
+
+.matchtype label {
+  font-size: 1.5rem;
+  margin-left: 0.5vw;
+  font-weight: 500;
 }
