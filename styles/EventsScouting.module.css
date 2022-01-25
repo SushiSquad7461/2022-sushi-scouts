@@ -76,7 +76,7 @@
   border-color: black;
 }
 
-.container form input[type=checkbox] {
+.container form input[type=radio] {
   -webkit-appearance: none;
   background-color: #fafafa;
   border: 0.3rem solid #56CBF9;
@@ -85,7 +85,7 @@
   position: relative;
 }
 
-.container form input[type=checkbox]:active, .container form input[type=checkbox]:checked {
+.container form input[type=radio]:active, .container form input[type=radio]:checked {
   background-color: #56CBF9;
 }
 

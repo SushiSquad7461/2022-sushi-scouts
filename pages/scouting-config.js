@@ -22,7 +22,7 @@ const data = [{
         },
         {
             "name": "MATCH TYPE",
-            "type": "checkbox",
+            "type": "radio",
             "default": undefined,
             "values": ["REGULAR MATCH", "SEMI-FINALS", "QUARTERFINALS", "FINALS"],
             "className": "matchtype"

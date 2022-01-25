@@ -68,14 +68,14 @@ const EventScouting: NextPage = () => {
                   <input type={element.type}/>
                 </article>
               );
-            } else if (element.type === "checkbox" && element.values.length !== 0) {
+            } else if (element.type === "radio" && element.values.length !== 0) {
               return (
                 <section key={element.name} className={element.className}>
                   {
                     element.values.map(checkbox => {
                       return (
                         <section key={element.name}>
-                          <input type={ element.type }/>
+                          <input type={ element.type } name={element.name}/>
                           <label>{ checkbox }</label>
                         </section>
                       );
