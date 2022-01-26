@@ -38,7 +38,7 @@ const data = [{
     {
         "name": "Auto",
         "inputs": [{
-                "name": "No Show",
+                "name": "NO SHOW",
                 "type": "checkbox",
                 "default": false,
                 "values": [],
@@ -52,36 +52,36 @@ const data = [{
                 "className": ""
             },
             {
-                "name": "Scored Lower Hub",
-                "type": "number",
+                "name": "SCORED LOWER HUB",
+                "type": "button",
                 "default": undefined,
                 "values": [],
                 "className": ""
             },
             {
-                "name": "Missed Lower Hub",
-                "type": "number",
+                "name": "MISSED LOWER HUB",
+                "type": "button",
                 "default": undefined,
                 "values": [],
                 "className": ""
             },
             {
-                "name": "Scored Upper Hub",
-                "type": "number",
+                "name": "SCORED UPPER HUB",
+                "type": "button",
                 "default": undefined,
                 "values": [],
                 "className": ""
             },
             {
-                "name": "Missed Upper Hub",
-                "type": "number",
+                "name": "MISSED UPPER HUB",
+                "type": "button",
                 "default": undefined,
                 "values": [],
                 "className": ""
             },
             {
-                "name": "Scored by Human Player",
-                "type": "number",
+                "name": "SCORED BY HP",
+                "type": "button",
                 "default": undefined,
                 "values": [],
                 "className": ""

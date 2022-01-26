@@ -1,4 +1,6 @@
 import '../styles/globals.css'
+import "../styles/ButtonInput.css";
+import "../styles/Colorbar.css"
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 

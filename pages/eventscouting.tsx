@@ -5,6 +5,7 @@ import ColorBar from '../components/colorbar';
 import styles from '../styles/EventsScouting.module.css'
 import scoutingConfig from "./scouting-config.js";
 import Image from 'next/image';
+import ButtonInput from '../components/ButtonInput';
 
 const EventScouting: NextPage = () => {
   const [index, setIndex] = useState(0);
@@ -18,6 +19,7 @@ const EventScouting: NextPage = () => {
 
   async function sendData(event: SubmitEvent) {
     event.preventDefault()
+    console.log("yo");
 
     const res = await fetch("/api/submiteventinfo", {
       body: JSON.stringify({
@@ -74,7 +76,7 @@ const EventScouting: NextPage = () => {
                   {
                     element.values.map(checkbox => {
                       return (
-                        <section key={element.name}>
+                        <section key={checkbox}>
                           <input type={ element.type } name={element.name}/>
                           <label>{ checkbox }</label>
                         </section>
@@ -83,14 +85,21 @@ const EventScouting: NextPage = () => {
                   }
                 </section>
               );
+            } else if (element.type === "checkbox") {
+
+            } else if (element.type === "button") {
+              return (
+                <ButtonInput name={element.name} key={element.name} />
+              );
             }
           })
         }
+
+        <button className={styles.button2} onClick={next} type={index == scoutingConfig.length-1 ? "submit" : "button" }>
+          <p className={styles.text3}>{index == scoutingConfig.length-1 ? "Submit" : "Continue" }</p>
+        </button>
       </form>
 
-      <button className={styles.button2} onClick={() => setIndex(index+1)}>
-        <p className={styles.text3}>Continue</p>
-      </button>
     </div>
   )
 }

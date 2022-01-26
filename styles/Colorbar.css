@@ -1,0 +1,36 @@
+.colorbar {
+    position: absolute;
+    height: 3vh;
+    width: 37vw;
+    display: flex;
+  }
+  .rectangle1 {
+    height: 3vh;
+    width: 8vw;
+    background-color: #4f4f4f;
+  }
+  .rectangle2 {
+    height: 3vh;
+    width: 8vw;
+    background-color: black;
+  }
+  .rectangle3 {
+    height: 3vh;
+    width: 8vw;
+    background-color: #81f4e1;
+  }
+  .rectangle4 {
+    height: 3vh;
+    width: 8vw;
+    background-color: #56cbf9;
+  }
+  .rectangle5 {
+    height: 3vh;
+    width: 4vw;
+    background-color: #ff729f;
+  }
+  .rectangle6 {
+    height: 3vh;
+    width: 2.5vw;
+    background-color: #fcd6f6;
+  }

@@ -1,0 +1,68 @@
+.button-input {
+    width: min-content;
+}
+
+.button-input h1 {
+    font-size: 2.4rem;
+    width: max-content;
+    font-weight: 300;
+}
+
+.button-input section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-input input {
+  width: 2.5vw !important;
+  height: 2.5vw !important;
+  font-size: 1rem !important;
+  padding: 0.4rem;
+  border-top: 0.3vw solid #56CBF9 !important;
+  border-left: 0.3vw solid #56CBF9 !important;
+  border-right: 0.3vw solid #56CBF9 !important;
+  border-bottom: 0.3vw solid #56CBF9 !important;
+}
+
+.button-input div {
+    position: relative;
+    width: 2.2vw;
+    height: 1.7vw;
+    border-left: 0.3vw solid transparent;
+    border-bottom: 0.3vw solid #56CBF9;
+}
+.button-input div,
+.button-input div::before {
+    display: block;
+    box-sizing: border-box;
+    border-right: 0.3vw solid transparent
+}
+.button-input div::before {
+    content: "";
+    position: absolute;
+    width: 2vw;
+    height: 2vw;
+    border-left: 0.3vw solid #56CBF9;
+    border-top: 0.3vw solid #56CBF9;
+    border-bottom: 0.3vw solid transparent;
+    transform: rotate(45deg) skew(10deg,10deg);
+    left: -0.2vw;
+    bottom: -1.3vw
+}
+
+.button-input div:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.arrow-right {
+    transform: rotate(90deg) scale(1)  !important;
+    margin-left: 2vw;
+}
+
+.arrow-left {
+    transform: rotate(-90deg) scale(1)  !important;
+    margin-right: 2vw;
+
+}
