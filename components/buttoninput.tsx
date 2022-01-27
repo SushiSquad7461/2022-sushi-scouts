@@ -1,15 +1,16 @@
-import { ReactChild, ReactFragment, ReactPortal } from "react";
+import { ReactChild, ReactFragment, ReactPortal, useState } from "react";
 
-export default function ButtonInput(props: { name: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined; }) {
-    return (
-        <div className="button-input">
-            <h1>{props.name} </h1>
+export default function ButtonInput(props: { extraClass: string, name:  string }) {
+  const [counter, setCounter] = useState<number>(0);
+  return (
+    <div className={"button-input " + props.extraClass}>
+      <h1>{props.name}</h1>
 
-            <section>
-                <div className={"arrow-left"} />
-                <input type={"number"} />
-                <div className={"arrow-right"} />
-            </section>
-        </div>
-    );
+      <section>
+          <div className={"arrow-left"} onClick={() => setCounter(counter-1)} />
+          <input name={props.name} type={"number"} value={counter} onChange={e => setCounter(parseInt(e.target.value))}/>
+          <div className={"arrow-right"} onClick={() => setCounter(counter+1)}/>
+      </section>
+    </div>
+  );
 }

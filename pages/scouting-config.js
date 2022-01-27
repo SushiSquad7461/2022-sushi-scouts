@@ -12,167 +12,164 @@
 */
 
 const data = [{
-        "name": "MATCH INFO",
-        "inputs": [{
-            "name": "MATCH #",
-            "type": "number",
+    "name": "MATCH INFO",
+    "parentClassName": "",
+    "inputs": [{
+        "name": "MATCH #",
+        "type": "number",
+        "default": undefined,
+        "values": [],
+        "className": ""
+    },
+    {
+        "name": "MATCH TYPE",
+        "type": "radio",
+        "default": undefined,
+        "values": ["REGULAR MATCH", "SEMI-FINALS", "QUARTERFINALS", "FINALS"],
+        "className": "matchtype"
+    },
+    {
+        "name": " TEAM # YOU'RE SCOUTING",
+        "type": "number",
+        "default": undefined,
+        "values": [],
+        "className": ""
+    }]
+},
+{
+    "name": "AUTO",        
+    "parentClassName": "auto",
+    "inputs": [{
+            "name": "NO SHOW",
+            "type": "checkbox",
+            "default": false,
+            "values": [],
+            "className": "auto-check"
+        },
+        {
+            "name": "MOVE OFF TARMAC",
+            "type": "checkbox",
+            "default": false,
+            "values": [],
+            "className": "auto-check auto-check-right"
+        },
+        {
+            "name": "SCORED LOWER HUB",
+            "type": "button",
             "default": undefined,
             "values": [],
             "className": ""
+        },
+        {
+            "name": "MISSED LOWER HUB",
+            "type": "button",
+            "default": undefined,
+            "values": [],
+            "className": ""
+        },
+        {
+            "name": "SCORED BY HP",
+            "type": "button",
+            "default": undefined,
+            "values": [],
+            "className": "hp-input"
+        },
+        {
+            "name": "SCORED UPPER HUB",
+            "type": "button",
+            "default": undefined,
+            "values": [],
+            "className": ""
+        },
+        {
+            "name": "MISSED UPPER HUB",
+            "type": "button",
+            "default": undefined,
+            "values": [],
+            "className": ""
+        }
+    ]
+},
+{
+    "name": "TELEOP",
+    "parentClassName": "teleop",
+    "inputs": [{
+            "name": "GROUND PICKUP",
+            "type": "checkbox",
+            "default": false,
+            "values": [],
+            "className": "auto-check auto-check-right"
+        },
+        {
+            "name": "TERMINAL PICKUP",
+            "type": "checkbox",
+            "default": false,
+            "values": [],
+            "className": "auto-check"
+        },
+        {
+            "name": "SCORED LOWER HUB",
+            "type": "button",
+            "default": undefined,
+            "values": [],
+            "className": ""
+        },
+        {
+            "name": "MISSED LOWER HUB",
+            "type": "button",
+            "default": undefined,
+            "values": [],
+            "className": ""
+        },
+        {
+            "name": "SCORED UPPER HUB",
+            "type": "button",
+            "default": undefined,
+            "values": [],
+            "className": ""
+        },
+        {
+            "name": "MISSED UPPER HUB",
+            "type": "button",
+            "default": undefined,
+            "values": [],
+            "className": ""
+        }
+    ]
+},
+{
+    "name": "END GAME",
+    "parentClassName": "end-game",
+    "inputs": [{
+            "name": "ATTEMPTED CLIMB",
+            "type": "checkbox",
+            "default": false,
+            "values": [],
+            "className": "auto-check"
         },
         {
             "name": "MATCH TYPE",
             "type": "radio",
             "default": undefined,
-            "values": ["REGULAR MATCH", "SEMI-FINALS", "QUARTERFINALS", "FINALS"],
+            "values": ["NO CLIMB", "LOW CLIMB", "MID CLIMB", "HIGH CLIMB", "TRAVERSAL CLIMB"],
             "className": "matchtype"
         },
         {
-            "name": " TEAM # YOU'RE SCOUTING",
-            "type": "number",
-            "default": undefined,
+            "name": "STOPPED DURING MATCH",
+            "type": "checkbox",
+            "default": false,
+            "values": [],
+            "className": "auto-check auto-check-right"
+        },
+        {
+            "name": "NOTES",
+            "type": "textarea",
+            "default": false,
             "values": [],
             "className": ""
-        }]
-    },
-    {
-        "name": "Auto",
-        "inputs": [{
-                "name": "NO SHOW",
-                "type": "checkbox",
-                "default": false,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "Move Off Tarmac",
-                "type": "checkbox",
-                "default": false,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "SCORED LOWER HUB",
-                "type": "button",
-                "default": undefined,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "MISSED LOWER HUB",
-                "type": "button",
-                "default": undefined,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "SCORED UPPER HUB",
-                "type": "button",
-                "default": undefined,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "MISSED UPPER HUB",
-                "type": "button",
-                "default": undefined,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "SCORED BY HP",
-                "type": "button",
-                "default": undefined,
-                "values": [],
-                "className": ""
-            }
-        ]
-    },
-    {
-        "name": "Teleop",
-        "inputs": [{
-                "name": "Ground Pickup",
-                "type": "checkbox",
-                "default": false,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "Terminal Pickup",
-                "type": "checkbox",
-                "default": false,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "Scored Lower Hub",
-                "type": "number",
-                "default": undefined,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "Missed Lower Hub",
-                "type": "number",
-                "default": undefined,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "Scored Upper Hub",
-                "type": "number",
-                "default": undefined,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "Missed Upper Hub",
-                "type": "number",
-                "default": undefined,
-                "values": [],
-                "className": ""
-            }
-        ]
-    },
-    {
-        "name": "End Game",
-        "inputs": [{
-                "name": "Attempted Climb",
-                "type": "checkbox",
-                "default": false,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "Scored Lower Hub",
-                "type": "number",
-                "default": undefined,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "Missed Lower Hub",
-                "type": "number",
-                "default": undefined,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "Scored Upper Hub",
-                "type": "number",
-                "default": undefined,
-                "values": [],
-                "className": ""
-            },
-            {
-                "name": "Missed Upper Hub",
-                "type": "number",
-                "default": undefined,
-                "values": [],
-                "className": ""
-            }
-        ]
-    }
+        }
+    ]
+}
 ];
 
 module.exports = data;

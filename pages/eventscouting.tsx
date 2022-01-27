@@ -5,7 +5,7 @@ import ColorBar from '../components/colorbar';
 import styles from '../styles/EventsScouting.module.css'
 import scoutingConfig from "./scouting-config.js";
 import Image from 'next/image';
-import ButtonInput from '../components/ButtonInput';
+import ButtonInput from '../components/buttoninput';
 
 const EventScouting: NextPage = () => {
   const [index, setIndex] = useState(0);
@@ -17,21 +17,25 @@ const EventScouting: NextPage = () => {
     }
   }
 
-  async function sendData(event: SubmitEvent) {
+  async function sendData(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    console.log("yo");
+    const data = convertFormToObject(new FormData(event.target));
 
-    const res = await fetch("/api/submiteventinfo", {
-      body: JSON.stringify({
-        name: "TEST"
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST'
-    })
+    // const res = await fetch("/api/submiteventinfo", {
+    //   body: JSON.stringify({
+    //     name: "TEST"
+    //   }),
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   method: 'POST'
+    // })
 
-    const result = await res.json()
+    // const result = await res.json()
+  }
+
+  function convertFormToObject(data: FormData) {
+
   }
 
   useEffect(() => {
@@ -60,14 +64,14 @@ const EventScouting: NextPage = () => {
         <Image src="/mask.svg" alt="Mask logo" width="400vw" height="400vh"/>
       </section>
 
-      <form onSubmit={sendData}>
+      <form onSubmit={sendData} className={scoutingConfig[index].parentClassName}>
         {
           scoutingConfig[index].inputs.map(element => {
             if (element.type === "number") {
               return (
                 <article key={element.name} className={element.className}>
                   <h1>{element.name}</h1>
-                  <input type={element.type}/>
+                  <input type={element.type} name={element.name}/>
                 </article>
               );
             } else if (element.type === "radio" && element.values.length !== 0) {
@@ -86,10 +90,19 @@ const EventScouting: NextPage = () => {
                 </section>
               );
             } else if (element.type === "checkbox") {
-
+              return (
+                <section className={element.className} key={element.name}>
+                  <input type={element.type} name={element.name} />
+                  <label>{ element.name } </label>
+                </section>
+              );
             } else if (element.type === "button") {
               return (
-                <ButtonInput name={element.name} key={element.name} />
+                <ButtonInput name={element.name} key={element.name} extraClass={element.className}/>
+              );
+            } else if (element.type === "textarea") {
+              return (
+                <input type={element.type} key={element.name} className={element.className} name={element.name}/>
               );
             }
           })

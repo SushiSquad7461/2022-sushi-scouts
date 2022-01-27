@@ -33,3 +33,50 @@ a {
   margin-left: 0.5vw;
   font-weight: 500;
 }
+
+.auto {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16vw;
+  row-gap: 3vh;   
+  margin-top: 46vh !important;
+}  
+
+.teleop {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 3vh;   
+  margin-top: 46vh !important;
+  width: 70vw;
+}
+
+.end-game {
+}
+
+.teleop .auto-check-right {
+  margin-left: 20vw;
+}
+
+.hp-input {
+  margin-left: -1vw !important;
+}
+
+.auto-check {
+  position: absolute;
+  top: 36%;
+  left: 2.9% !important;
+  display: flex;
+  align-items: center;
+  transform: scale(1.2);
+}
+
+.auto-check label {
+  font-size: 1.5rem;
+  margin-left: 0.4vw;
+  font-weight: 500;
+  margin-top: 0.4vh;
+}
+
+.auto-check-right {
+  margin-left: 16vw
+}

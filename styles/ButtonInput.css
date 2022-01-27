@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Mohave&display=swap');
+@font-face { font-family: SushiSans; src: url('font.ttf'); } 
+
 .button-input {
     width: min-content;
 }
@@ -15,14 +18,17 @@
 }
 
 .button-input input {
-  width: 2.5vw !important;
-  height: 2.5vw !important;
-  font-size: 1rem !important;
-  padding: 0.4rem;
+  width: 3vw !important;
+  height: 3vw !important;
+  font-size: 1.4rem !important;
+  padding: 0.4rem !important;
   border-top: 0.3vw solid #56CBF9 !important;
   border-left: 0.3vw solid #56CBF9 !important;
   border-right: 0.3vw solid #56CBF9 !important;
   border-bottom: 0.3vw solid #56CBF9 !important;
+  font-family: 'Mohave', sans-serif !important;
+  font-weight: 400 !important;
+  text-align: center !important;
 }
 
 .button-input div {
@@ -30,7 +36,7 @@
     width: 2.2vw;
     height: 1.7vw;
     border-left: 0.3vw solid transparent;
-    border-bottom: 0.3vw solid #56CBF9;
+    border-bottom: 0.31vw solid #56CBF9;
 }
 .button-input div,
 .button-input div::before {
@@ -57,12 +63,12 @@
 }
 
 .arrow-right {
-    transform: rotate(90deg) scale(1)  !important;
+    transform: rotate(90deg) scale(1.3)  !important;
     margin-left: 2vw;
 }
 
 .arrow-left {
-    transform: rotate(-90deg) scale(1)  !important;
+    transform: rotate(-90deg) scale(1.3)  !important;
     margin-right: 2vw;
 
 }

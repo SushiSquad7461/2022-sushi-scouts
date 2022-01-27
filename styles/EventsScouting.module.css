@@ -76,7 +76,7 @@
   border-color: black;
 }
 
-.container form input[type=radio] {
+.container form input[type=radio], .container form input[type=checkbox] {
   -webkit-appearance: none;
   background-color: #fafafa;
   border: 0.3rem solid #56CBF9;
@@ -85,7 +85,7 @@
   position: relative;
 }
 
-.container form input[type=radio]:active, .container form input[type=radio]:checked {
+.container form input[type=radio]:active, .container form input[type=checkbox]:active, .container form input[type=radio]:checked, .container form input[type=checkbox]:checked {
   background-color: #56CBF9;
 }
 
@@ -117,7 +117,7 @@ margin: 0;
   border: 0.3rem solid #56cbf9;
   position: absolute;
   top: 85%;
-  left:80%;
+  left:78%;
   height: 10vh;
   width: 15vw;
   color: black;
