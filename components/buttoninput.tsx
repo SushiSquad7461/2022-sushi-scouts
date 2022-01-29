@@ -1,7 +1,12 @@
-import { ReactChild, ReactFragment, ReactPortal, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ButtonInput(props: { extraClass: string, name:  string }) {
   const [counter, setCounter] = useState<number>(0);
+
+  useEffect(() => {
+    props.update(counter, props.name);
+  }, [counter]);
+
   return (
     <div className={"button-input " + props.extraClass}>
       <h1>{props.name}</h1>

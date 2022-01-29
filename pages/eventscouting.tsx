@@ -10,32 +10,28 @@ import ButtonInput from '../components/buttoninput';
 const EventScouting: NextPage = () => {
   const [index, setIndex] = useState(0);
   const router: NextRouter = useRouter();
+  const [matchData, setMatchData] = useState({});
 
   function next() {
     if (index !== scoutingConfig.length-1) {
-      setIndex(index+1);
+      setTimeout(() => setIndex(index+1), 0);
     }
   }
 
   async function sendData(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const data = convertFormToObject(new FormData(event.target));
+    event.preventDefault();
 
-    // const res = await fetch("/api/submiteventinfo", {
-    //   body: JSON.stringify({
-    //     name: "TEST"
-    //   }),
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   method: 'POST'
-    // })
+    console.log(matchData);
 
-    // const result = await res.json()
-  }
+    const res = await fetch("/api/submiteventinfo", {
+      body: { matchData },
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST'
+    })
 
-  function convertFormToObject(data: FormData) {
-
+    const result = await res.json()
   }
 
   useEffect(() => {
@@ -50,8 +46,39 @@ const EventScouting: NextPage = () => {
     } else {
       localStorage.setItem("TM", query_params[0].split("=")[1]);
       localStorage.setItem("C", query_params[1].split("=")[1]);
+      matchData.teamNumber = localStorage.getItem("TM");
+      matchData.comp = localStorage.getItem("C");
+      setMatchData(matchData);
     }
-  }, [router]);
+  }, [router, matchData]);
+
+  useEffect(() => {
+    for (let i of scoutingConfig) {
+      for (let element of i.inputs) {
+        if (element.type === "checkbox") {
+          matchData[i.name.toLowerCase() + ":" + element.name.toLowerCase()] = "off";
+        }
+      }
+    }
+  }, []);
+
+  function updateMatchData(event: React.FormEvent<HTMLFormElement>, name: string) {
+    matchData[scoutingConfig[index].name.toLowerCase() + ":" + name.toLowerCase()] = event.target.value;
+    setMatchData(matchData);
+  }
+
+  function addToMatchData<datatype>(name: string, defualtval: datatype) {
+    matchData[scoutingConfig[index].name.toLowerCase() + ":" + name.toLowerCase()] = defualtval;
+    setMatchData(matchData);
+  }
+
+  function updateDataFromButton(count: number, name: string) {
+    matchData[scoutingConfig[index].name.toLowerCase() + ":" + name.toLowerCase()] = count;
+    setMatchData(matchData);
+  }
+
+  // useEffect(() => addToMatchData<string>(element.name, "off"), [element.name, addToMatchData]);
+
 
   return (
     <div className={styles.container}>
@@ -71,7 +98,7 @@ const EventScouting: NextPage = () => {
               return (
                 <article key={element.name} className={element.className}>
                   <h1>{element.name}</h1>
-                  <input type={element.type} name={element.name}/>
+                  <input type={element.type} name={element.name} onChange={e => updateMatchData(e, element.name)} />
                 </article>
               );
             } else if (element.type === "radio" && element.values.length !== 0) {
@@ -81,7 +108,7 @@ const EventScouting: NextPage = () => {
                     element.values.map(checkbox => {
                       return (
                         <section key={checkbox}>
-                          <input type={ element.type } name={element.name}/>
+                          <input type={ element.type } name={element.name} value={checkbox.toLowerCase()} onChange={e => updateMatchData(e, element.name)}/>
                           <label>{ checkbox }</label>
                         </section>
                       );
@@ -92,29 +119,34 @@ const EventScouting: NextPage = () => {
             } else if (element.type === "checkbox") {
               return (
                 <section className={element.className} key={element.name}>
-                  <input type={element.type} name={element.name} />
+                  <input type={element.type} name={element.name} onChange={e => updateMatchData(e, element.name)}/>
                   <label>{ element.name } </label>
                 </section>
               );
             } else if (element.type === "button") {
               return (
-                <ButtonInput name={element.name} key={element.name} extraClass={element.className}/>
+                <ButtonInput name={element.name} key={element.name + scoutingConfig[index].name} extraClass={element.className} update={updateDataFromButton}/>
               );
             } else if (element.type === "textarea") {
               return (
-                <input type={element.type} key={element.name} className={element.className} name={element.name}/>
+                <input type={element.type} key={element.name} className={element.className} name={element.name} onChange={e => updateMatchData(e, element.name)}/>
               );
             }
           })
         }
 
-        <button className={styles.button2} onClick={next} type={index == scoutingConfig.length-1 ? "submit" : "button" }>
-          <p className={styles.text3}>{index == scoutingConfig.length-1 ? "Submit" : "Continue" }</p>
-        </button>
+         {
+           index == scoutingConfig.length-1 ?
+           <button className={styles.button2} type="submit" onClick={next} >
+            <p className={styles.text3}> Submit</p>
+          </button> :  <button className={styles.button2} type={"button" } onClick={next} >
+            <p className={styles.text3}>Continue</p>
+          </button>
+         }
       </form>
 
     </div>
   )
 }
 
-export default EventScouting
+export default EventScouting;
