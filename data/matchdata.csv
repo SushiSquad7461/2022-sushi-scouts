@@ -1,0 +1,3 @@
+teamNumber,comp,auto:no show,auto:move off tarmac,teleop:ground pickup,teleop:terminal pickup,end game:attempted climb,end game:stopped during match,auto:scored lower hub,auto:missed lower hub,auto:scored by hp,auto:scored upper hub,auto:missed upper hub,teleop:scored lower hub,teleop:missed lower hub,teleop:scored upper hub,teleop:missed upper hub,end game:match type
+7461,GC,off,off,off,off,off,off,0,0,0,0,0,0,0,0,0,low climb
+7461,GC,off,off,off,off,off,off,0,0,0,0,0,0,0,0,0,high climb

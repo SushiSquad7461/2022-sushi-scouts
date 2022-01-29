@@ -80,3 +80,45 @@ a {
 .auto-check-right {
   margin-left: 16vw
 }
+
+.end-game {
+  margin-left: 0.9vw;
+}
+
+.end-game-check-middle {
+  margin-left: 21vw;
+}
+
+.end-game-check-end {
+  margin-left: 36vw;
+}
+
+.climbtype {
+  top: 48%;
+  left: 5%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.notes {
+  width: 40vw;
+  height: 40vh;
+  position: absolute;
+  top: 47%;
+  left: 23.4%;
+  text-align: center;
+  color: black;
+  border: 0.5rem solid #56CBF9;
+  border-radius: 25px;
+  font-size: 1rem;
+}
+
+.notes::placeholder {
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.notes:focus {
+  outline: none;
+}

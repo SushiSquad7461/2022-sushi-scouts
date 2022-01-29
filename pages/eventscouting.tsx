@@ -24,14 +24,12 @@ const EventScouting: NextPage = () => {
     console.log(matchData);
 
     const res = await fetch("/api/submiteventinfo", {
-      body: { matchData },
+      body: JSON.stringify(matchData),
       headers: {
         'Content-Type': 'application/json'
       },
       method: 'POST'
     })
-
-    const result = await res.json()
   }
 
   useEffect(() => {
@@ -129,7 +127,7 @@ const EventScouting: NextPage = () => {
               );
             } else if (element.type === "textarea") {
               return (
-                <input type={element.type} key={element.name} className={element.className} name={element.name} onChange={e => updateMatchData(e, element.name)}/>
+                <input type="textarea" key={element.name} className={element.className} name={element.name} onChange={e => updateMatchData(e, element.name)} placeholder={element.name} autoComplete="off"/>
               );
             }
           })
