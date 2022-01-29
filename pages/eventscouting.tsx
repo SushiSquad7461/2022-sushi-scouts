@@ -151,7 +151,7 @@ const EventScouting: NextPage = () => {
                                 localStorage.setItem("MN", "0");
                                 setMatchNum(0);
                               }
-                          }} checked={matchType === checkbox}/>
+                          }} checked={element.name === "MATCH TYPE" ? (matchType === checkbox) : undefined}/>
                           <label>{ checkbox }</label>
                         </section>
                       );
