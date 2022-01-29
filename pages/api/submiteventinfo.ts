@@ -15,14 +15,13 @@ export default function handler(
 ) {
   const matchData = req.body;
   users.matchData.push(matchData);
-  console.log(users);
 
   // TODO: CLEANUP
   fs.writeFile("./data/matchdata.json", JSON.stringify(users), err => {
-     
+
     // Checking for errors
     if (err) throw err; 
-   
+    
     console.log("Done writing"); // Success
     res.status(200).json({ result : "success" })
 });

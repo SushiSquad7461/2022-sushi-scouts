@@ -12,6 +12,8 @@ const EventScouting: NextPage = () => {
   const router: NextRouter = useRouter();
   const [matchData, setMatchData] = useState({});
   const [climbOn, setClimbOn] = useState(false);
+  const [matchType, setMatchType] = useState<string>("");
+  const [matchNum, setMatchNum] = useState(0);
 
   function next() {
     if (index !== scoutingConfig.length-1) {
@@ -31,6 +33,12 @@ const EventScouting: NextPage = () => {
       },
       method: 'POST'
     })
+
+    if (res.ok) {
+      setIndex(0);
+      localStorage.setItem("MN", (matchNum + 1).toString());
+      setMatchNum(matchNum + 1);
+    }
   }
 
   useEffect(() => {
@@ -49,6 +57,14 @@ const EventScouting: NextPage = () => {
       matchData.comp = localStorage.getItem("C");
       setMatchData(matchData);
     }
+
+    if (localStorage.getItem("MT") !== null) {
+      setMatchType(localStorage.getItem("MT"));
+    }
+    if (localStorage.getItem("MN") !== null) {
+      setMatchNum(parseInt(localStorage.getItem("MN")));
+    }
+
   }, [router, matchData]);
 
   useEffect(() => {
@@ -84,9 +100,6 @@ const EventScouting: NextPage = () => {
     setMatchData(matchData);
   }
 
-  // useEffect(() => addToMatchData<string>(element.name, "off"), [element.name, addToMatchData]);
-
-
   return (
     <div className={styles.container}>
       <article>
@@ -105,7 +118,16 @@ const EventScouting: NextPage = () => {
               return (
                 <article key={element.name} className={element.className}>
                   <h1>{element.name}</h1>
-                  <input type={element.type} name={element.name} onChange={e => updateMatchData(e, element.name)} />
+                  <input type={element.type} name={element.name} onChange={e => { 
+                    updateMatchData(e, element.name)
+
+                    if (element.name === "MATCH #") {
+                      localStorage.setItem("MN", e.target.value);
+                      setMatchNum(parseInt(e.target.value));
+                    }
+                  }}
+                    defaultValue={element.name === "MATCH #" ? matchNum : undefined}
+                    value={element.name === "MATCH #" ? matchNum : undefined}/>
                 </article>
               );
             } else if (element.type === "radio" && element.values.length !== 0 && (climbOn || element.name !== "CLIMB TYPE")) {
@@ -115,15 +137,21 @@ const EventScouting: NextPage = () => {
                     element.values.map(checkbox => {
                       return (
                         <section key={checkbox}>
-                          <input type={ element.type } name={element.name} value={checkbox.toLowerCase()} onChange={e => {
+                          <input type="radio" name={element.name} value={checkbox.toLowerCase()} onChange={e => {
                               updateMatchData(e, element.name)
 
                               if (checkbox === "ATTEMPTED CLIMB" || checkbox === "FAILED CLIMB") {
                                 setClimbOn(true);
                               } else if (checkbox === "NO CLIMB") {
                                 setClimbOn(false);
+                              } else if (element.name === "MATCH TYPE") {
+                                localStorage.setItem("MT", checkbox);
+                                setMatchType(checkbox);
+
+                                localStorage.setItem("MN", "0");
+                                setMatchNum(0);
                               }
-                          }}/>
+                          }} checked={matchType === checkbox}/>
                           <label>{ checkbox }</label>
                         </section>
                       );
