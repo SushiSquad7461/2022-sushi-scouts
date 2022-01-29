@@ -125,22 +125,10 @@ const data = [{
     "name": "END GAME",
     "parentClassName": "end-game",
     "inputs": [{
-            "name": "ATTEMPTED CLIMB",
-            "type": "checkbox",
-            "values": [],
-            "className": "auto-check end-game"
-        },
-        {
-            "name": "NO CLIMB",
-            "type": "checkbox",
-            "values": [],
-            "className": "auto-check end-game-check-middle"
-        },
-        {
-            "name": "FAILED CLIMB",
-            "type": "checkbox",
-            "values": [],
-            "className": "auto-check end-game-check-end"
+            "name": "CLIMB",
+            "type": "radio",
+            "values": ["ATTEMPTED CLIMB", "NO CLIMB", "FAILED CLIMB"],
+            "className": "matchtype auto-check end-game"
         },
         {
             "name": "CLIMB TYPE",

@@ -11,6 +11,7 @@ const EventScouting: NextPage = () => {
   const [index, setIndex] = useState(0);
   const router: NextRouter = useRouter();
   const [matchData, setMatchData] = useState({});
+  const [climbOn, setClimbOn] = useState(false);
 
   function next() {
     if (index !== scoutingConfig.length-1) {
@@ -55,6 +56,14 @@ const EventScouting: NextPage = () => {
       for (let element of i.inputs) {
         if (element.type === "checkbox") {
           matchData[i.name.toLowerCase() + ":" + element.name.toLowerCase()] = "off";
+        } else if (element.type === "number") {
+          matchData[i.name.toLowerCase() + ":" + element.name.toLowerCase()] = 0;
+        } else if (element.type === "radio") {
+          matchData[i.name.toLowerCase() + ":" + element.name.toLowerCase()] = "no option selected";
+        } else if (element.type === "button") {
+          matchData[i.name.toLowerCase() + ":" + element.name.toLowerCase()] = 0;
+        } else if (element.type === "textarea") {
+          matchData[i.name.toLowerCase() + ":" + element.name.toLowerCase()] = "";
         }
       }
     }
@@ -99,14 +108,22 @@ const EventScouting: NextPage = () => {
                   <input type={element.type} name={element.name} onChange={e => updateMatchData(e, element.name)} />
                 </article>
               );
-            } else if (element.type === "radio" && element.values.length !== 0) {
+            } else if (element.type === "radio" && element.values.length !== 0 && (climbOn || element.name !== "CLIMB TYPE")) {
               return (
                 <section key={element.name} className={element.className}>
                   {
                     element.values.map(checkbox => {
                       return (
                         <section key={checkbox}>
-                          <input type={ element.type } name={element.name} value={checkbox.toLowerCase()} onChange={e => updateMatchData(e, element.name)}/>
+                          <input type={ element.type } name={element.name} value={checkbox.toLowerCase()} onChange={e => {
+                              updateMatchData(e, element.name)
+
+                              if (checkbox === "ATTEMPTED CLIMB" || checkbox === "FAILED CLIMB") {
+                                setClimbOn(true);
+                              } else if (checkbox === "NO CLIMB") {
+                                setClimbOn(false);
+                              }
+                          }}/>
                           <label>{ checkbox }</label>
                         </section>
                       );
