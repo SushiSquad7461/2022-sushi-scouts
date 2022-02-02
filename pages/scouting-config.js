@@ -27,7 +27,7 @@ const data = [{
         "className": "matchtype"
     },
     {
-        "name": " TEAM # YOU'RE SCOUTING",
+        "name": "TEAM # YOU'RE SCOUTING",
         "type": "number",
         "values": [],
         "className": ""

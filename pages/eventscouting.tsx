@@ -14,6 +14,8 @@ const EventScouting: NextPage = () => {
   const [climbOn, setClimbOn] = useState(false);
   const [matchType, setMatchType] = useState<string>("");
   const [matchNum, setMatchNum] = useState(0);
+  // Team number that is being scouted
+  const [teamNum, setTeamNum] = useState<string>("");
 
   function next() {
     if (index !== scoutingConfig.length-1) {
@@ -100,6 +102,11 @@ const EventScouting: NextPage = () => {
     setMatchData(matchData);
   }
 
+  async function getTeamNumber(currMatchNum: Number, currMatchType: String) {
+    const data = await fetch("/api/getteamnum?matchNum=" + currMatchNum + "&type=" + currMatchType);
+    setTeamNum(await data.text());
+  }
+
   return (
     <div className={styles.container}>
       <article>
@@ -124,10 +131,13 @@ const EventScouting: NextPage = () => {
                     if (element.name === "MATCH #") {
                       localStorage.setItem("MN", e.target.value);
                       setMatchNum(parseInt(e.target.value));
+                      getTeamNumber(parseInt(e.target.value), matchType);
+                    } else if (element.name === "TEAM # YOU'RE SCOUTING") {
+                      setTeamNum((e.target.value));
                     }
                   }}
                     defaultValue={element.name === "MATCH #" ? matchNum : undefined}
-                    value={element.name === "MATCH #" ? matchNum : undefined}/>
+                    value={element.name === "MATCH #" ? matchNum : (element.name === "TEAM # YOU'RE SCOUTING" ? teamNum : undefined)}/>
                 </article>
               );
             } else if (element.type === "radio" && element.values.length !== 0 && (climbOn || element.name !== "CLIMB TYPE")) {
@@ -149,7 +159,9 @@ const EventScouting: NextPage = () => {
                                 setMatchType(checkbox);
 
                                 localStorage.setItem("MN", "0");
-                                setMatchNum(0);
+                                setMatchNum(1);
+
+                                getTeamNumber(1, checkbox);
                               }
                           }} checked={element.name === "MATCH TYPE" ? (matchType === checkbox) : undefined}/>
                           <label>{ checkbox }</label>
