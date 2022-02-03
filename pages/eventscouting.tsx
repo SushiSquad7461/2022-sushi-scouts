@@ -3,7 +3,7 @@ import { NextRouter, useRouter } from 'next/router';
 import { useEffect, useState } from 'react'
 import ColorBar from '../components/colorbar';
 import styles from '../styles/EventsScouting.module.css'
-import scoutingConfig from "./scouting-config.js";
+import scoutingConfig from "./scouting-config.ts";
 import Image from 'next/image';
 import ButtonInput from '../components/buttoninput';
 
@@ -63,8 +63,9 @@ const EventScouting: NextPage = () => {
     if (localStorage.getItem("MT") !== null) {
       setMatchType(localStorage.getItem("MT"));
     }
+    
     if (localStorage.getItem("MN") !== null) {
-      setMatchNum(parseInt(localStorage.getItem("MN")));
+      setMatchNum(parseInt(localStorage.getItem("MN") ));
     }
 
   }, [router, matchData]);

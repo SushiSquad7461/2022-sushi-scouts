@@ -1,17 +1,17 @@
-/*
-    Format for adding data point:
+type ScoutingInput = {
+  "name": String, // Name of input
+  "type": String, // Type of input
+  "values": String[], // if applicable, if not leave as empty array)
+  "className": "" // "" for no className
+}
 
-    {
-        "name": "Team Number",
-        "type": "number",
-        "default": "12" (undefined for no default: DO NOT USE NULL),
-        "values" (if applicable, if not leave as empty array): ["low climb", "no climb", "high climb"],
-        "className" ("" for no className): ""
-    }
+type ScoutingDataSection = {
+  "name": String, // Name of scouting sections
+  "parentClassName": String, // "" for no className
+  "inputs": ScoutingInput[] // All of the inputs in a section 
+}
 
-*/
-
-const data = [{
+const data: ScoutingDataSection[] = [{
     "name": "MATCH INFO",
     "parentClassName": "",
     "inputs": [{
@@ -146,4 +146,4 @@ const data = [{
 }
 ];
 
-module.exports = data;
+export default data;
