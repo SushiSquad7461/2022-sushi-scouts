@@ -103,8 +103,10 @@ const EventScouting: NextPage = () => {
   }
 
   async function getTeamNumber(currMatchNum: Number, currMatchType: String) {
-    const data = await fetch("/api/getteamnum?matchNum=" + currMatchNum + "&type=" + currMatchType);
-    setTeamNum(await data.text());
+    if (!isNaN(currMatchNum)) {
+      const data = await fetch("/api/getteamnum?matchNum=" + currMatchNum + "&matchType=" + currMatchType);
+      setTeamNum(await data.text());
+    }
   }
 
   return (
@@ -136,7 +138,6 @@ const EventScouting: NextPage = () => {
                       setTeamNum((e.target.value));
                     }
                   }}
-                    defaultValue={element.name === "MATCH #" ? matchNum : undefined}
                     value={element.name === "MATCH #" ? matchNum : (element.name === "TEAM # YOU'RE SCOUTING" ? teamNum : undefined)}/>
                 </article>
               );
@@ -184,7 +185,7 @@ const EventScouting: NextPage = () => {
               );
             } else if (element.type === "textarea") {
               return (
-                <input type="textarea" key={element.name} className={element.className} name={element.name} onChange={e => updateMatchData(e, element.name)} placeholder={element.name} autoComplete="off"/>
+                <textarea key={element.name} className={element.className} name={element.name} onChange={e => updateMatchData(e, element.name)} placeholder={element.name} autoComplete="off" rows="4" cols="50"/>
               );
             }
           })
