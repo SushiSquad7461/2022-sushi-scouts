@@ -3,7 +3,7 @@ import { NextRouter, useRouter } from 'next/router';
 import { ChangeEvent, useEffect, useState } from 'react'
 import ColorBar from '../components/colorbar';
 import styles from '../styles/EventsScouting.module.css'
-import {scoutingConfig } from "./scouting-config";
+import {scoutingConfig } from "../data/scouting-config";
 import Image from 'next/image';
 import ButtonInput from '../components/buttoninput';
 
