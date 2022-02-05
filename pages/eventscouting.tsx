@@ -1,16 +1,27 @@
 import type { NextPage } from 'next'
 import { NextRouter, useRouter } from 'next/router';
-import { useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import ColorBar from '../components/colorbar';
 import styles from '../styles/EventsScouting.module.css'
-import scoutingConfig from "./scouting-config.ts";
+import {scoutingConfig } from "./scouting-config";
 import Image from 'next/image';
 import ButtonInput from '../components/buttoninput';
+
+export type ScoutingInput = {
+  "name": string, // Name of input
+  "type": string, // Type of input
+  "values": string[], // if applicable, if not leave as empty array)
+  "className": string // "" for no className
+}
+
+type ScoutingData = {
+  [index: string]: string | number,
+}
 
 const EventScouting: NextPage = () => {
   const [index, setIndex] = useState(0);
   const router: NextRouter = useRouter();
-  const [matchData, setMatchData] = useState({});
+  const [matchData, setMatchData] = useState<ScoutingData>({});
   const [climbOn, setClimbOn] = useState(false);
   const [matchType, setMatchType] = useState<string>("");
   const [matchNum, setMatchNum] = useState(0);
@@ -45,6 +56,9 @@ const EventScouting: NextPage = () => {
 
   useEffect(() => {
     let query_params: Array<string> = window.location.search.substring(1,  window.location.search.length).split("&");
+    let matchNumber = localStorage.getItem("MN");
+    let matchType = localStorage.getItem("MT");
+
     if (query_params.length == 0 ||
       query_params[0].substring(0,2) != "tm" ||
       query_params.length <= 1 ||
@@ -53,19 +67,23 @@ const EventScouting: NextPage = () => {
         pathname: '/scoutinfo'
       });
     } else {
-      localStorage.setItem("TM", query_params[0].split("=")[1]);
-      localStorage.setItem("C", query_params[1].split("=")[1]);
-      matchData.teamNumber = localStorage.getItem("TM");
-      matchData.comp = localStorage.getItem("C");
+      let teamNumber = query_params[0].split("=")[1];
+      let compName = query_params[0].split("=")[1];
+
+      localStorage.setItem("TM", teamNumber);
+      localStorage.setItem("C", compName);
+
+      matchData.teamNumber = teamNumber;
+      matchData.comp = compName;
       setMatchData(matchData);
     }
 
-    if (localStorage.getItem("MT") !== null) {
-      setMatchType(localStorage.getItem("MT"));
+    if (matchType !== null) {
+      setMatchType(matchType);
     }
-    
-    if (localStorage.getItem("MN") !== null) {
-      setMatchNum(parseInt(localStorage.getItem("MN") ));
+
+    if (matchNumber !== null) {
+      setMatchNum(parseInt(matchNumber));
     }
 
   }, [router, matchData]);
@@ -86,24 +104,20 @@ const EventScouting: NextPage = () => {
         }
       }
     }
-  }, []);
+  }, [matchData]);
 
-  function updateMatchData(event: React.FormEvent<HTMLFormElement>, name: string) {
+  function updateMatchData(event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement> , name: string) {
     matchData[scoutingConfig[index].name.toLowerCase() + ":" + name.toLowerCase()] = event.target.value;
     setMatchData(matchData);
   }
 
-  function addToMatchData<datatype>(name: string, defualtval: datatype) {
-    matchData[scoutingConfig[index].name.toLowerCase() + ":" + name.toLowerCase()] = defualtval;
-    setMatchData(matchData);
-  }
 
   function updateDataFromButton(count: number, name: string) {
     matchData[scoutingConfig[index].name.toLowerCase() + ":" + name.toLowerCase()] = count;
     setMatchData(matchData);
   }
 
-  async function getTeamNumber(currMatchNum: Number, currMatchType: String) {
+  async function getTeamNumber(currMatchNum: number, currMatchType: String) {
     if (!isNaN(currMatchNum)) {
       const data = await fetch("/api/getteamnum?matchNum=" + currMatchNum + "&matchType=" + currMatchType);
       setTeamNum(await data.text());
@@ -123,7 +137,7 @@ const EventScouting: NextPage = () => {
 
       <form onSubmit={sendData} className={scoutingConfig[index].parentClassName}>
         {
-          scoutingConfig[index].inputs.map(element => {
+          scoutingConfig[index].inputs.map((element: ScoutingInput)  => {
             if (element.type === "number") {
               return (
                 <article key={element.name} className={element.className}>
@@ -146,7 +160,7 @@ const EventScouting: NextPage = () => {
               return (
                 <section key={element.name} className={element.className}>
                   {
-                    element.values.map(checkbox => {
+                    element.values.map((checkbox: string) => {
                       return (
                         <section key={checkbox}>
                           <input type="radio" name={element.name} value={checkbox.toLowerCase()} onChange={e => {
@@ -186,7 +200,7 @@ const EventScouting: NextPage = () => {
               );
             } else if (element.type === "textarea") {
               return (
-                <textarea key={element.name} className={element.className} name={element.name} onChange={e => updateMatchData(e, element.name)} placeholder={element.name} autoComplete="off" rows="4" cols="50"/>
+                <textarea key={element.name} className={element.className} name={element.name} onChange={e => updateMatchData(e, element.name)} placeholder={element.name} autoComplete="off" rows={4} cols={50}/>
               );
             }
           })

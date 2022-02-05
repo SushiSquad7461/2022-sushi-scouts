@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import internal from 'stream'
 import ColorBar from '../components/colorbar'
 import styles from '../styles/ScoutInfo.module.css'
 

@@ -1,17 +1,17 @@
-type ScoutingInput = {
-  "name": String, // Name of input
-  "type": String, // Type of input
-  "values": String[], // if applicable, if not leave as empty array)
-  "className": "" // "" for no className
+export type ScoutingInput = {
+  "name": string, // Name of input
+  "type": string, // Type of input
+  "values": string[], // if applicable, if not leave as empty array)
+  "className": string // "" for no className
 }
 
-type ScoutingDataSection = {
-  "name": String, // Name of scouting sections
-  "parentClassName": String, // "" for no className
+export type ScoutingDataSection = {
+  "name": string, // Name of scouting sections
+  "parentClassName": string, // "" for no className
   "inputs": ScoutingInput[] // All of the inputs in a section 
 }
 
-const data: ScoutingDataSection[] = [{
+export const scoutingConfig: ScoutingDataSection[] = [{
     "name": "MATCH INFO",
     "parentClassName": "",
     "inputs": [{
@@ -145,5 +145,3 @@ const data: ScoutingDataSection[] = [{
     ]
 }
 ];
-
-export default data;

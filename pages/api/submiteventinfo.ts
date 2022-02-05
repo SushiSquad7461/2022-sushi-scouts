@@ -17,12 +17,11 @@ export default function handler(
   users.matchData.push(matchData);
 
   // TODO: CLEANUP
-  fs.writeFile("./data/matchdata.json", JSON.stringify(users), err => {
+  fs.writeFile("./data/matchdata.json", JSON.stringify(users), (err: Error) => {
 
     // Checking for errors
-    if (err) throw err; 
+    if (err) res.status(500).json({ result : err.message }); 
     
-    console.log("Done writing"); // Success
     res.status(200).json({ result : "success" })
 });
 }

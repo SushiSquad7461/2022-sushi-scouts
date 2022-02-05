@@ -5,7 +5,7 @@ export default function ButtonInput(props: { extraClass: string, name:  string, 
 
   useEffect(() => {
     props.update(counter, props.name);
-  }, [counter]);
+  }, [counter, props]);
 
   return (
     <div className={"button-input " + props.extraClass}>
