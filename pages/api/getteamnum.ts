@@ -32,8 +32,6 @@ export default function handler(
     competitors = schedule[matchTypeLower][parseInt(matchNum.toString())-1];
   }
 
-  console.log(competitors);
-
   if (scouted[matchNum + matchType.toString()] === undefined || scouted[matchNum + matchType.toString()] >= 6) {
     scouted[matchNum + matchType.toString()] = 1;
   } else {

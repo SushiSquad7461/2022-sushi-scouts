@@ -1,6 +1,6 @@
 {
-  "name": "scounting",
-  "private": true,
+  "name": "sushiscouts",
+  "main": "./cli/index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "inquirer": "^8.2.0",
     "next": "12.0.8",
     "nextjs-redirect": "^5.0.2",
     "react": "17.0.2",
@@ -15,6 +16,7 @@
     "react-router-dom": "^6.2.1",
     "tsc": "^2.0.4"
   },
+  "bin": "./cli/index.js",
   "devDependencies": {
     "@types/node": "17.0.10",
     "@types/react": "17.0.38",
