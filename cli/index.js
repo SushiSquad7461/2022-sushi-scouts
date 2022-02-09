@@ -3,6 +3,7 @@ const inquirer = require("inquirer")
 const fs = require("fs");
 
 const config = require("../data/teamconfig.json");
+const { spawn } = require("child_process");
 
 const FRCDistrictCodes = ["CHS", "FIM", "TX", "IN", "IRS", "FMA", "FNC", "NE", "ONT", "PNW", "PHC"]
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
@@ -63,20 +64,75 @@ async function collectTeamData() {
   console.log("\n\n");
 
   let input = "";
+
+  let sushiScouts;
   while (input !== "Quit") {
+    console.log();
     const answers = await inquirer.prompt({
       name: "choice",
       message: "Enter a command you want to run: ",
       type: "list",
-      choices: ["Run App", "Quit"]
-    }).catch(err => console.log(err));
+      choices: ["Run App", "Stop App", "Export Data to CSV", "Reset Team Info", "Quit"]
+    });
 
     input = answers.choice;
 
-    if (intput === "Run App") {
-      console.log("Satarting up Sushi Scouts....")
-      execShellCommand("npm run dev");
+    console.log();
+
+    if (input === "Run App") {
+      console.log("Starting up Sushi Scouts....")
+      // execShellCommand("npm run dev");
+
+      sushiScouts = spawn("npm", ["run", "dev"]);
+
+      sushiScouts.stdout.on("data", data => {
+          console.log(`\nSushi Scouts Console: ${data}`);
+      });
+
+      sushiScouts.stderr.on("data", data => {
+          console.log(`\nSushi Scouts Warning: ${data}`);
+      });
+
+      sushiScouts.on('error', (error) => {
+          console.log(`\nSushi Scouts Error: ${error.message}`);
+      });
+
+      sushiScouts.on("close", code => {
+          console.log(`\nApp Shutting Down... ${code}`);
+      });
+    } else if (input === "Stop App" && sushiScouts !== undefined) {
+      console.log("\nStopping Sushi Scouts....")
+
+      sushiScouts.stdin.pause();
+      sushiScouts.kill();
+    } else if (input === "Export Data to CSV") {
+        const exportData = spawn("py", ["./data/anlizedata.py"]);
+
+          exportData.stdout.on("data", data => {
+          console.log(`\nExport Console: ${data}`);
+      });
+
+      exportData.stderr.on("data", data => {
+          console.log(`\nExport Warning: ${data}`);
+      });
+
+      exportData.on('error', (error) => {
+          console.log(`\nExport Error: ${error.message}`);
+      });
+
+      exportData.on("close", code => {
+          console.log(`\nExport Shutting Down... ${code}`);
+      });
+    } else if (input === "Reset Team Info") {
+      await collectTeamData();
     }
+  }
+
+  
+  // Cleanup
+  if (sushiScouts !== undefined) {
+      sushiScouts.stdin.pause();
+      sushiScouts.kill();
   }
   
 })();
