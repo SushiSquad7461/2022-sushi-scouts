@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 const inquirer = require("inquirer")
 const fs = require("fs");
-
+let kill  = require('tree-kill');
 const config = require("../data/teamconfig.json");
 const { spawn } = require("child_process");
+const colors = require('colors');
 
 const FRCDistrictCodes = ["CHS", "FIM", "TX", "IN", "IRS", "FMA", "FNC", "NE", "ONT", "PNW", "PHC"]
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
@@ -83,56 +84,40 @@ async function collectTeamData() {
       console.log("Starting up Sushi Scouts....")
       // execShellCommand("npm run dev");
 
-      sushiScouts = spawn("npm", ["run", "dev"]);
+      sushiScouts = spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ["run", "dev"]);
 
       sushiScouts.stdout.on("data", data => {
-          console.log(`\nSushi Scouts Console: ${data}`);
+          console.log(`\nSushi Scouts Console: ${data}`.green);
       });
 
       sushiScouts.stderr.on("data", data => {
-          console.log(`\nSushi Scouts Warning: ${data}`);
+          console.log(`\nSushi Scouts Warning: ${data}`.blue);
       });
 
       sushiScouts.on('error', (error) => {
-          console.log(`\nSushi Scouts Error: ${error.message}`);
+          console.log(`\nSushi Scouts Error: ${error.message}`.blue);
       });
 
       sushiScouts.on("close", code => {
-          console.log(`\nApp Shutting Down... ${code}`);
+          console.log(`\nStopping Sushi Scouts....`);
       });
     } else if (input === "Stop App" && sushiScouts !== undefined) {
-      console.log("\nStopping Sushi Scouts....")
-
-      sushiScouts.stdin.pause();
-      sushiScouts.kill();
+      kill(sushiScouts.pid);
     } else if (input === "Export Data to CSV") {
-        const exportData = spawn("py", ["./data/anlizedata.py"]);
+        const exportData = spawn("py", ["./data/anylizedata.py"]);
 
-          exportData.stdout.on("data", data => {
-          console.log(`\nExport Console: ${data}`);
-      });
-
-      exportData.stderr.on("data", data => {
-          console.log(`\nExport Warning: ${data}`);
-      });
-
-      exportData.on('error', (error) => {
-          console.log(`\nExport Error: ${error.message}`);
-      });
-
-      exportData.on("close", code => {
-          console.log(`\nExport Shutting Down... ${code}`);
-      });
+        exportData.on("close", code => {
+            console.log(`\nExport Shutting Down...`);
+        });
     } else if (input === "Reset Team Info") {
       await collectTeamData();
     }
   }
 
-  
+
   // Cleanup
   if (sushiScouts !== undefined) {
-      sushiScouts.stdin.pause();
-      sushiScouts.kill();
+    kill(sushiScouts.pid);
   }
-  
+
 })();
