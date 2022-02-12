@@ -1,60 +1,33 @@
 #!/usr/bin/env node
-const inquirer = require("inquirer")
+const inquirer = require("inquirer");
 const fs = require("fs");
-let kill  = require('tree-kill');
-const config = require("./data/teamconfig.json");
 const { spawn } = require("child_process");
-const colors = require('colors');
+const { createServer } = require("http");
+const { parse } = require("url");
+const next = require("next");
 
-const { createServer } = require('http');
-const { parse } = require('url');
-const next = require('next');
+const config = require("./data/teamconfig.json");
+const { promisify } = require("util");
+const { stringify } = require("csv-stringify/sync");
+
 const dev = false;
-const hostname = 'localhost';
+const hostname = "localhost";
 const port = 3000;
-// when using middleware `hostname` and `port` must be provided below
-const app = next({ dev, hostname, port });
-const handle = app.getRequestHandler();
 
-const FRCDistrictCodes = ["CHS", "FIM", "TX", "IN", "IRS", "FMA", "FNC", "NE", "ONT", "PNW", "PHC"]
-const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
-const httpTerminator = require("http-terminator")
-
-const server = createServer(async (req, res) => {
-  try {
-    // Be sure to pass `true` as the second argument to `url.parse`.
-    // This tells it to parse the query portion of the URL.
-    const parsedUrl = parse(req.url, true)
-    const { pathname, query } = parsedUrl
-
-    if (pathname === '/a') {
-      await app.render(req, res, '/a', query)
-    } else if (pathname === '/b') {
-      await app.render(req, res, '/b', query)
-    } else {
-      await handle(req, res, parsedUrl)
-    }
-  } catch (err) {
-    console.error('Error occurred handling', req.url, err)
-    res.statusCode = 500
-    res.end('internal server error')
-  }
-});
+const FRCDistrictCodes = ["CHS", "FIM", "TX", "IN", "IRS", "FMA", "FNC", "NE", "ONT", "PNW", "PHC"];
 
 async function collectTeamData() {
   const answers = await inquirer.prompt([{
-    name: 'teamNumber',
-    type: 'input',
-    message: 'What is your team number?',
-    validate: input => {
-      return !isNaN(parseInt(input)) ? true : "Invalid input";
-    },
-    filter: input => { return !isNaN(parseInt(input)) ?parseInt(input) : input; }
+    name: "teamNumber",
+    type: "input",
+    message: "What is your team number?",
+    validate: input => !isNaN(parseInt(input)) ? true : "Invalid input",
+    filter: input => !isNaN(parseInt(input)) ? parseInt(input) : input
   }, {
-   name: "districtCode",
-  message: "What is your teams district code?",
-   type: "list",
-   choices: FRCDistrictCodes
+    name: "districtCode",
+    message: "What is your team's district code?",
+    type: "list",
+    choices: FRCDistrictCodes
   }]);
 
   answers.gotData = true;
@@ -62,34 +35,91 @@ async function collectTeamData() {
   fs.writeFile("./data/teamconfig.json", JSON.stringify(answers), () => {});
 }
 
-function startServer() {
-  app.prepare().then(() => {
-    server.listen(port, (err) => {
-      if (err) throw err
-      console.log(`\n> Ready on http://${hostname}:${port}`)
-    });
-  })
+async function startServer() {
+  // when using middleware `hostname` and `port` must be provided below
+  const app = next({ dev, hostname, port });
+  const handle = app.getRequestHandler();
+
+  await app.prepare();
+
+  return createServer(async (req, res) => {
+    try {
+      // Be sure to pass `true` as the second argument to `url.parse`.
+      // This tells it to parse the query portion of the URL.
+      const parsedUrl = parse(req.url, true);
+      const { pathname, query } = parsedUrl;
+
+      if (pathname === "/a" || pathname === "/b") {
+        await app.render(req, res, pathname, query);
+      } else {
+        await handle(req, res, parsedUrl);
+      }
+    } catch (err) {
+      console.error("Error occurred handling", req.url, err);
+      res.statusCode = 500;
+      res.end("internal server error");
+    }
+  }).listen(port, (err) => {
+    if (err) {
+      throw err;
+    }
+
+    console.log(`\n> Ready on http://${hostname}:${port}`);
+  });
+}
+
+function exportData() {
+  return new Promise((resolve, reject) => {
+    spawn("python3", ["./data/anylizedata.py"])
+      .on("close", (code) => {
+        resolve(code);
+      })
+      .on("error", (err) => {
+        reject(err);
+      });
+  });
+}
+
+async function exportDataNative() {
+  const readFileAsync = promisify(fs.readFile);
+  const writeFileAsync = promisify(fs.writeFile);
+
+  const MATCH_JSON_FILE = "./data/matchdata.json";
+  const MATCH_CSV_FILE = "./data/matchdata.csv";
+
+  const jsonFile = await readFileAsync(MATCH_JSON_FILE);
+
+  // This is a bit dangerous as it makes assumptions about the format of the JSON file.
+  const { matchData } = JSON.parse(jsonFile.toString());
+
+  const headers = Object.keys(matchData[0]);
+  const allValues = matchData.map((match) => Object.values(match));
+
+  const csvOutput = stringify([
+    headers,
+    ...allValues,
+  ]);
+
+  await writeFileAsync(MATCH_CSV_FILE, csvOutput);
 }
 
 (async () => {
   console.clear();
 
   console.log("Welcome to Sushi Scouts....");
-
-  await sleep(1000);
   
   console.log();
 
   if (!config.gotData) {
     await collectTeamData();
   } else {
-    console.log("Welcome back Team " + config.teamNumber);
+    console.log(`Welcome back Team ${config.teamNumber}`);
   }
 
   console.log("\n\n");
 
   let input = "";
-  let serverRunning = false;
+  let server;
 
   while (input !== "Quit") {
     console.log();
@@ -105,36 +135,17 @@ function startServer() {
     console.log();
 
     if (input === "Run App") {
-      startServer();
-      serverRunning = true;
-    } else if (input === "Stop App" && serverRunning) {
-      console.log("waiting for all users to close app.....")
-      const terminate = httpTerminator.createHttpTerminator({
-        server,
-      });
-      
-      await terminate.terminate();    
-
-      serverRunning = false;
+      server = await startServer();
+    } else if (input === "Stop App" && server) {
+      server.close();
     } else if (input === "Export Data to CSV") {
-        console.log("Exporting data");
-        const exportData = spawn("py", ["./data/anylizedata.py"]);
-
-        exportData.on("close", code => {
-            console.log(`\nExport Shutting Down...`);
-        });
+      console.log("Exporting data");
+      await exportDataNative();
+      console.log("Export complete!");
     } else if (input === "Reset Team Info") {
       await collectTeamData();
     }
   }
 
-  if (serverRunning) {
-    console.log("waiting for all users to close app.....")
-
-    const terminate = httpTerminator.createHttpTerminator({
-      server,
-    });
-    
-    await terminate.terminate();    
-  }
+  server?.close();
 })();

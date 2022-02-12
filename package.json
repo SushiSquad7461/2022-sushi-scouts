@@ -10,19 +10,14 @@
     "release": "np --no-2fa"
   },
   "dependencies": {
-    "chalk": "^5.0.0",
-    "colors": "^1.4.0",
-    "http-terminator": "^3.0.4",
+    "csv": "^6.0.5",
     "inquirer": "^8.2.0",
     "next": "^12.0.10",
     "nextjs-redirect": "^5.0.2",
     "np": "^7.6.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-router-dom": "^6.2.1",
-    "semver": "^7.3.5",
-    "tree-kill": "^1.2.2",
-    "tsc": "^2.0.4"
+    "react-router-dom": "^6.2.1"
   },
   "bin": "./server.js",
   "devDependencies": {
