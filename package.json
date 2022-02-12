@@ -1,6 +1,6 @@
 {
   "name": "sushiscouts",
-  "main": "./cli/index.js",
+  "main": "./server.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,6 +12,7 @@
   "dependencies": {
     "chalk": "^5.0.0",
     "colors": "^1.4.0",
+    "http-terminator": "^3.0.4",
     "inquirer": "^8.2.0",
     "next": "^12.0.10",
     "nextjs-redirect": "^5.0.2",
@@ -23,7 +24,7 @@
     "tree-kill": "^1.2.2",
     "tsc": "^2.0.4"
   },
-  "bin": "./cli/index.js",
+  "bin": "./server.js",
   "devDependencies": {
     "@types/node": "17.0.10",
     "@types/react": "17.0.38",

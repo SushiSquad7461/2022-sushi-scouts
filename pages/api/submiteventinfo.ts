@@ -20,8 +20,8 @@ export default function handler(
   fs.writeFile("./data/matchdata.json", JSON.stringify(users), (err: Error) => {
 
     // Checking for errors
-    if (err) res.status(500).json({ result : err.message }); 
-    
-    res.status(200).json({ result : "success" })
-});
+    if (err) res.status(500).json({ result : err.message });     
+  });
+
+  res.status(200).json({ result : "success" })
 }

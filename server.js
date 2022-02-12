@@ -2,28 +2,44 @@
 const inquirer = require("inquirer")
 const fs = require("fs");
 let kill  = require('tree-kill');
-const config = require("../data/teamconfig.json");
+const config = require("./data/teamconfig.json");
 const { spawn } = require("child_process");
 const colors = require('colors');
 
+const { createServer } = require('http');
+const { parse } = require('url');
+const next = require('next');
+const dev = false;
+const hostname = 'localhost';
+const port = 3000;
+// when using middleware `hostname` and `port` must be provided below
+const app = next({ dev, hostname, port });
+const handle = app.getRequestHandler();
+
 const FRCDistrictCodes = ["CHS", "FIM", "TX", "IN", "IRS", "FMA", "FNC", "NE", "ONT", "PNW", "PHC"]
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
+const httpTerminator = require("http-terminator")
 
-function execShellCommand(cmd) {
-  const exec = require("child_process").exec;
-  return new Promise((resolve, reject) => {
-    exec(cmd, { maxBuffer: 1024 * 500 }, (error, stdout, stderr) => {
-      if (error) {
-        console.warn(error);
-      } else if (stdout) {
-        console.log(stdout); 
-      } else {
-        console.log(stderr);
-      }
-      resolve(stdout ? true : false);
-    });
-  });
-}
+const server = createServer(async (req, res) => {
+  try {
+    // Be sure to pass `true` as the second argument to `url.parse`.
+    // This tells it to parse the query portion of the URL.
+    const parsedUrl = parse(req.url, true)
+    const { pathname, query } = parsedUrl
+
+    if (pathname === '/a') {
+      await app.render(req, res, '/a', query)
+    } else if (pathname === '/b') {
+      await app.render(req, res, '/b', query)
+    } else {
+      await handle(req, res, parsedUrl)
+    }
+  } catch (err) {
+    console.error('Error occurred handling', req.url, err)
+    res.statusCode = 500
+    res.end('internal server error')
+  }
+});
 
 async function collectTeamData() {
   const answers = await inquirer.prompt([{
@@ -46,6 +62,15 @@ async function collectTeamData() {
   fs.writeFile("./data/teamconfig.json", JSON.stringify(answers), () => {});
 }
 
+function startServer() {
+  app.prepare().then(() => {
+    server.listen(port, (err) => {
+      if (err) throw err
+      console.log(`\n> Ready on http://${hostname}:${port}`)
+    });
+  })
+}
+
 (async () => {
   console.clear();
 
@@ -54,7 +79,6 @@ async function collectTeamData() {
   await sleep(1000);
   
   console.log();
-
 
   if (!config.gotData) {
     await collectTeamData();
@@ -65,8 +89,8 @@ async function collectTeamData() {
   console.log("\n\n");
 
   let input = "";
+  let serverRunning = false;
 
-  let sushiScouts;
   while (input !== "Quit") {
     console.log();
     const answers = await inquirer.prompt({
@@ -81,29 +105,19 @@ async function collectTeamData() {
     console.log();
 
     if (input === "Run App") {
-      console.log("Starting up Sushi Scouts....")
-      // execShellCommand("npm run dev");
-
-      sushiScouts = spawn(/^win/.test(process.platform) ? 'npm.cmd' : 'npm', ["run", "dev"]);
-
-      sushiScouts.stdout.on("data", data => {
-          console.log(`\nSushi Scouts Console: ${data}`.green);
+      startServer();
+      serverRunning = true;
+    } else if (input === "Stop App" && serverRunning) {
+      console.log("waiting for all users to close app.....")
+      const terminate = httpTerminator.createHttpTerminator({
+        server,
       });
+      
+      await terminate.terminate();    
 
-      sushiScouts.stderr.on("data", data => {
-          console.log(`\nSushi Scouts Warning: ${data}`.blue);
-      });
-
-      sushiScouts.on('error', (error) => {
-          console.log(`\nSushi Scouts Error: ${error.message}`.blue);
-      });
-
-      sushiScouts.on("close", code => {
-          console.log(`\nStopping Sushi Scouts....`);
-      });
-    } else if (input === "Stop App" && sushiScouts !== undefined) {
-      kill(sushiScouts.pid);
+      serverRunning = false;
     } else if (input === "Export Data to CSV") {
+        console.log("Exporting data");
         const exportData = spawn("py", ["./data/anylizedata.py"]);
 
         exportData.on("close", code => {
@@ -114,10 +128,13 @@ async function collectTeamData() {
     }
   }
 
+  if (serverRunning) {
+    console.log("waiting for all users to close app.....")
 
-  // Cleanup
-  if (sushiScouts !== undefined) {
-    kill(sushiScouts.pid);
+    const terminate = httpTerminator.createHttpTerminator({
+      server,
+    });
+    
+    await terminate.terminate();    
   }
-
 })();
