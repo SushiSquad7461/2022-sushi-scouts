@@ -5,6 +5,8 @@ import ColorBar from '../components/colorbar';
 import styles from '../styles/EventsScouting.module.css'
 import { scoutingConfig } from "../data/scouting-config";
 import Image from 'next/image';
+import Link from 'next/link'
+
 import ButtonInput from '../components/buttoninput';
 
 export type ScoutingInput = {
@@ -206,6 +208,14 @@ const EventScouting: NextPage = () => {
           })
         }
 
+
+                 <button className={styles.button1}>
+                      <Link href = "/" passHref>
+                          <p className={styles.text3}>Return</p>
+                      </Link>
+                  </button>
+
+
          {
            index == scoutingConfig.length-1 ?
            <button className={styles.button2} type="submit" onClick={next} >
@@ -213,7 +223,11 @@ const EventScouting: NextPage = () => {
           </button> :  <button className={styles.button2} type={"button" } onClick={next} >
             <p className={styles.text3}>Continue</p>
           </button>
+
+
+
          }
+
       </form>
 
     </div>
