@@ -1,6 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-// TODO: FIX IMPORTS
 
 type MatchSchedule = {
   [index: string] : string[][]
@@ -37,5 +36,6 @@ export default function handler(
   } else {
     scouted[matchNum + matchType.toString()] += 1;
   }
+
   res.status(200).send(competitors[scouted[matchNum + matchType.toString()] - 1]);
 }
