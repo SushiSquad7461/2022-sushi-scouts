@@ -20,7 +20,7 @@ const Data: NextPage = () => {
           </section>
 
         <section className={styles.note}>
-            <p className={styles.text3}> Unfortunately we do not have data viewing from the web yet.  Hopefully we will have this feature in the near future to use in matches (or even sooner if you give Alex a cookie >:))  </p>
+            <p className={styles.text3}> Unfortunately we do not have data viewing from the web yet.  Hopefully we will have this feature in the near future to use in matches (or even sooner if you give Alex a cookie))  </p>
         </section>
 
 
