@@ -59,11 +59,20 @@ const ScoutInfo: NextPage = () => {
                 </article>
             </section>
 
+        <button className={styles.button1}>
+            <Link href = "/" passHref>
+                <p className={styles.text3}>Return</p>
+            </Link>
+        </button>
+
             <button className={styles.button2}>
                 { teamNum !== undefined ? <Link href={"/eventscouting?tm=" + teamNum + "&c=" + comps[clicked]} passHref>
                     <p className={styles.text3}>Continue</p>
                 </Link> : <p className={styles.text3}>Continue</p> }
             </button>
+
+
+
           </form>
       </div>
     )
