@@ -2,9 +2,10 @@
 const inquirer = require("inquirer")
 const fs = require("fs");
 let kill  = require('tree-kill');
-const config = require("./data/teamconfig.json");
+let config = require("./data/teamconfig.json");
 const { spawn } = require("child_process");
 const colors = require('colors');
+const fetch = require('node-fetch');
 
 const { createServer } = require('http');
 const { parse } = require('url');
@@ -18,7 +19,8 @@ const handle = app.getRequestHandler();
 
 const FRCDistrictCodes = ["CHS", "FIM", "TX", "IN", "IRS", "FMA", "FNC", "NE", "ONT", "PNW", "PHC"]
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
-const httpTerminator = require("http-terminator")
+const httpTerminator = require("http-terminator");
+const { default: Head } = require("next/head");
 
 const server = createServer(async (req, res) => {
   try {
@@ -55,11 +57,63 @@ async function collectTeamData() {
   message: "What is your teams district code?",
    type: "list",
    choices: FRCDistrictCodes
+  }, {
+    name: 'year',
+    type: 'input',
+    message: 'What is the year of the FRC game you are participating in?',
+    validate: input => {
+      return !isNaN(parseInt(input)) ? true : "Invalid input";
+    },
+    filter: input => { return !isNaN(parseInt(input)) ?parseInt(input) : input; }
   }]);
 
   answers.gotData = true;
 
+  config = answers;
+
   fs.writeFile("./data/teamconfig.json", JSON.stringify(answers), () => {});
+}
+
+async function loadCompData() {
+  console.log("DISCLAIMER: This features require that you enter in your credentials for the First Inspires API (https://frc-events.firstinspires.org/services/api), these credentials will not be stored");
+
+  const answers = await inquirer.prompt([{
+    name: 'username',
+    type: 'input',
+    message: 'What is your username?',
+  }, {
+    name: 'password',
+    type: 'input',
+    message: 'What is your password?',
+  }]);
+
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", "Basic " + Buffer.from(answers.username + ":" + answers.password).toString('base64'));
+  myHeaders.append("If-Modified-Since", "");
+  
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+  
+  const res = await fetch(`https://frc-api.firstinspires.org/v2.0/${config.year}/events?districtCode=${config.districtCode}&teamNumber=${config.teamNumber}`,
+    requestOptions);
+
+  if (!res.ok) {
+    console.log("Invalid Username or Password");
+  } else {
+    const DATA = await res.json();
+    config.events = DATA.Events;
+    fs.writeFile("./data/teamconfig.json", JSON.stringify(config), () => {});
+
+    console.log("\nThe following events were found:")
+    for (let i of config.events) {
+      console.log(i.name);
+    }
+  }
+
+  console.log();
 }
 
 function startServer() {
@@ -94,9 +148,7 @@ function startServer() {
         console.log("npx sushiscouts");
     });
 
-
-
-    return 0;
+    return undefined;
   }
 
   if (!config.gotData) {
@@ -115,7 +167,7 @@ function startServer() {
       name: "choice",
       message: "Enter a command you want to run: ",
       type: "list",
-      choices: ["Run App", "Stop App", "Export Data to CSV", "Reset Team Info", "Quit"]
+      choices: ["Run App", "Stop App", "Export Data to CSV", "Reset Team Info", "Load Comp Data (firstinpires api access required)", "Quit"]
     });
 
     input = answers.choice;
@@ -147,6 +199,8 @@ function startServer() {
         });
     } else if (input === "Reset Team Info") {
       await collectTeamData();
+    } else if (input === "Load Comp Data (firstinpires api access required)") {
+      await loadCompData();
     }
 
   }

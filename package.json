@@ -21,6 +21,7 @@
     "inquirer": "^8.2.0",
     "next": "^12.0.10",
     "nextjs-redirect": "^5.0.2",
+    "node-fetch": "2.0",
     "np": "^7.6.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",

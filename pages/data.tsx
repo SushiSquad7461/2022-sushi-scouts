@@ -1,10 +1,10 @@
-import type { NextPage } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useEffect, useMemo, useState } from 'react'
-import ColorBar from '../components/colorbar'
-import Head from 'next/head'
-import styles from '../styles/ScoutInfo.module.css'
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useMemo, useState } from 'react';
+import ColorBar from '../components/colorbar';
+import Head from 'next/head';
+import styles from '../styles/ScoutInfo.module.css';
 
 const Data: NextPage = () => {
 
