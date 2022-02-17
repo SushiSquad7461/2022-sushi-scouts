@@ -80,6 +80,25 @@ function startServer() {
   
   console.log();
 
+  if (!fs.existsSync("./package.json")) {
+    console.log("Repo not found, cloning...");
+
+    const exportData = await spawn("git", ["clone", "https://github.com/SushiSquad7461/2022-sushi-scouts.git"]);
+
+    exportData.on("close", code => {
+        console.log(`\nRepo Cloned...`);
+        console.log("Run the following commands:");
+        console.log("cd ./2022-sushi-scouts");
+        console.log("npm i");
+        console.log("npm run build");
+        console.log("npx sushiscouts");
+    });
+
+
+
+    return 0;
+  }
+
   if (!config.gotData) {
     await collectTeamData();
   } else {
@@ -92,7 +111,6 @@ function startServer() {
   let serverRunning = false;
 
   while (input !== "Quit") {
-    console.log();
     const answers = await inquirer.prompt({
       name: "choice",
       message: "Enter a command you want to run: ",
@@ -105,7 +123,11 @@ function startServer() {
     console.log();
 
     if (input === "Run App") {
-      startServer();
+      try {
+        startServer();
+      } catch (e) {
+        console.log(e);
+      }
       serverRunning = true;
     } else if (input === "Stop App" && serverRunning) {
       console.log("waiting for all users to close app.....")
@@ -113,7 +135,7 @@ function startServer() {
         server,
       });
       
-      await terminate.terminate();    
+      await terminate.terminate();
 
       serverRunning = false;
     } else if (input === "Export Data to CSV") {
@@ -126,6 +148,7 @@ function startServer() {
     } else if (input === "Reset Team Info") {
       await collectTeamData();
     }
+
   }
 
   if (serverRunning) {
