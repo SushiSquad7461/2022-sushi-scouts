@@ -19,7 +19,8 @@ export default function handler(
     res: NextApiResponse,
 ) {
   // Get the current match number, the the type of match (Quarter Finals, Finals, etc...)
-  const {match_num_string, match_type} = req.query;
+  const match_num_string = req.query['matchNum'];
+  const match_type = req.query['matchType'];
   const match_type_lower = match_type.toString().toLowerCase();
   const match_num = parseInt(match_num_string.toString());
 
