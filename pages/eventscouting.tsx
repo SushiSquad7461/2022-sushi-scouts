@@ -5,7 +5,6 @@ import ColorBar from '../components/colorbar';
 import styles from '../styles/EventsScouting.module.css'
 import { scoutingConfig } from "../data/scouting-config";
 import Image from 'next/image';
-import Link from 'next/link'
 
 import ButtonInput from '../components/buttoninput';
 
@@ -45,8 +44,6 @@ const EventScouting: NextPage = () => {
   async function sendData(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    console.log(matchData);
-
     const res = await fetch("/api/submiteventinfo", {
       body: JSON.stringify(matchData),
       headers: {
@@ -59,6 +56,7 @@ const EventScouting: NextPage = () => {
       setIndex(0);
       localStorage.setItem("MN", (matchNum + 1).toString());
       setMatchNum(matchNum + 1);
+      resetMatchData();
     }
   }
 
@@ -97,6 +95,11 @@ const EventScouting: NextPage = () => {
   }, [router, matchData]);
 
   useEffect(() => {
+    resetMatchData();
+  }, [matchData]);
+
+
+  function resetMatchData() {
     for (let i of scoutingConfig) {
       for (let element of i.inputs) {
         if (element.type === "checkbox") {
@@ -112,7 +115,7 @@ const EventScouting: NextPage = () => {
         }
       }
     }
-  }, [matchData]);
+  }
 
   function updateMatchData(event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement> , name: string) {
     matchData[scoutingConfig[index].name.toLowerCase() + ":" + name.toLowerCase()] = event.target.value;
@@ -187,7 +190,7 @@ const EventScouting: NextPage = () => {
 
                                 getTeamNumber(1, checkbox);
                               }
-                          }} checked={element.name === "MATCH TYPE" ? (matchType === checkbox) : undefined}/>
+                          }} defaultChecked={(matchData[scoutingConfig[index].name.toLowerCase() + ":" + element.name.toLowerCase()]) === checkbox.toLowerCase()} checked={element.name === "MATCH TYPE" ? (matchType === checkbox) : undefined}/>
                           <label>{ checkbox }</label>
                         </section>
                       );
@@ -198,27 +201,25 @@ const EventScouting: NextPage = () => {
             } else if (element.type === "checkbox") {
               return (
                 <section className={element.className} key={element.name}>
-                  <input type={element.type} name={element.name} onChange={e => updateMatchData(e, element.name)}/>
+                  <input type={element.type} name={element.name} defaultChecked={(matchData[scoutingConfig[index].name.toLowerCase() + ":" + element.name.toLowerCase()]) === "on"} onChange={e => updateMatchData(e, element.name)}/>
                   <label>{ element.name } </label>
                 </section>
               );
             } else if (element.type === "button") {
               return (
-                <ButtonInput name={element.name} key={element.name + scoutingConfig[index].name} extraClass={element.className} update={updateDataFromButton}/>
+                <ButtonInput default={matchData[scoutingConfig[index].name.toLowerCase() + ":" + element.name.toLowerCase()]} name={element.name} key={element.name + scoutingConfig[index].name} extraClass={element.className} update={updateDataFromButton}/>
               );
             } else if (element.type === "textarea") {
               return (
-                <textarea key={element.name} className={element.className} name={element.name} onChange={e => updateMatchData(e, element.name)} placeholder={element.name} autoComplete="off" rows={4} cols={50}/>
+                <textarea defaultValue={(matchData[scoutingConfig[index].name.toLowerCase() + ":" + element.name.toLowerCase()])} key={element.name} className={element.className} name={element.name} onChange={e => updateMatchData(e, element.name)} placeholder={element.name} autoComplete="off" rows={4} cols={50}/>
               );
             }
           })
         }
 
-
-                 <button className={styles.button1} type="button" onClick={prev}>
-                          <p className={styles.text3}>Back</p>
-                  </button>
-
+        <button className={styles.button1} type="button" onClick={prev}>
+                <p className={styles.text3}>Back</p>
+        </button>
 
          {
            index == scoutingConfig.length-1 ?
@@ -227,9 +228,6 @@ const EventScouting: NextPage = () => {
           </button> :  <button className={styles.button2} type={"button" } onClick={next} >
             <p className={styles.text3}>Continue</p>
           </button>
-
-
-
          }
 
       </form>
