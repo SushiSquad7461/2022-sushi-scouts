@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-export default function ButtonInput(props: { extraClass: string, name:  string, update: (count: number, name: string) => void }) {
-  const [counter, setCounter] = useState<number>(0);
+export default function ButtonInput(props: { default: number | string, extraClass: string, name:  string, update: (count: number, name: string) => void }) {
+  const [counter, setCounter] = useState<number>(+props.default);
 
   useEffect(() => {
     props.update(counter, props.name);
