@@ -36,6 +36,12 @@ const EventScouting: NextPage = () => {
     }
   }
 
+  function prev() {
+    if (index !== 0) {
+      setTimeout(() => setIndex(index-1), 0);
+    }
+  }
+
   async function sendData(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -209,10 +215,8 @@ const EventScouting: NextPage = () => {
         }
 
 
-                 <button className={styles.button1}>
-                      <Link href = "/" passHref>
-                          <p className={styles.text3}>Return</p>
-                      </Link>
+                 <button className={styles.button1} type="button" onClick={prev}>
+                          <p className={styles.text3}>Back</p>
                   </button>
 
 
