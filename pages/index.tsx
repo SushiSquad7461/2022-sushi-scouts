@@ -1,8 +1,7 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Link from 'next/link'
-import ColorBar from '../components/colorbar'
-import styles from '../styles/Home.module.css'
+import type {NextPage} from "next";
+import Link from "next/link";
+import ColorBar from "../components/colorbar";
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (
@@ -16,7 +15,7 @@ const Home: NextPage = () => {
       >
         <mask
           id="mask0_6_43"
-          style={{ maskType: "alpha" }}
+          style={{maskType: "alpha"}}
           width="1482"
           height="1634"
           x="-518"
@@ -57,22 +56,26 @@ const Home: NextPage = () => {
           ></path>
         </g>
       </svg>
+
       <p className={styles.text1}>SUSHI SCOUTS</p>
+
       <div className={styles.homecolorbar} >
-        <ColorBar/>
+        <ColorBar />
       </div>
+
       <button className={styles.button1}>
         <Link href = "/scoutinfo" passHref>
           <p className={styles.text2}>Start Scouting</p>
         </Link>
       </button>
+
       <button className={styles.button2}>
         <Link href = "/data" passHref>
           <p className={styles.text3}>View Data</p>
         </Link>
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
