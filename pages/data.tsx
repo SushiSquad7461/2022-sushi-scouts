@@ -7,7 +7,6 @@ import styles from "../styles/ScoutInfo.module.css";
 const Data: NextPage = () => {
   return (
     <div className={styles.title}>
-
       <article>
         <ColorBar />
         <h1>DATA</h1>
@@ -30,7 +29,6 @@ const Data: NextPage = () => {
           <p className={styles.text3}>Return</p>
         </Link>
       </button>
-
     </div>
   );
 };

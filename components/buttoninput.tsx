@@ -1,3 +1,4 @@
+import {NextPage} from "next/types";
 import {useEffect, useState} from "react";
 
 type PropsData = {
@@ -7,12 +8,7 @@ type PropsData = {
   update: (count: number, name: string) => void // Update state
 };
 
-/**
- * Defines button input comment
- * @param {PropsData} props comments in type definition
- * @return {NextPage} The next page
- */
-export default function ButtonInput(props: PropsData) {
+const ButtonInput: NextPage<PropsData> = (props: PropsData) => {
   const [counter, setCounter] = useState<number>(+props.default);
 
   useEffect(() => {
@@ -34,4 +30,6 @@ export default function ButtonInput(props: PropsData) {
       </section>
     </div>
   );
-}
+};
+
+export default ButtonInput;

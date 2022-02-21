@@ -1,8 +1,6 @@
-/**
- * Creates a colorbar component, colorbar can be found on sushisquad Figma
- * @return {NextPage} colorbar
- */
-export default function ColorBar() {
+import {NextPage} from "next";
+
+const ColorBar: NextPage = () => {
   return (
     <div className="colorbar">
       <div className="rectangle1" />
@@ -13,4 +11,5 @@ export default function ColorBar() {
       <div className="rectangle6" />
     </div>
   );
-}
+};
+export default ColorBar;

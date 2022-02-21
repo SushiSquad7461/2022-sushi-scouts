@@ -3,13 +3,9 @@ import "../styles/ButtonInput.css";
 import "../styles/Colorbar.css";
 import type {AppProps} from "next/app";
 import Head from "next/head";
+import {NextPage} from "next";
 
-/**
- * Returns next component with custom Head object
- * @param {AppProps} param0 component props
- * @return {NextPage} Next page
- */
-function MyApp({Component, pageProps}: AppProps) {
+const MyApp: NextPage<AppProps> = ({Component, pageProps}: AppProps) => {
   return (
     <div>
       <Head>
@@ -30,6 +26,6 @@ function MyApp({Component, pageProps}: AppProps) {
       <Component {...pageProps} />
     </div>
   );
-}
+};
 
 export default MyApp;

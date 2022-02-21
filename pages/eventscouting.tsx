@@ -5,7 +5,6 @@ import ColorBar from "../components/colorbar";
 import styles from "../styles/EventsScouting.module.css";
 import {scoutingConfig} from "../data/scouting-config";
 import Image from "next/image";
-
 import ButtonInput from "../components/buttoninput";
 
 export type ScoutingInput = {
@@ -26,7 +25,6 @@ const EventScouting: NextPage = () => {
   const [climbOn, setClimbOn] = useState(false);
   const [matchType, setMatchType] = useState<string>("");
   const [matchNum, setMatchNum] = useState(0);
-  // Team number that is being scouted
   const [teamNum, setTeamNum] = useState<string>("");
 
   /**
