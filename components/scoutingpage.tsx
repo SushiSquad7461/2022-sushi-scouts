@@ -1,10 +1,62 @@
 import {NextPage} from "next";
+import {ChangeEvent, useEffect, useState} from "react";
+import {scoutingConfig} from "../data/scouting-config";
+import {ScoutingData, ScoutingInput} from "../pages/eventscouting";
+import ButtonInput from "./buttoninput";
 
-const ScoutingPage: NextPage = () => {
+type PropsData = {
+    index: number,
+    updateMatchData:(
+        event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
+        name: string) => void,
+    updateDataFromButton: (count: number, name: string) => void,
+    currMatchData: ScoutingData,
+    class: string,
+    matchNum: number,
+    setMatchNum: any,
+};
+
+const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
+  const [climbOn, setClimbOn] = useState(false);
+  const [matchType, setMatchType] = useState<string>("");
+  const [teamNum, setTeamNum] = useState<string>("");
+
+  useEffect(() => {
+    const matchNumber = localStorage.getItem("MN");
+    const matchType = localStorage.getItem("MT");
+
+    if (matchType !== null) {
+      setMatchType(matchType);
+    }
+
+    if (matchNumber !== null) {
+      props.setMatchNum(parseInt(matchNumber));
+    } else {
+      props.setMatchNum(1);
+    }
+  }, []);
+
+  /**
+   * Get team scouting assigment
+   * @param {number} currMatchNum current match number
+   * @param {string} currMatchType current match type
+   */
+  async function getTeamNumber(currMatchNum: number, currMatchType: String) {
+    if (!isNaN(currMatchNum)) {
+      const data = await fetch(
+          "/api/getteamnum?matchNum=" +
+              currMatchNum +
+              "&matchType=" +
+              currMatchType,
+      );
+      setTeamNum(await data.text());
+    }
+  }
+
   return (
-    <div>
+    <div className={props.class}>
       {
-        scoutingConfig[index].inputs.map((element: ScoutingInput) => {
+        scoutingConfig[props.index].inputs.map((element: ScoutingInput) => {
           if (element.type === "number") {
             return (
               <article key={element.name} className={element.className}>
@@ -12,17 +64,17 @@ const ScoutingPage: NextPage = () => {
                 <input type={element.type}
                   name={element.name}
                   onChange={(e) => {
-                    updateMatchData(e, element.name);
+                    props.updateMatchData(e, element.name);
 
                     if (element.name === "MATCH #") {
                       localStorage.setItem("MN", e.target.value);
-                      setMatchNum(parseInt(e.target.value));
+                      props.setMatchNum(parseInt(e.target.value));
                       getTeamNumber(parseInt(e.target.value), matchType);
                     } else if (element.name === "TEAM # YOU'RE SCOUTING") {
                       setTeamNum((e.target.value));
                     }
                   }}
-                  value={element.name === "MATCH #" ? matchNum :
+                  value={element.name === "MATCH #" ? props.matchNum :
                           (element.name === "TEAM # YOU'RE SCOUTING" ?
                           teamNum : undefined)}
                 />
@@ -39,7 +91,7 @@ const ScoutingPage: NextPage = () => {
                       <section key={checkbox}>
                         <input type="radio" name={element.name}
                           value={checkbox.toLowerCase()} onChange={(e) => {
-                            updateMatchData(e, element.name);
+                            props.updateMatchData(e, element.name);
 
                             if (checkbox === "ATTEMPTED CLIMB" ||
                                   checkbox === "FAILED CLIMB") {
@@ -51,13 +103,14 @@ const ScoutingPage: NextPage = () => {
                               setMatchType(checkbox);
 
                               localStorage.setItem("MN", "0");
-                              setMatchNum(1);
+                              props.setMatchNum(1);
 
                               getTeamNumber(1, checkbox);
                             }
-                          }} defaultChecked={(
-                            matchData[scoutingConfig[index].name.
-                                toLowerCase() + ":" +
+                          }} defaultChecked={element.name === "MATCH TYPE" ?
+                            undefined : (
+                              props.currMatchData[scoutingConfig[props.index].
+                                  name.toLowerCase() + ":" +
                               element.name.toLowerCase()]) ===
                               checkbox.toLowerCase()}
                           checked={element.name === "MATCH TYPE" ?
@@ -74,36 +127,39 @@ const ScoutingPage: NextPage = () => {
               <section className={element.className} key={element.name}>
                 <input type={element.type}
                   name={element.name}
-                  defaultChecked={(matchData[scoutingConfig[index].name.
-                      toLowerCase() + ":" + element.name.toLowerCase()]) ===
+                  defaultChecked={(props.currMatchData[scoutingConfig[
+                      props.index].name.toLowerCase() +
+                      ":" + element.name.toLowerCase()]) ===
                         "on"
                   }
-                  onChange={(e) => updateMatchData(e, element.name)}
+                  onChange={(e) => props.updateMatchData(e, element.name)}
                 />
                 <label>{ element.name } </label>
               </section>
             );
           } else if (element.type === "button") {
             return (
-              <ButtonInput default={matchData[scoutingConfig[index].
-                  name.toLowerCase() + ":" + element.name.toLowerCase()]
+              <ButtonInput default={props.currMatchData[scoutingConfig[props.
+                  index].name.toLowerCase() + ":" +
+                  element.name.toLowerCase()]
               }
               name={element.name}
-              key={element.name + scoutingConfig[index].name}
+              key={element.name + scoutingConfig[props.index].name}
               extraClass={element.className}
-              update={updateDataFromButton}
+              update={props.updateDataFromButton}
               />
             );
           } else if (element.type === "textarea") {
             return (
               <textarea
-                defaultValue={(matchData[scoutingConfig[index].name.
-                    toLowerCase() + ":" + element.name.toLowerCase()])
+                defaultValue={(props.currMatchData[scoutingConfig[props.
+                    index].name.toLowerCase() +
+                    ":" + element.name.toLowerCase()])
                 }
                 key={element.name}
                 className={element.className}
                 name={element.name}
-                onChange={(e) => updateMatchData(e, element.name)}
+                onChange={(e) => props.updateMatchData(e, element.name)}
                 placeholder={element.name}
                 autoComplete="off"
                 rows={4}

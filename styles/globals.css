@@ -39,19 +39,16 @@ a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16vw;
-  row-gap: 3vh;   
+  row-gap: 3vh;
   margin-top: 46vh !important;
-}  
+}
 
 .teleop {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  row-gap: 3vh;   
+  row-gap: 3vh;
   margin-top: 46vh !important;
   width: 70vw;
-}
-
-.end-game {
 }
 
 .teleop .auto-check-right {
@@ -89,14 +86,6 @@ a {
   margin-top: -2vh;
 }
 
-/* .end-game-check-middle {
-  margin-left: 21vw;
-}
-
-.end-game-check-end {
-  margin-left: 36vw;
-} */
-
 .climbtype {
   top: 48%;
   left: 5%;
@@ -128,4 +117,72 @@ a {
 
 .notes:focus {
   outline: none;
+}
+
+.scoutingform input[type=number] {
+  height: 9vh;
+  width: 100%;
+  border-top: hidden;
+  border-left: hidden;
+  border-right: hidden;
+  border-width: 0.5rem;
+  border-color: black;
+}
+
+.scoutingform input[type=radio], .scoutingform input[type=checkbox] {
+  -webkit-appearance: none;
+  background-color: #fafafa;
+  border: 0.3rem solid #56CBF9;
+  padding: 0.6rem;
+  display: inline-block;
+  position: relative;
+}
+
+.scoutingform input[type=radio]:active, .scoutingform input[type=checkbox]:active, .scoutingform input[type=radio]:checked, .scoutingform input[type=checkbox]:checked {
+  background-color: #56CBF9;
+}
+
+.scoutingform input::placeholder {
+  font-family: 'Mohave', sans-serif;
+
+}
+
+/* Chrome, Safari, Edge, Opera */
+.scoutingform input::-webkit-outer-spin-button,
+.scoutingform input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+/* Firefox */
+.scoutingform input[type=number] {
+-moz-appearance: textfield;
+}
+
+.scoutingform input[type=number]::placeholder, .scoutingform input[type=number] {
+  font-size: 2rem;
+  color: black;
+  letter-spacing: -5%;
+  text-align: center;
+}
+
+.scoutingform input[type=number]:focus {
+  outline: none;
+}
+
+.scoutingform article {
+  height: auto;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: min-content;
+  margin-top: 14vh;
+}
+
+.scoutingform article h1 {
+  font-size: 3rem;
+  font-weight: 200;
+  width: max-content;
+  margin: 0;
 }

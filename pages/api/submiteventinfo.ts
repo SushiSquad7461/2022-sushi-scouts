@@ -1,5 +1,5 @@
 import type {NextApiRequest, NextApiResponse} from "next";
-import * as users from "../../data/matchdata.json";
+import users from "../../data/matchdata.json";
 import {writeFile} from "fs";
 
 type Data = {

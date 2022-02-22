@@ -38,74 +38,6 @@
   font-family: 'Mohave', sans-serif;
 }
 
-.container form input[type=number]::placeholder, .container form input[type=number] {
-  font-size: 2rem;
-  color: black;
-  letter-spacing: -5%;
-  text-align: center;
-}
-
-.container input[type=number]:focus {
-  outline: none;
-}
-
-.container form > article {
-  height: auto;
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  width: min-content;
-  margin-top: 14vh;
-}
-
-.container form > article h1 {
-  font-size: 3rem;
-  font-weight: 200;
-  width: max-content;
-  margin: 0;
-}
-
-.container form input[type=number] {
-  height: 9vh;
-  width: 100%;
-  border-top: hidden;
-  border-left: hidden;
-  border-right: hidden;
-  border-width: 0.5rem;
-  border-color: black;
-}
-
-.container form input[type=radio], .container form input[type=checkbox] {
-  -webkit-appearance: none;
-  background-color: #fafafa;
-  border: 0.3rem solid #56CBF9;
-  padding: 0.6rem;
-  display: inline-block;
-  position: relative;
-}
-
-.container form input[type=radio]:active, .container form input[type=checkbox]:active, .container form input[type=radio]:checked, .container form input[type=checkbox]:checked {
-  background-color: #56CBF9;
-}
-
-.container form input::placeholder {
-  font-family: 'Mohave', sans-serif;
-
-}
-
-/* Chrome, Safari, Edge, Opera */
-.container input::-webkit-outer-spin-button,
-.container input::-webkit-inner-spin-button {
--webkit-appearance: none;
-margin: 0;
-}
-
-/* Firefox */
-.container input[type=number] {
--moz-appearance: textfield;
-}
-
 .button1 {
   border-radius: 15px;
   display: flex;
@@ -116,14 +48,11 @@ margin: 0;
   background-color: white;
   border: 0.3rem solid #56cbf9;
   position: absolute;
-    margin-top:-2.3%;
-
-
+  margin-top:-2.3%;
   top:75%;
   left:78%;
-    height: 10vh;
-    width: 15vw;
-
+  height: 10vh;
+  width: 15vw;
 }
 
 .button2 {
