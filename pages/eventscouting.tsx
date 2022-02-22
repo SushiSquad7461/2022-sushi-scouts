@@ -48,7 +48,7 @@ const EventScouting: NextPage = () => {
    */
   async function sendData(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    
+
     const res = await fetch("/api/submiteventinfo", {
       body: JSON.stringify(matchData),
       headers: {
