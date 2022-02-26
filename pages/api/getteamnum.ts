@@ -1,6 +1,4 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
-// TODO: FIX IMPORTS
+import type {NextApiRequest, NextApiResponse} from "next";
 
 type MatchSchedule = {
   [index: string] : string[][]
@@ -10,32 +8,48 @@ type ScoutedRobot = {
   [index: string] : number
 }
 
+// Get match schedule
 const schedule: MatchSchedule = require("../../data/matchschedule.json");
 
-// TODO: NEW NAME
-let currentNum = 0;
-let scouted: ScoutedRobot = {};
+// List of the index that needs to be scouted
+const scouted: ScoutedRobot = {};
 
+/**
+ * Assigns team number for computer to scout based on match schedule
+ * @param {NextApiRequest} req Api request object
+ * @param {NextApiResponse} res Api response object
+ */
 export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
+    req: NextApiRequest,
+    res: NextApiResponse,
 ) {
-  const { matchNum, matchType } = req.query;
-  let competitors: string[] = [];
+  // Get the current match number, the the type of match (Finals, etc...)
+  const matchNumString = req.query["matchNum"];
+  const matchType = req.query["matchType"];
   const matchTypeLower = matchType.toString().toLowerCase();
+  const matchNum = parseInt(matchNumString.toString());
 
-  if (parseInt(matchNum.toString()) > schedule[matchType.toString().toLowerCase()].length) {
+  // List of robots in current match match
+  let competitors: string[] = [];
+
+  if (matchNum > schedule[matchTypeLower].length) {
+    // Match number is not in schedule, get last match in schedule
     competitors = schedule[matchTypeLower][schedule[matchTypeLower].length-1];
-  } else if (parseInt(matchNum.toString()) <= 0){
+  } else if (matchNum <= 0) {
+    // Match number is not in schedule, get first match in schedule
     competitors = schedule[matchTypeLower][0];
   } else {
-    competitors = schedule[matchTypeLower][parseInt(matchNum.toString())-1];
+    // Get current robots in match
+    competitors = schedule[matchTypeLower][matchNum-1];
   }
 
-  if (scouted[matchNum + matchType.toString()] === undefined || scouted[matchNum + matchType.toString()] >= 6) {
-    scouted[matchNum + matchType.toString()] = 1;
+  const matchId = matchNumString + matchType.toString();
+  if (scouted[matchId] === undefined || scouted[matchId] >= 6) {
+    scouted[matchId] = 1;
   } else {
-    scouted[matchNum + matchType.toString()] += 1;
+    scouted[matchId] += 1;
   }
-  res.status(200).send(competitors[scouted[matchNum + matchType.toString()] - 1]);
+
+  // Send the team number
+  res.status(200).send(competitors[scouted[matchId] - 1]);
 }

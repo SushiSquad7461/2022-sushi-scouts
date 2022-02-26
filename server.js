@@ -16,6 +16,9 @@ const port = 3000;
 
 const FRCDistrictCodes = ["CHS", "FIM", "TX", "IN", "IRS", "FMA", "FNC", "NE", "ONT", "PNW", "PHC"];
 
+/**
+ * Collect team data
+ */
 async function collectTeamData() {
   const answers = await inquirer.prompt([{
     name: "teamNumber",
@@ -31,6 +34,8 @@ async function collectTeamData() {
   }]);
 
   answers.gotData = true;
+
+  config = answers;
 
   fs.writeFile("./data/teamconfig.json", JSON.stringify(answers), () => {});
 }
@@ -107,8 +112,25 @@ async function exportDataNative() {
   console.clear();
 
   console.log("Welcome to Sushi Scouts....");
-  
+
   console.log();
+
+  if (!fs.existsSync("./package.json")) {
+    console.log("Repo not found, cloning...");
+
+    const exportData = await spawn("git", ["clone", "https://github.com/SushiSquad7461/2022-sushi-scouts.git"]);
+
+    exportData.on("close", (code) => {
+      console.log("\nRepo Cloned...");
+      console.log("Run the following commands:");
+      console.log("cd ./2022-sushi-scouts");
+      console.log("npm i");
+      console.log("npm run build");
+      console.log("npx sushiscouts");
+    });
+
+    return undefined;
+  }
 
   if (!config.gotData) {
     await collectTeamData();
@@ -122,12 +144,14 @@ async function exportDataNative() {
   let server;
 
   while (input !== "Quit") {
-    console.log();
     const answers = await inquirer.prompt({
       name: "choice",
       message: "Enter a command you want to run: ",
       type: "list",
-      choices: ["Run App", "Stop App", "Export Data to CSV", "Reset Team Info", "Quit"]
+      choices: ["Run App", "Stop App",
+        "Export Data to CSV", "Reset Team Info",
+        "Load Comp Data (firstinpires api access required)",
+        "Quit"],
     });
 
     input = answers.choice;
@@ -144,6 +168,8 @@ async function exportDataNative() {
       console.log("Export complete!");
     } else if (input === "Reset Team Info") {
       await collectTeamData();
+    } else if (input === "Load Comp Data (firstinpires api access required)") {
+      await loadCompData();
     }
   }
 
