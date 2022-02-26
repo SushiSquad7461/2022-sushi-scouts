@@ -2,9 +2,27 @@ import type {NextPage} from "next";
 import Image from "next/image";
 import Link from "next/link";
 import ColorBar from "../components/colorbar";
-import styles from "../styles/ScoutInfo.module.css";
+import styles from "../styles/Data.module.css";
+import {useExcelDownloder} from "react-xls";
+import {useEffect, useState} from "react";
 
 const Data: NextPage = () => {
+  const {ExcelDownloder, Type} = useExcelDownloder();
+  const [data, setData] = useState<any>();
+
+  /**
+   * Export match data
+   */
+  async function exportData() {
+    const data = await fetch("/api/getscoutingdata");
+    const jsonData = await data.json();
+    setData(jsonData);
+  }
+
+  useEffect(() => {
+    exportData();
+  }, []);
+
   return (
     <div className={styles.title}>
       <article>
@@ -17,16 +35,25 @@ const Data: NextPage = () => {
       </section>
 
       <section className={styles.note}>
-        <p className={styles.text3}>
-            Unfortunately we do not have data viewing from the web yet.
-            Hopefully we will have this feature in the near future to
-            use in matches (or even sooner if you give Alex a cookie)
+        <p className={styles.text}>
+          To export the match data please click button labeled export
+          bellow. This button will export the matchdata in a csv file
         </p>
       </section>
 
-      <button className={styles.button2}>
+      <button className={styles.export} onClick={exportData}>
+        <ExcelDownloder
+          data={data}
+          filename={"matchdata"}
+          type={Type.Button} // or type={'button'}
+        >
+        Export
+        </ExcelDownloder>
+      </button>
+
+      <button className={styles.button}>
         <Link href = "/" passHref>
-          <p className={styles.text3}>Return</p>
+          <p className={styles.text}>Return</p>
         </Link>
       </button>
     </div>
