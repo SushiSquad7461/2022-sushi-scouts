@@ -1,20 +1,21 @@
 #!/usr/bin/env node
 const inquirer = require("inquirer");
 const fs = require("fs");
-const { spawn } = require("child_process");
-const { createServer } = require("http");
-const { parse } = require("url");
+const {spawn} = require("child_process");
+const {createServer} = require("http");
+const {parse} = require("url");
 const next = require("next");
 
 const config = require("./data/teamconfig.json");
-const { promisify } = require("util");
-const { stringify } = require("csv-stringify/sync");
+const {promisify} = require("util");
+const {stringify} = require("csv-stringify/sync");
 
-const dev = false;
+const dev = true;
 const hostname = "localhost";
 const port = 3000;
 
-const FRCDistrictCodes = ["CHS", "FIM", "TX", "IN", "IRS", "FMA", "FNC", "NE", "ONT", "PNW", "PHC"];
+const FRCDistrictCodes =
+ ["CHS", "FIM", "TX", "IN", "IRS", "FMA", "FNC", "NE", "ONT", "PNW", "PHC"];
 
 /**
  * Collect team data
@@ -24,13 +25,13 @@ async function collectTeamData() {
     name: "teamNumber",
     type: "input",
     message: "What is your team number?",
-    validate: input => !isNaN(parseInt(input)) ? true : "Invalid input",
-    filter: input => !isNaN(parseInt(input)) ? parseInt(input) : input
+    validate: (input) => !isNaN(parseInt(input)) ? true : "Invalid input",
+    filter: (input) => !isNaN(parseInt(input)) ? parseInt(input) : input,
   }, {
     name: "districtCode",
     message: "What is your team's district code?",
     type: "list",
-    choices: FRCDistrictCodes
+    choices: FRCDistrictCodes,
   }]);
 
   answers.gotData = true;
@@ -40,32 +41,47 @@ async function collectTeamData() {
   fs.writeFile("./data/teamconfig.json", JSON.stringify(answers), () => {});
 }
 
+/**
+ * Creates new scouting app server
+ * @return {Server} server
+ */
 async function startServer() {
   // when using middleware `hostname` and `port` must be provided below
-  const app = next({ dev, hostname, port });
+  const app = next({dev, hostname, port});
   const handle = app.getRequestHandler();
+  console.log("hello?3");
 
-  await app.prepare();
+  try {
+    await app.prepare();
+  } catch (e) {
+    console.log(e);
+  }
+
+  console.log("hello?5");
 
   return createServer(async (req, res) => {
+    console.log("bob3");
+
     try {
       // Be sure to pass `true` as the second argument to `url.parse`.
       // This tells it to parse the query portion of the URL.
       const parsedUrl = parse(req.url, true);
-      const { pathname, query } = parsedUrl;
+      const {pathname, query} = parsedUrl;
 
+      console.log("bob");
       if (pathname === "/a" || pathname === "/b") {
         await app.render(req, res, pathname, query);
       } else {
         await handle(req, res, parsedUrl);
       }
     } catch (err) {
-      console.error("Error occurred handling", req.url, err);
+      console.log("Error occurred handling", req.url, err);
       res.statusCode = 500;
       res.end("internal server error");
     }
   }).listen(port, (err) => {
     if (err) {
+      console.log("error?");
       throw err;
     }
 
@@ -73,18 +89,9 @@ async function startServer() {
   });
 }
 
-function exportData() {
-  return new Promise((resolve, reject) => {
-    spawn("python3", ["./data/anylizedata.py"])
-      .on("close", (code) => {
-        resolve(code);
-      })
-      .on("error", (err) => {
-        reject(err);
-      });
-  });
-}
-
+/**
+ * Export data from json to CSV
+ */
 async function exportDataNative() {
   const readFileAsync = promisify(fs.readFile);
   const writeFileAsync = promisify(fs.writeFile);
@@ -94,8 +101,9 @@ async function exportDataNative() {
 
   const jsonFile = await readFileAsync(MATCH_JSON_FILE);
 
-  // This is a bit dangerous as it makes assumptions about the format of the JSON file.
-  const { matchData } = JSON.parse(jsonFile.toString());
+  // This is a bit dangerous as it makes
+  // assumptions about the format of the JSON file.
+  const {matchData} = JSON.parse(jsonFile.toString());
 
   const headers = Object.keys(matchData[0]);
   const allValues = matchData.map((match) => Object.values(match));
