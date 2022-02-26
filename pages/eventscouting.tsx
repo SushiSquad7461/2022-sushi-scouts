@@ -78,7 +78,7 @@ const EventScouting: NextPage = () => {
       });
     } else {
       const teamNumber = queryParams[0].split("=")[1];
-      const compName = queryParams[0].split("=")[1];
+      const compName = queryParams[1].split("=")[1];
 
       localStorage.setItem("TM", teamNumber);
       localStorage.setItem("C", compName);

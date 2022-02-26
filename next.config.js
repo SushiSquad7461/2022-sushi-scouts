@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  crossOrigin: 'anonymous'
-}
+  crossOrigin: "anonymous",
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

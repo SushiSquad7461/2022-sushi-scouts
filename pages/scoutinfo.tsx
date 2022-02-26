@@ -8,6 +8,9 @@ import styles from "../styles/ScoutInfo.module.css";
 const ScoutInfo: NextPage = () => {
   const [comp, setComp] = useState<number>(0);
   const [teamNum, setTeamNum] = useState<string>("");
+  const comps : Array<string> = useMemo(() => {
+    return ["GC", "SD", "PDC"];
+  }, []);
 
   // Set team number and store in local storage
   const setTeamNumWrapper = (val: string) => {
@@ -19,11 +22,8 @@ const ScoutInfo: NextPage = () => {
   const setCompWrapper = (val: number) => {
     setComp(val);
     localStorage.setItem("C", comps[val]);
+    console.log(comps);
   };
-
-  const comps : Array<string> = useMemo(() => {
-    return ["GC", "SD", "PDC"];
-  }, []);
 
   useEffect(() => {
     // Get current info from local storage
