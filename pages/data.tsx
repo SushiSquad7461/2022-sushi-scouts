@@ -7,7 +7,7 @@ import {useExcelDownloder} from "react-xls";
 import {useEffect, useState} from "react";
 
 const Data: NextPage = () => {
-  const {ExcelDownloder, Type} = useExcelDownloder();
+  const {ExcelDownloder} = useExcelDownloder();
   const [data, setData] = useState<any>();
 
   /**
@@ -31,7 +31,9 @@ const Data: NextPage = () => {
       </article>
 
       <section className={styles.image}>
-        <Image src="/mask.svg" alt="Mask logo" width="400vw" height="400vh"/>
+        <Link href={"/"}>
+          <Image src="/mask.svg" alt="Mask logo" width="400vw" height="400vh"/>
+        </Link>
       </section>
 
       <section className={styles.note}>
@@ -45,7 +47,6 @@ const Data: NextPage = () => {
         <ExcelDownloder
           data={data}
           filename={"matchdata"}
-          type={Type.Button} // or type={'button'}
         >
         Export
         </ExcelDownloder>

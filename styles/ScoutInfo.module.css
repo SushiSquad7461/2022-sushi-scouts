@@ -32,6 +32,10 @@
     left: 68%;
 }
 
+.image:hover {
+    opacity: 0.7;
+}
+
 .title form {
     display: flex;
     position: absolute;

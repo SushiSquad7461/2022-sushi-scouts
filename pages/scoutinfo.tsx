@@ -48,7 +48,9 @@ const ScoutInfo: NextPage = () => {
       </article>
 
       <section className={styles.image}>
-        <Image src="/mask.svg" alt="Mask logo" width="400vw" height="400vh"/>
+        <Link href={"/"}>
+          <Image src="/mask.svg" alt="Mask logo" width="400vw" height="400vh"/>
+        </Link>
       </section>
 
       <form onSubmit={(e) => e.preventDefault()}>

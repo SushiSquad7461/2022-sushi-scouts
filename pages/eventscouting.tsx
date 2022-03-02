@@ -6,6 +6,7 @@ import {scoutingConfig} from "../data/scouting-config";
 import Image from "next/image";
 import ScoutingPage from "../components/scoutingpage";
 import {NextRouter, useRouter} from "next/router";
+import Link from "next/link";
 
 export type ScoutingInput = {
   "name": string, // Name of input
@@ -146,7 +147,9 @@ const EventScouting: NextPage = () => {
       </article>
 
       <section className={styles.image}>
-        <Image src="/mask.svg" alt="Mask logo" width="400vw" height="400vh"/>
+        <Link href={"/"}>
+          <Image src="/mask.svg" alt="Mask logo" width="400vw" height="400vh"/>
+        </Link>
       </section>
 
       <form onSubmit={sendData}
