@@ -23,7 +23,7 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
 
   useEffect(() => {
     const matchNumber = localStorage.getItem("MN");
-    const matchType = localStorage.getItem("MT");
+    const matchType = localStorage.getItem("C");
 
     if (matchType !== null) {
       setMatchType(matchType);

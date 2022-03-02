@@ -4,11 +4,11 @@ import Link from "next/link";
 import ColorBar from "../components/colorbar";
 import styles from "../styles/Data.module.css";
 import {useExcelDownloder} from "react-xls";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 const Data: NextPage = () => {
   const {ExcelDownloder} = useExcelDownloder();
-  const [data, setData] = useState<any>();
+  const [data, setData] = useState<any>(undefined);
 
   /**
    * Export match data
@@ -16,12 +16,9 @@ const Data: NextPage = () => {
   async function exportData() {
     const data = await fetch("/api/getscoutingdata");
     const jsonData = await data.json();
+    console.log(jsonData);
     setData(jsonData);
   }
-
-  useEffect(() => {
-    exportData();
-  }, []);
 
   return (
     <div className={styles.title}>
@@ -44,12 +41,12 @@ const Data: NextPage = () => {
       </section>
 
       <button className={styles.export} onClick={exportData}>
-        <ExcelDownloder
+        { data === undefined ? <p>Get Data</p> : <ExcelDownloder
           data={data}
           filename={"matchdata"}
         >
         Export
-        </ExcelDownloder>
+        </ExcelDownloder>}
       </button>
 
       <button className={styles.button}>
