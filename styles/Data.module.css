@@ -1,5 +1,5 @@
-
 @font-face { font-family: SushiSans; src: url('font.ttf'); } 
+@font-face { font-family: Mohave; src: url("Mohave/static/Mohave-Regular.ttf"); }
 
 .title {
     height: 100vh;
