@@ -1,18 +1,29 @@
 import type {NextApiRequest, NextApiResponse} from "next";
+import {v1 as uuidv1} from "uuid";
+import {writeFile} from "fs";
 
 type MatchSchedule = {
-  [index: string] : string[][]
+  [index: string] : CompetitorInfo[][]
 }
 
-type ScoutedRobot = {
-  [index: string] : number
+type CurrentScouting = {
+  [index: string] : {
+    "num": number,
+    "type": string,
+    "index": number
+  }
+}
+
+type CompetitorInfo = {
+  "teamNum": string,
+  "numScouting": number,
+  "scouted": boolean
 }
 
 // Get match schedule
 const schedule: MatchSchedule = require("../../data/matchschedule.json");
 
-// List of the index that needs to be scouted
-const scouted: ScoutedRobot = {};
+const currentScouting: CurrentScouting = {};
 
 /**
  * Assigns team number for computer to scout based on match schedule
@@ -26,11 +37,16 @@ export default function handler(
   // Get the current match number, the the type of match (Finals, etc...)
   const matchNumString = req.query["matchNum"];
   const matchType = req.query["matchType"];
+  let clientId = req.query["id"].toString();
   const matchTypeLower = matchType.toString().toLowerCase();
   const matchNum = parseInt(matchNumString.toString());
 
+  if (clientId === "null") {
+    clientId = uuidv1();
+  }
+
   // List of robots in current match match
-  let competitors: string[] = [];
+  let competitors: CompetitorInfo[] = [];
 
   if (matchNum > schedule[matchTypeLower].length) {
     // Match number is not in schedule, get last match in schedule
@@ -43,13 +59,42 @@ export default function handler(
     competitors = schedule[matchTypeLower][matchNum-1];
   }
 
-  const matchId = matchNumString + matchType.toString();
-  if (scouted[matchId] === undefined || scouted[matchId] >= 6) {
-    scouted[matchId] = 1;
-  } else {
-    scouted[matchId] += 1;
+  let minIndex = 0;
+  let min = Number.POSITIVE_INFINITY;
+
+  for (let i=0; i < competitors.length; ++i) {
+    if (competitors[i].numScouting < min) {
+      min = competitors[i].numScouting;
+      minIndex = i;
+    }
   }
 
+  const matchId = {
+    "num": matchNum,
+    "type": matchType.toString(),
+    "index": minIndex,
+  };
+
+  competitors[minIndex].numScouting += 1;
+
+  if (currentScouting[clientId] !== undefined) {
+    const prevMatchId = currentScouting[clientId];
+    schedule[prevMatchId.type.toLowerCase()][(prevMatchId.num)-1][
+        prevMatchId.index].numScouting -= 1;
+  }
+
+  currentScouting[clientId] = matchId;
+
+  writeFile("./data/matchschedule.json",
+      JSON.stringify(schedule),
+      (err: Error | null) => {
+        // If error return 500 message
+        if (err) res.status(500).json({result: err.message});
+      });
+
   // Send the team number
-  res.status(200).send(competitors[scouted[matchId] - 1]);
+  res.status(200).json({
+    id: clientId,
+    num: competitors[minIndex].teamNum,
+  });
 }

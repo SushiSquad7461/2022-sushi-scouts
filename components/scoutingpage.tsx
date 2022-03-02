@@ -43,13 +43,19 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
    */
   async function getTeamNumber(currMatchNum: number, currMatchType: String) {
     if (!isNaN(currMatchNum)) {
+      const id = localStorage.getItem("CLIENT_ID");
       const data = await fetch(
           "/api/getteamnum?matchNum=" +
               currMatchNum +
               "&matchType=" +
-              currMatchType,
+              currMatchType +
+              "&id=" +
+              id,
       );
-      setTeamNum(await data.text());
+      // setTeamNum(await data.text());
+      const jsonData = await data.json();
+      setTeamNum(jsonData.num);
+      localStorage.setItem("CLIENT_ID", jsonData.id);
     }
   }
 
