@@ -5,7 +5,6 @@ import {writeFile} from "fs";
 type Data = {
   result: string
 }
-
 /**
  * Adds scouting info to database
  * @param {NextApiRequest} req Api request object
