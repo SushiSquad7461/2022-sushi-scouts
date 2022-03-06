@@ -100,7 +100,11 @@ const EventScouting: NextPage = () => {
     for (const i of scoutingConfig) {
       for (const element of i.inputs) {
         const key = i.name.toLowerCase() + ":" + element.name.toLowerCase();
-        if (element.type === "checkbox") {
+
+        if (key === "match info:match #") {
+          console.log("yo....");
+          matchData[key] = matchNum;
+        } else if (element.type === "checkbox") {
           matchData[key] = "off";
         } else if (element.type === "number") {
           matchData[key] = 0;
