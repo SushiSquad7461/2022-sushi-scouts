@@ -22,7 +22,7 @@ export type ScoutingData = {
 const EventScouting: NextPage = () => {
   const [index, setIndex] = useState(0);
   const [matchData, setMatchData] = useState<ScoutingData>({});
-  const [matchNum, setMatchNum] = useState(0);
+  const [matchNum, setMatchNum] = useState(1);
   const router: NextRouter = useRouter();
 
   /**
@@ -50,6 +50,9 @@ const EventScouting: NextPage = () => {
   async function sendData(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    console.log("Final submit");
+    console.log(matchData);
+
     const res = await fetch("/api/submiteventinfo", {
       body: JSON.stringify(matchData),
       headers: {
@@ -60,8 +63,14 @@ const EventScouting: NextPage = () => {
 
     if (res.ok) {
       setIndex(0);
-      localStorage.setItem("MN", (matchNum + 1).toString());
-      setMatchNum(matchNum + 1);
+      console.log("start2 " + matchNum);
+      const data = matchNum + 1;
+      console.log(data);
+      setMatchNum(data);
+      localStorage.setItem("MN", matchNum.toString());
+      console.log("start" + matchNum);
+      setMatchNum(matchNum);
+      console.log(matchNum);
       resetMatchData();
     }
   }
@@ -100,7 +109,18 @@ const EventScouting: NextPage = () => {
     for (const i of scoutingConfig) {
       for (const element of i.inputs) {
         const key = i.name.toLowerCase() + ":" + element.name.toLowerCase();
-        if (element.type === "checkbox") {
+
+        if (key === "match info:match #") {
+          matchData[key] = matchNum;
+        } else if (key === "match info:station id") {
+          const stationVal = localStorage.getItem("STATION");
+          matchData[key] = stationVal !== null ? stationVal.toString() : "R1";
+        } else if (key === "match info:match type") {
+          const matchType = localStorage.getItem("MT");
+          matchData[key] = matchType !== null ? matchType.toString().
+              toLowerCase() : "no option selected";
+          console.log(matchData[key]);
+        } else if (element.type === "checkbox") {
           matchData[key] = "off";
         } else if (element.type === "number") {
           matchData[key] = 0;
@@ -110,9 +130,13 @@ const EventScouting: NextPage = () => {
           matchData[key] = 0;
         } else if (element.type === "textarea") {
           matchData[key] = "";
+        } else if (element.type === "select") {
+          matchData[key] = "no option selected";
         }
       }
     }
+    console.log("Reseting data");
+    console.log(matchData);
   }
 
   /**
@@ -121,11 +145,27 @@ const EventScouting: NextPage = () => {
    * @param {string} name name of input
    */
   function updateMatchData(
-      event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
+      event: ChangeEvent<HTMLInputElement> |
+        ChangeEvent<HTMLTextAreaElement> |
+        ChangeEvent<HTMLSelectElement>,
       name: string) {
     matchData[scoutingConfig[index].
         name.toLowerCase() + ":" + name.toLowerCase()] = event.target.value;
     setMatchData(matchData);
+    console.log("update data ");
+    console.log(matchData);
+  }
+  /**
+   * Update match data
+   * @param {string} newVal new val
+   * @param {string} name name of input
+   */
+  function updateMatchDataFromVal(newVal: string, name: string) {
+    matchData[scoutingConfig[index].
+        name.toLowerCase() + ":" + name.toLowerCase()] = newVal;
+    setMatchData(matchData);
+    console.log("Data from val ");
+    console.log(matchData);
   }
 
   /**
@@ -162,6 +202,7 @@ const EventScouting: NextPage = () => {
           class={scoutingConfig[index].parentClassName}
           matchNum={matchNum}
           setMatchNum={setMatchNum}
+          updateMatchDataFromVal={updateMatchDataFromVal}
         />
 
         <button className={styles.button1} type="button" onClick={prev}>

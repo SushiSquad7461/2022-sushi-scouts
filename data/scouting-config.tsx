@@ -23,7 +23,8 @@ export const scoutingConfig: ScoutingDataSection[] = [{
   {
     "name": "MATCH TYPE",
     "type": "radio",
-    "values": ["REGULAR MATCH", "SEMI-FINALS", "QUARTERFINALS", "FINALS"],
+    "values": ["QUALS MATCH", "SEMI-FINALS", "PRACTICE", "QUARTERFINALS",
+      "FINALS"],
     "className": "matchtype",
   },
   {
@@ -31,6 +32,12 @@ export const scoutingConfig: ScoutingDataSection[] = [{
     "type": "number",
     "values": [],
     "className": "",
+  },
+  {
+    "name": "STATION ID",
+    "type": "select",
+    "values": ["B1", "B2", "B3", "R1", "R2", "R3"],
+    "className": "station",
   }],
 },
 {
@@ -135,6 +142,12 @@ export const scoutingConfig: ScoutingDataSection[] = [{
     "type": "radio",
     "values": ["LOW CLIMB", "MID CLIMB", "HIGH CLIMB", "TRAVERSAL CLIMB"],
     "className": "matchtype climbtype",
+  },
+  {
+    "name": "DEFENSE",
+    "type": "checkbox",
+    "values": [],
+    "className": "defense",
   },
   {
     "name": "NOTES",
