@@ -3,9 +3,10 @@
         {
             "teamNumber": "7461",
             "comp": "GC",
-            "match info:match #": 0,
-            "match info:match type": "regular match",
-            "match info:team # you're scouting": 0,
+            "match info:match #": 1,
+            "match info:match type": "quals match",
+            "match info:team # you're scouting": "1290",
+            "match info:station id": "R2",
             "auto:no show": "off",
             "auto:move off tarmac": "off",
             "auto:scored lower hub": 0,
@@ -26,9 +27,10 @@
         {
             "teamNumber": "7461",
             "comp": "GC",
-            "match info:match #": 2,
-            "match info:match type": "no option selected",
+            "match info:match #": 1,
+            "match info:match type": "quals match",
             "match info:team # you're scouting": 0,
+            "match info:station id": "R2",
             "auto:no show": "off",
             "auto:move off tarmac": "off",
             "auto:scored lower hub": 0,
@@ -42,9 +44,11 @@
             "teleop:missed lower hub": 0,
             "teleop:scored upper hub": 0,
             "teleop:missed upper hub": 0,
-            "end game:climb": "no option selected",
+            "end game:climb": "no climb",
             "end game:climb type": "no option selected",
-            "end game:notes": ""
+            "end game:notes": "",
+            "end game:terminal pickup": "off",
+            "end game:defense": "on"
         }
     ]
 }

@@ -18,7 +18,7 @@ a {
   top: 43%;
   left: 20%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2vw;
   row-gap: 6vh;
 }
@@ -144,7 +144,6 @@ a {
 
 .scoutingform input::placeholder {
   font-family: 'Mohave', sans-serif;
-
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -185,4 +184,38 @@ margin: 0;
   font-weight: 200;
   width: max-content;
   margin: 0;
+}
+
+.station {
+  position: absolute !important;
+  left: 46vw !important;
+  top: 60vh !important;
+  align-items: center !important;
+}
+
+.station select {
+  width: 100%;
+  height: 9.2vh;
+  border-top: hidden;
+  border-left: hidden;
+  border-right: hidden;
+  border-width: 0.5rem;
+  border-color: black;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+select:focus { 
+  outline: none !important;
+}
+
+.defense {
+  position: absolute !important;
+  left: 55vw !important;
+  top: 34vh !important;
+  width: 12vw !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.7rem;
 }
