@@ -39,14 +39,11 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
   async function getTeamNumber(currMatchNum: number, currMatchType: string,
       stationId: string) {
     if (!isNaN(currMatchNum) && currMatchType !== "no option selected") {
-      const id = localStorage.getItem("CLIENT_ID");
       const data = await fetch(
           "/api/getteamnum?matchNum=" +
               currMatchNum +
               "&matchType=" +
               currMatchType +
-              "&id=" +
-              id +
               "&station=" +
               stationId,
       );

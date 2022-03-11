@@ -9,9 +9,8 @@ const next = require("next");
 const config = require("./data/teamconfig.json");
 const {promisify} = require("util");
 const {stringify} = require("csv-stringify/sync");
-const { t } = require("semver/internal/re");
 
-const year = '2022'
+const year = "2022";
 const dev = true;
 const hostname = "localhost";
 const port = 3000;
@@ -41,6 +40,53 @@ async function collectTeamData() {
   config = answers;
 
   fs.writeFile("./data/teamconfig.json", JSON.stringify(answers), () => {});
+}
+
+/**
+ * Load data for comps from first inspires
+ */
+async function loadTeamData() {
+  console.log("DISCLAIMER: This features require that you enter in your credentials for the First Inspires API (https://frc-events.firstinspires.org/services/api), these credentials will not be stored");
+
+  const answers = await inquirer.prompt([{
+    name: "username",
+    type: "input",
+    message: "What is your username?",
+  }, {
+    name: "password",
+    type: "input",
+    message: "What is your password?",
+  }]);
+
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization",
+      "Basic " +
+    Buffer.from(answers.username + ":" + answers.password).toString("base64"));
+  myHeaders.append("If-Modified-Since", "");
+
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
+
+  const res = await fetch(`https://frc-api.firstinspires.org/v2.0/${config.year}/events?districtCode=${config.districtCode}&teamNumber=${config.teamNumber}`,
+      requestOptions);
+
+  if (!res.ok) {
+    console.log("Invalid Username or Password");
+  } else {
+    const DATA = await res.json();
+    config.events = DATA.Events;
+    fs.writeFile("./data/teamconfig.json", JSON.stringify(config), () => {});
+
+    console.log("\nThe following events were found:");
+    for (const i of config.events) {
+      console.log(i.name);
+    }
+  }
+
+  console.log();
 }
 
 /**
@@ -118,13 +164,16 @@ async function exportDataNative() {
   await writeFileAsync(MATCH_CSV_FILE, csvOutput);
 }
 
+/**
+ * Gets data about comp schedule
+ */
 async function loadCompData() {
   let id = await inquirer.prompt([
     {
       name: "answer",
       type: "input",
       message: "Enter the event id",
-    }
+    },
   ]);
   id = id.answer;
   let user = await inquirer.prompt([
@@ -132,7 +181,7 @@ async function loadCompData() {
       name: "answer",
       type: "input",
       message: "Enter your username for the api",
-    }
+    },
   ]);
   user = user.answer;
   let password = await inquirer.prompt([
@@ -140,46 +189,48 @@ async function loadCompData() {
       name: "answer",
       type: "input",
       message: "Enter your api key",
-    }
+    },
   ]);
   password = password.answer;
-  let encodedToken  = 'Basic ' + btoa(`${user}:${password}`);
-  let url = `https://frc-api.firstinspires.org/v2.0/${year}/schedule/${id}?tournamentLevel=qual`;
+  const encodedToken = "Basic " + btoa(`${user}:${password}`);
+  const url = `https://frc-api.firstinspires.org/v2.0/${year}/schedule/${id}?tournamentLevel=qual`;
 
   const response = await fetch(url, {
     method: "GET",
     headers: {
-      'Authorization': encodedToken
-    }
-  }).then(response => response.json());
+      "Authorization": encodedToken,
+    },
+  }).then((response) => response.json());
 
-  let length = response['Schedule'].length;
+  const length = response["Schedule"].length;
   console.log(length);
-  var schedule = {'matches' : []};
-  for(i=0; i<length; i++) {
-    let currmatch = response['Schedule'][i];
-    let r1 = currmatch['teams'][0]['teamNumber'];
-    let r2 = currmatch['teams'][1]['teamNumber'];
-    let r3 = currmatch['teams'][2]['teamNumber'];
-    let b1 = currmatch['teams'][3]['teamNumber'];
-    let b2 = currmatch['teams'][4]['teamNumber'];
-    let b3 = currmatch['teams'][5]['teamNumber'];
+  const schedule = {"matches": []};
+  for (i=0; i<length; i++) {
+    const currmatch = response["Schedule"][i];
+    const r1 = currmatch["teams"][0]["teamNumber"];
+    const r2 = currmatch["teams"][1]["teamNumber"];
+    const r3 = currmatch["teams"][2]["teamNumber"];
+    const b1 = currmatch["teams"][3]["teamNumber"];
+    const b2 = currmatch["teams"][4]["teamNumber"];
+    const b3 = currmatch["teams"][5]["teamNumber"];
 
-    let match = {
-      'r1' : {teamNumber : r1, numScouting : 0, submitted : false},
-      'r2' : {teamNumber : r2, numScouting : 0, submitted : false},
-      'r3' : {teamNumber : r3, numScouting : 0, submitted : false},
-      'b1' : {teamNumber : b1, numScouting : 0, submitted : false},
-      'b2' : {teamNumber : b2, numScouting : 0, submitted : false},
-      'b3' : {teamNumber : b3, numScouting : 0, submitted : false}
-    }
+    const match = {
+      "r1": {teamNumber: r1, numScouting: 0, submitted: false},
+      "r2": {teamNumber: r2, numScouting: 0, submitted: false},
+      "r3": {teamNumber: r3, numScouting: 0, submitted: false},
+      "b1": {teamNumber: b1, numScouting: 0, submitted: false},
+      "b2": {teamNumber: b2, numScouting: 0, submitted: false},
+      "b3": {teamNumber: b3, numScouting: 0, submitted: false},
+    };
     schedule["matches"].push(match);
   }
-  console.log(schedule);
-  fs.writeFile("./data/matchschedule.json", JSON.stringify(schedule, null, 2), (err) => {
-    if (err) { console.error(err); return; };
-      console.log("Created match schedule");
-});
+  fs.writeFile("./data/matchschedule.json", JSON.stringify(schedule, null, 2),
+      (err) => {
+        if (err) {
+          console.error(err); return;
+        };
+        console.log("Created match schedule");
+      });
 }
 
 (async () => {
@@ -225,6 +276,7 @@ async function loadCompData() {
       choices: ["Run App", "Stop App",
         "Export Data to CSV", "Reset Team Info",
         "Load Comp Data (firstinpires api access required)",
+        "Load Team Data (firstinpires api access required)",
         "Quit"],
     });
 
@@ -244,6 +296,8 @@ async function loadCompData() {
       await collectTeamData();
     } else if (input === "Load Comp Data (firstinpires api access required)") {
       await loadCompData();
+    } else if (input === "Load Team Data (firstinpires api access required)") {
+      await loadTeamData();
     }
   }
 
