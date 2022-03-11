@@ -9,7 +9,9 @@ const next = require("next");
 const config = require("./data/teamconfig.json");
 const {promisify} = require("util");
 const {stringify} = require("csv-stringify/sync");
+const { t } = require("semver/internal/re");
 
+const year = '2022'
 const dev = true;
 const hostname = "localhost";
 const port = 3000;
@@ -114,6 +116,70 @@ async function exportDataNative() {
   ]);
 
   await writeFileAsync(MATCH_CSV_FILE, csvOutput);
+}
+
+async function loadCompData() {
+  let id = await inquirer.prompt([
+    {
+      name: "answer",
+      type: "input",
+      message: "Enter the event id",
+    }
+  ]);
+  id = id.answer;
+  let user = await inquirer.prompt([
+    {
+      name: "answer",
+      type: "input",
+      message: "Enter your username for the api",
+    }
+  ]);
+  user = user.answer;
+  let password = await inquirer.prompt([
+    {
+      name: "answer",
+      type: "input",
+      message: "Enter your api key",
+    }
+  ]);
+  password = password.answer;
+  let encodedToken  = 'Basic ' + btoa(`${user}:${password}`);
+  let url = `https://frc-api.firstinspires.org/v2.0/${year}/schedule/${id}?tournamentLevel=qual`;
+
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      'Authorization': encodedToken
+    }
+  }).then(response => response.json());
+
+  let length = response['Schedule'].length;
+  console.log(length);
+  var schedule = {'matches' : []};
+  for(i=0; i<length; i++) {
+    let currmatch = response['Schedule'][i];
+    let r1 = currmatch['teams'][0]['teamNumber'];
+    let r2 = currmatch['teams'][1]['teamNumber'];
+    let r3 = currmatch['teams'][2]['teamNumber'];
+    let b1 = currmatch['teams'][3]['teamNumber'];
+    let b2 = currmatch['teams'][4]['teamNumber'];
+    let b3 = currmatch['teams'][5]['teamNumber'];
+
+    let match = {
+      'r1' : {teamNumber : r1, numScouting : 0, submitted : false},
+      'r2' : {teamNumber : r2, numScouting : 0, submitted : false},
+      'r3' : {teamNumber : r3, numScouting : 0, submitted : false},
+      'b1' : {teamNumber : b1, numScouting : 0, submitted : false},
+      'b2' : {teamNumber : b2, numScouting : 0, submitted : false},
+      'b3' : {teamNumber : b3, numScouting : 0, submitted : false}
+    }
+    schedule["matches"].push(match);
+  }
+  console.log(schedule);
+  fs.writeFile("./data/matchschedule.json", JSON.stringify(schedule, null, 2), (err) => {
+    if (err) { console.error(err); return; };
+      console.log("Created match schedule");
+});
 }
 
 (async () => {
