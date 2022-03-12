@@ -203,7 +203,6 @@ async function loadCompData() {
   }).then((response) => response.json());
 
   const length = response["Schedule"].length;
-  console.log(length);
   const schedule = {"matches": []};
   for (i=0; i<length; i++) {
     const currmatch = response["Schedule"][i];
@@ -215,12 +214,12 @@ async function loadCompData() {
     const b3 = currmatch["teams"][5]["teamNumber"];
 
     const match = {
-      "r1": {teamNumber: r1, numScouting: 0, submitted: false},
-      "r2": {teamNumber: r2, numScouting: 0, submitted: false},
-      "r3": {teamNumber: r3, numScouting: 0, submitted: false},
-      "b1": {teamNumber: b1, numScouting: 0, submitted: false},
-      "b2": {teamNumber: b2, numScouting: 0, submitted: false},
-      "b3": {teamNumber: b3, numScouting: 0, submitted: false},
+      "R1": {teamNumber: r1, numScouting: 0, submitted: false},
+      "R2": {teamNumber: r2, numScouting: 0, submitted: false},
+      "R3": {teamNumber: r3, numScouting: 0, submitted: false},
+      "B1": {teamNumber: b1, numScouting: 0, submitted: false},
+      "B2": {teamNumber: b2, numScouting: 0, submitted: false},
+      "B3": {teamNumber: b3, numScouting: 0, submitted: false},
     };
     schedule["matches"].push(match);
   }
