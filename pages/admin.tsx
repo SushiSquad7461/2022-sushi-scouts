@@ -24,7 +24,7 @@ const Data: NextPage = () => {
     <div className={styles.title}>
       <article>
         <ColorBar />
-        <h1>DATA</h1>
+        <h1>ADMIN</h1>
       </article>
 
       <section className={styles.image}>

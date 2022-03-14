@@ -29,6 +29,10 @@ const EventScouting: NextPage = () => {
    * Moves to next scouting page
    */
   function next() {
+    if (index === 0) {
+      console.log("START SCOUTING");
+    }
+
     if (index !== scoutingConfig.length-1) {
       setTimeout(() => setIndex(index+1), 0);
     }
@@ -205,9 +209,10 @@ const EventScouting: NextPage = () => {
           updateMatchDataFromVal={updateMatchDataFromVal}
         />
 
+        { index > 0 &&
         <button className={styles.button1} type="button" onClick={prev}>
           <p className={styles.text3}>Back</p>
-        </button>
+        </button> }
 
         {
            index == scoutingConfig.length-1 ?
@@ -216,7 +221,7 @@ const EventScouting: NextPage = () => {
            </button> : <button className={styles.button2}
              type={"button" }
              onClick={next} >
-             <p className={styles.text3}>Continue</p>
+             <p className={styles.text3}>{index === 0 ? "Start": "Continue"}</p>
            </button>
         }
 

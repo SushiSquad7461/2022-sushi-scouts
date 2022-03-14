@@ -168,19 +168,37 @@ async function exportDataNative() {
  * Gets data about comp schedule
  */
 async function loadCompData() {
-  let id = await inquirer.prompt([
-    {
-      name: "answer",
-      type: "input",
-      message: "Enter the event id",
-    },
-  ]);
+  let id;
+  if (config.events !== undefined && config.events.length > 0) {
+    const compCodes = [];
+    for (const i of config.events) {
+      compCodes.push(i.code);
+    }
+
+    id = await inquirer.prompt([
+      {
+        name: "answer",
+        message: "Enter the event id?",
+        type: "list",
+        choices: compCodes,
+      },
+    ]);
+  } else {
+    id = await inquirer.prompt([
+      {
+        name: "answer",
+        type: "input",
+        message: "Enter the event id?",
+      },
+    ]);
+  }
+
   id = id.answer;
   let user = await inquirer.prompt([
     {
       name: "answer",
       type: "input",
-      message: "Enter your username for the api",
+      message: "Enter your username for the api?",
     },
   ]);
   user = user.answer;
@@ -188,7 +206,7 @@ async function loadCompData() {
     {
       name: "answer",
       type: "input",
-      message: "Enter your api key",
+      message: "Enter your api key?",
     },
   ]);
   password = password.answer;
@@ -203,7 +221,6 @@ async function loadCompData() {
   }).then((response) => response.json());
 
   const length = response["Schedule"].length;
-  console.log(length);
   const schedule = {"matches": []};
   for (i=0; i<length; i++) {
     const currmatch = response["Schedule"][i];
