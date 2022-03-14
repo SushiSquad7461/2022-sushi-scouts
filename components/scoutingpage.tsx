@@ -38,7 +38,9 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
    */
   async function getTeamNumber(currMatchNum: number, currMatchType: string,
       stationId: string) {
+    console.log("in1" + currMatchNum + currMatchType);
     if (!isNaN(currMatchNum) && currMatchType !== "no option selected") {
+      console.log("in2");
       const data = await fetch(
           "/api/getteamnum?matchNum=" +
               currMatchNum +
@@ -180,8 +182,9 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
 
                     if (element.name === "STATION ID") {
                       localStorage.setItem("STATION", e.target.value);
-                      getTeamNumber(parseInt(e.target.value), matchType,
-                          stationId);
+                      console.log("Get team num from station id");
+                      getTeamNumber(props.matchNum, matchType,
+                          e.target.value);
                       setStationId(e.target.value);
                     }
                   }}
