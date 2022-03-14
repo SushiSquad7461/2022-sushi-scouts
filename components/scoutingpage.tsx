@@ -49,6 +49,8 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
       );
       const jsonData = await data.json();
       setTeamNum(jsonData.num);
+      props.updateMatchDataFromVal(jsonData.num,
+          "team # you're scouting");
     }
   }
 
