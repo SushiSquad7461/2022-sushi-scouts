@@ -1,6 +1,7 @@
 import type {NextApiRequest, NextApiResponse} from "next";
 import {v1 as uuidv1} from "uuid";
-import {writeFile} from "fs";
+import {stat, writeFile, readFileSync} from "fs";
+import { match } from "assert";
 
 type MatchSchedule = {
   [index: string] : CompetitorInfo[][]
@@ -34,13 +35,33 @@ export default function handler(
     req: NextApiRequest,
     res: NextApiResponse,
 ) {
+  let teamNum = "0000";
   // Get the current match number, the the type of match (Finals, etc...)
   const matchNumString = req.query["matchNum"];
-  const matchType = req.query["matchType"];
+  if (Array.isArray(matchNumString)) {
+    console.log("Nooooo there is an array for matchNumString");
+    return;
+  }
 
+  const matchType = req.query["matchType"];
+  const station = req.query["station"]
+  if (Array.isArray(station)) {
+    console.log("Nooooo there is an array for station");
+    return;
+  }
+  if( matchType != 'QUALS MATCH') {
+    teamNum = "0000"
+  }
+  else {
+    try {
+      const schedule = require('../../data/matchschedule.json');
+      teamNum = schedule['matches'][parseInt(matchNumString)-1][station]["teamNumber"];
+    } catch(err) {
+      console.log(`Error reading file from disk: ${err}`);
+    }
+  }
   // Send the team number
   res.status(200).json({
-    id: clientId,
-    num: competitors[minIndex].teamNum,
+    num: teamNum
   });
 }
