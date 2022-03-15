@@ -9,6 +9,8 @@ import {useState} from "react";
 const Data: NextPage = () => {
   const {ExcelDownloder} = useExcelDownloder();
   const [data, setData] = useState<any>(undefined);
+  const [currMatchNum, setCurrMatchNum] = useState<number>(0);
+  const [scoutMatchNum, setScoutMatchNum] = useState<number>(0);
 
   /**
    * Export match data
@@ -33,21 +35,67 @@ const Data: NextPage = () => {
         </Link>
       </section>
 
-      <section className={styles.note}>
+      <section>
+        <article className={""}>
+            <h1>CURR MATCH #</h1>
+            <input type={"number"}
+              onChange={(e) => {
+                setCurrMatchNum(e.target.value);
+              }}
+              value={currMatchNum}
+            />
+        </article>
+
+        <article className={""}>
+            <h1>SCOUT MATCH #</h1>
+            <input type={"number"}
+              onChange={(e) => {
+                setScoutMatchNum(e.target.value);
+              }}
+              value={scoutMatchNum}
+            />
+        </article>
+      </section>
+
+      <section>
+        <h1>DATA:</h1>
+
+        <button>
+          Upload Local Data
+        </button>
+
+        <button>
+          Download Data
+        </button>
+      </section>
+
+      <section>
+        <p>CSR: 50%</p>
+        <p>OSR: 80%</p>
+        <p>LSS: B3</p>
+        <p>MSS: B2</p>
+        <p>DR: 20%</p>
+      </section>
+
+      <section>
+        
+      </section>
+
+      {/* <section className={styles.note}>
         <p className={styles.text}>
           To export the match data please click button labeled export
           bellow. This button will export the matchdata in a csv file
         </p>
-      </section>
+      </section> */}
 
-      <button className={styles.export} onClick={exportData}>
+      {/* <button className={styles.export} onClick={exportData}>
         { data === undefined ? <p>Get Data</p> : <ExcelDownloder
           data={data}
           filename={"matchdata"}
         >
         Export
         </ExcelDownloder>}
-      </button>
+      </button> */}
 
       <button className={styles.button}>
         <Link href = "/" passHref>
@@ -59,3 +107,4 @@ const Data: NextPage = () => {
 };
 
 export default Data;
+
