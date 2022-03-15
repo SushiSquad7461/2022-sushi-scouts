@@ -30,7 +30,12 @@ const EventScouting: NextPage = () => {
    */
   function next() {
     if (index === 0) {
-      console.log("START SCOUTING");
+      fetch("/api/logscouting?matchNum=" +
+        matchNum +
+        "&matchType=" +
+              getData("match type") +
+              "&station=" +
+              getData("station id"));
     }
 
     if (index !== scoutingConfig.length-1) {
@@ -181,6 +186,16 @@ const EventScouting: NextPage = () => {
     matchData[scoutingConfig[index].
         name.toLowerCase() + ":" + name.toLowerCase()] = count;
     setMatchData(matchData);
+  }
+
+  /**
+   * Gets value from key
+   * @param {string} name key
+   * @return {string} value
+   */
+  function getData(name: string) {
+    return matchData[scoutingConfig[index].
+        name.toLowerCase() + ":" + name.toLowerCase()];
   }
 
   return (

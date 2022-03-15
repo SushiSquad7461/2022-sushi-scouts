@@ -15,7 +15,7 @@ export default function handler(
   const matchType = req.query["matchType"];
   const station = req.query["station"];
 
-  if (matchType == "QUALS MATCH") {
+  if (matchType.toString().toLowerCase() == "quals match") {
     try {
       const schedule = require("../../data/matchschedule.json");
       teamNum = schedule["matches"][
