@@ -38,15 +38,16 @@ export default function handler(
         parseInt(matchNumString.toString())-1][station.
         toString()]["numScouting"] > 0) {
       res.status(400).json({result: "match is already scouted"});
+    } else {
+      schedule["matches"][
+          parseInt(matchNumString.toString())-1][station.
+          toString()]["numScouting"] = 1;
+
+      console.log(schedule);
+
+      writeFileSync(filePath, JSON.stringify(schedule));
+      res.status(200).json({result: "success"});
     }
-    schedule["matches"][
-        parseInt(matchNumString.toString())-1][station.
-        toString()]["numScouting"] = 1;
-
-    console.log(schedule);
-
-    writeFileSync(filePath, JSON.stringify(schedule));
-    res.status(200).json({result: "success"});
   } else {
     res.status(400).json({result: "only quals matches are supported"});
   }

@@ -19,6 +19,8 @@ export type ScoutingData = {
   [index: string]: string | number,
 }
 
+const dbName = "localCompData";
+
 const EventScouting: NextPage = () => {
   const [index, setIndex] = useState(0);
   const [matchData, setMatchData] = useState<ScoutingData>({});
@@ -81,6 +83,15 @@ const EventScouting: NextPage = () => {
       setMatchNum(matchNum);
       console.log(matchNum);
       resetMatchData();
+    }
+
+    if (localStorage.getItem(dbName) === null) {
+      const data = [matchData];
+      localStorage.setItem(dbName, JSON.stringify(data));
+    } else {
+      const data = [...JSON.parse(localStorage.getItem(dbName)!.toString()),
+        matchData];
+      localStorage.setItem(dbName, JSON.stringify(data));
     }
   }
 
@@ -241,7 +252,6 @@ const EventScouting: NextPage = () => {
         }
 
       </form>
-
     </div>
   );
 };
