@@ -1,25 +1,14 @@
 import type {NextApiRequest, NextApiResponse} from "next";
 import {readFileSync, writeFileSync} from "fs";
+import {MatchSchedule} from "../../data/scouting-config";
 const filePath = "./data/matchschedule.json";
 
 type Data = {
   result: string
 }
 
-type MatchSchedule = {
-    "matches": {
-        [index: number]: {
-            [index: string]: {
-                "teamNumber": number,
-                "numScouting": number,
-                "submitted": boolean
-            }
-        }
-    }
-}
-
 /**
- * Assigns team number for computer to scout based on match schedule
+ * Log that a computer is scouting a team
  * @param {NextApiRequest} req Api request object
  * @param {NextApiResponse} res Api response object
  */

@@ -1,10 +1,14 @@
 import type {NextApiRequest, NextApiResponse} from "next";
 import users from "../../data/matchdata.json";
-import {writeFile} from "fs";
+import {readFileSync, writeFile, writeFileSync} from "fs";
+import {MatchSchedule} from "../../data/scouting-config";
+
+const filePath = "./data/matchschedule.json";
 
 type Data = {
   result: string
 }
+
 /**
  * Adds scouting info to database
  * @param {NextApiRequest} req Api request object
@@ -17,6 +21,18 @@ export default function handler(
   // Add match data to json database
   const matchData = req.body;
   users.matchData.push(matchData);
+
+  const matchType = matchData["match info:match type"];
+  const matchNum = parseInt(matchData["match info:match #"]);
+  const stationId = matchData["match info:station id"];
+
+  const schedule: MatchSchedule = JSON.parse(readFileSync(filePath).toString());
+
+  if (matchType.toLowerCase() == "quals match" && schedule["matches"][
+      matchNum-1][stationId]["submitted"] === false) {
+    schedule["matches"][matchNum-1][stationId]["submitted"] = true;
+    writeFileSync(filePath, JSON.stringify(schedule));
+  }
 
   writeFile("./data/matchdata.json",
       JSON.stringify(users),

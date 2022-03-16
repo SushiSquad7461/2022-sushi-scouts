@@ -11,6 +11,18 @@ export type ScoutingDataSection = {
   "inputs": ScoutingInput[] // All of the inputs in a section
 }
 
+export type MatchSchedule = {
+  "matches": [
+      {
+          [index: string]: {
+              "teamNumber": number,
+              "numScouting": number,
+              "submitted": boolean
+          }
+      }
+  ]
+}
+
 export const scoutingConfig: ScoutingDataSection[] = [{
   "name": "MATCH INFO",
   "parentClassName": "",

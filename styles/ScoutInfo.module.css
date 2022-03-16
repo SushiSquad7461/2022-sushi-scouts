@@ -131,6 +131,7 @@
 .title input[type=number] {
   -moz-appearance: textfield;
 }
+
 .button1 {
   border-radius: 15px;
   display: flex;
