@@ -4,6 +4,8 @@
 .title {
     height: 100vh;
     width: 100vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .title article {
@@ -202,21 +204,33 @@
 
 .stations {
     position: absolute;
-    left: 5%;
-    top: 88%;
+    left: 3.3%;
+    top: 89%;
     display: flex;
 }
 
 .stations article {
     position: relative;
-    margin-right: 8vw;
+    margin-right: 7vw;
     display: flex;
+    width: auto;
+    display: flex;
+    height: auto !important;
 }
 
 .stations .laptop {
-    transform: scale(3.4);
+    transform: scale(4.2);
+}
+
+.stations .status {
+    transform: scale(2);
+    margin-left: 3vw;
 }
 
 .stations p {
     z-index: 10;
+    font-size: 1.4rem;
+    position: absolute;
+    top: -190%;
+    left: -2%;
 }
