@@ -19,7 +19,6 @@ const Data: NextPage = () => {
   async function exportData() {
     const data = await fetch("/api/getscoutingdata");
     const jsonData = await data.json();
-    console.log(jsonData);
     setData(jsonData);
   }
 
@@ -41,7 +40,38 @@ const Data: NextPage = () => {
 
     const jsonData = await data.json();
     setSats(jsonData);
-    console.log(jsonData);
+  }
+
+  /**
+   * Upload data from client storage to server
+   */
+  async function uploadData() {
+    let data = localStorage.getItem("localCompData");
+
+    if (data !== null) {
+      data = JSON.parse(data);
+    }
+
+    if (data !== null) {
+      for (const i of data) {
+        await fetch("/api/submiteventinfo", {
+          body: JSON.stringify(i),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        });
+      }
+    }
+  }
+
+  /**
+   * Clear local data
+   */
+  async function clearLocalData() {
+    if (localStorage.getItem("localCompData") !== null) {
+      localStorage.setItem("localCompData", "[]");
+    }
   }
 
   return (
@@ -92,7 +122,7 @@ const Data: NextPage = () => {
       <section className={styles.data}>
         <h1>DATA:</h1>
 
-        <button>
+        <button onClick={uploadData}>
           Upload Local Data
         </button>
 
@@ -104,11 +134,14 @@ const Data: NextPage = () => {
             Download Data
           </ExcelDownloder>
         </button>
+
+        <button onClick={clearLocalData}>
+          Clear Local Data
+        </button>
       </section>
 
       <section className={styles.stats}>
         { stats["stats"].map((element: statsType) => {
-          console.log(element);
           return (
             <p key={Object.keys(element)[0]}>
               {Object.keys(element)[0]}:
@@ -123,7 +156,6 @@ const Data: NextPage = () => {
         {
           stats["currScouting"] !== undefined &&
           stats["currScouting"].map((element: currScoutingType) => {
-            console.log(element);
             return (
               <article key={element.stationId}>
                 <svg className={styles.laptop} xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H1c-.55 0-1 .45-1 1s.45 1 1 1h22c.55 0 1-.45 1-1s-.45-1-1-1h-3zM5 6h14c.55 0 1 .45 1 1v8c0 .55-.45 1-1 1H5c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1z"/>
@@ -138,22 +170,6 @@ const Data: NextPage = () => {
           })
         }
       </section>
-
-      {/* <section className={styles.note}>
-        <p className={styles.text}>
-          To export the match data please click button labeled export
-          bellow. This button will export the matchdata in a csv file
-        </p>
-      </section> */}
-
-      {/* <button className={styles.export} onClick={exportData}>
-        { data === undefined ? <p>Get Data</p> : <ExcelDownloder
-          data={data}
-          filename={"matchdata"}
-        >
-        Export
-        </ExcelDownloder>}
-      </button> */}
 
       <button className={styles.button}>
         <Link href = "/" passHref>
