@@ -9,17 +9,31 @@ import {currScoutingType, statsType} from "./api/getstats";
 
 const Data: NextPage = () => {
   const {ExcelDownloder} = useExcelDownloder();
-  const [data, setData] = useState<any>(undefined);
+  const [data, setData] = useState<any>({"matchData": []});
   const [currMatchNum, setCurrMatchNum] = useState<number>(1);
   const [scoutMatchNum, setScoutMatchNum] = useState<number>(1);
   const [stats, setSats] = useState({"currScouting": [], "stats": []});
+  const [headers, setHeaders] = useState<Array<{"key": string,
+    "name": string}>>([]);
+  let fixedData = {};
+
   /**
    * Export match data
    */
   async function exportData() {
-    const data = await fetch("/api/getscoutingdata");
-    const jsonData = await data.json();
+    const serverData = await fetch("/api/getscoutingdata");
+    const jsonData = await serverData.json();
     setData(jsonData);
+
+    fixedData = jsonData;
+    console.log(fixedData);
+
+    if (jsonData.matchData.length !== 0) {
+      for (const i of Object.keys(jsonData.matchData[0])) {
+        headers.push({"key": i, "name": i});
+        setHeaders(headers);
+      }
+    }
   }
 
   useEffect(() => {
@@ -126,14 +140,13 @@ const Data: NextPage = () => {
           Upload Local Data
         </button>
 
-        <button>
-          <ExcelDownloder
-            data={data}
-            filename={"matchdata"}
-          >
+        <ExcelDownloder
+          data={data}
+          filename={"matchdata"}
+          type={"button"}
+        >
             Download Data
-          </ExcelDownloder>
-        </button>
+        </ExcelDownloder>
 
         <button onClick={clearLocalData}>
           Clear Local Data
