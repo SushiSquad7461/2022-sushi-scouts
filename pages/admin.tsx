@@ -13,9 +13,6 @@ const Data: NextPage = () => {
   const [currMatchNum, setCurrMatchNum] = useState<number>(1);
   const [scoutMatchNum, setScoutMatchNum] = useState<number>(1);
   const [stats, setSats] = useState({"currScouting": [], "stats": []});
-  const [headers, setHeaders] = useState<Array<{"key": string,
-    "name": string}>>([]);
-  let fixedData = {};
 
   /**
    * Export match data
@@ -24,16 +21,6 @@ const Data: NextPage = () => {
     const serverData = await fetch("/api/getscoutingdata");
     const jsonData = await serverData.json();
     setData(jsonData);
-
-    fixedData = jsonData;
-    console.log(fixedData);
-
-    if (jsonData.matchData.length !== 0) {
-      for (const i of Object.keys(jsonData.matchData[0])) {
-        headers.push({"key": i, "name": i});
-        setHeaders(headers);
-      }
-    }
   }
 
   useEffect(() => {
