@@ -25,7 +25,6 @@ const Data: NextPage = () => {
 
   useEffect(() => {
     getCurrentStats(currMatchNum, scoutMatchNum);
-    exportData();
   }, [currMatchNum, scoutMatchNum]);
 
   /**
@@ -127,13 +126,15 @@ const Data: NextPage = () => {
           Upload Local Data
         </button>
 
-        <ExcelDownloder
-          data={data}
-          filename={"matchdata"}
-          type={"button"}
-        >
-            Download Data
-        </ExcelDownloder>
+        <button onClick={exportData}>
+          {data.matchData.length ? <ExcelDownloder
+            data={data}
+            filename={"matchdata"}
+            type={"button"}
+          >
+              Download Data
+          </ExcelDownloder> : <p>Download Data</p>}
+        </button>
 
         <button onClick={clearLocalData}>
           Clear Local Data
