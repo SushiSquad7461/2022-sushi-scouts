@@ -40,6 +40,7 @@
   "bin": "./server.js",
   "devDependencies": {
     "@types/node": "17.0.10",
+    "@types/node-fetch": "^2.6.1",
     "@types/react": "17.0.38",
     "@types/request-ip": "^0.0.37",
     "@types/uuid": "^8.3.4",

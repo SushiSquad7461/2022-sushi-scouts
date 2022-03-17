@@ -3,25 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import ColorBar from "../components/colorbar";
 import styles from "../styles/Admin.module.css";
-import {useExcelDownloder} from "react-xls";
 import {useEffect, useState} from "react";
 import {currScoutingType, statsType} from "./api/getstats";
 
 const Data: NextPage = () => {
-  const {ExcelDownloder} = useExcelDownloder();
-  const [data, setData] = useState<any>({"matchData": []});
   const [currMatchNum, setCurrMatchNum] = useState<number>(1);
   const [scoutMatchNum, setScoutMatchNum] = useState<number>(1);
   const [stats, setSats] = useState({"currScouting": [], "stats": []});
-
-  /**
-   * Export match data
-   */
-  async function exportData() {
-    const serverData = await fetch("/api/getscoutingdata");
-    const jsonData = await serverData.json();
-    setData(jsonData);
-  }
 
   useEffect(() => {
     getCurrentStats(currMatchNum, scoutMatchNum);
@@ -126,14 +114,8 @@ const Data: NextPage = () => {
           Upload Local Data
         </button>
 
-        <button onClick={exportData}>
-          {data.matchData.length ? <ExcelDownloder
-            data={data}
-            filename={"matchdata"}
-            type={"button"}
-          >
-              Download Data
-          </ExcelDownloder> : <p>Download Data</p>}
+        <button>
+          <a href="/api/getscoutingdata">Download Data</a>
         </button>
 
         <button onClick={clearLocalData}>
