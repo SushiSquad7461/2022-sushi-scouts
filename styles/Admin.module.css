@@ -6,6 +6,7 @@
     width: 100vw;
     overflow-x: hidden;
     overflow-y: hidden;
+    background-color: var(--background);
 }
 
 .title article {
@@ -25,6 +26,7 @@
     margin-top: 10vh;
     font-weight: 200;
     font-family: SushiSans;
+    color: var(--text);
 }
 
 .image {
@@ -44,14 +46,14 @@
     justify-content: center;
     align-items: center;
     padding: 0px 16px;
-    background-color: white;
-    border: 0.3rem solid #56cbf9;
+    background-color: var(--background);
+    border: 0.3rem solid var(--outline);
     position: absolute;
     top: 54%;
     left:80%;
     height: 10vh;
     width: 15vw;
-    color: black;
+    color: var(--text);
     margin-top:15.4%;
 }
 
@@ -69,7 +71,7 @@
     vertical-align: top;
     font-size: 1.6rem;
     line-height: auto;
-    color: black;
+    color: var(--text);
     padding: 2vw;
     font-family: 'Mohave', sans-serif;
 
@@ -83,7 +85,7 @@
 }
 
 .export {
-    background-color: white;
+    background-color: var(--background);
     border: none;
 }
 
@@ -105,9 +107,11 @@
     border-left: hidden;
     border-right: hidden;
     border-width: 0.5rem;
-    border-color: black;
+    border-color: var(--text);
     font-size: 1rem;
     text-align: center;
+    background-color: var(--background);
+    color: var(--text);
 }
 
 .input article {
@@ -128,11 +132,12 @@
     margin-bottom: 1vh;
     font-weight: 200;
     font-family: Mohave;
+    color: var(--text);
 }
 
 .input form input[type=number]::placeholder {
     font-size: 2rem;
-    color: black;
+    color: var(--text);
     letter-spacing: -5%;
     text-align: center;
 }
@@ -163,6 +168,7 @@
     font-family: "Mohave";
     font-size: 3rem;
     font-weight: lighter;
+    color: var(--text);
 }
 
 .data button {
@@ -174,9 +180,9 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: white;
-    border: 0.3rem solid #56cbf9;
-    color: black;
+    background-color: var(--background);
+    border: 0.3rem solid var(--outline);
+    color: var(--text);
     padding: 1rem;
 
     font-size: 1rem;
@@ -200,6 +206,7 @@
     margin-right: 3vw;
     font-size: 2rem;
     font-family: "Mohave";
+    color: var(--text);
 }
 
 .stations {
@@ -207,6 +214,7 @@
     left: 3.3%;
     top: 89%;
     display: flex;
+    background-color: var(--background);
 }
 
 .stations article {
@@ -220,6 +228,7 @@
 
 .stations .laptop {
     transform: scale(4.2);
+    color: var(--text);
 }
 
 .stations .status {
@@ -233,4 +242,5 @@
     position: absolute;
     top: -190%;
     left: -2%;
+    color: var(--text);
 }
