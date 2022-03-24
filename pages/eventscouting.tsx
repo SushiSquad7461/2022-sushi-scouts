@@ -7,6 +7,7 @@ import Image from "next/image";
 import ScoutingPage from "../components/scoutingpage";
 import {NextRouter, useRouter} from "next/router";
 import Link from "next/link";
+import Error from "../components/error";
 
 export type ScoutingInput = {
   "name": string, // Name of input
@@ -26,6 +27,7 @@ const EventScouting: NextPage = () => {
   const [matchData, setMatchData] = useState<ScoutingData>({});
   const [matchNum, setMatchNum] = useState(1);
   const router: NextRouter = useRouter();
+  const [error, setError] = useState("was up g");
 
   /**
    * Moves to next scouting page
@@ -55,6 +57,35 @@ const EventScouting: NextPage = () => {
   }
 
   /**
+   * validate that all felids are valid
+   * @return {string} error message
+   */
+  function verifyData() {
+    let errors = "";
+
+    for (const i of scoutingConfig) {
+      for (const element of i.inputs) {
+        const key = i.name.toLowerCase() + ":" + element.name.toLowerCase();
+
+        console.log(key + matchData[key]);
+
+        if (key === "match info:match #" && matchData[key] === 0) {
+          errors += "Invalid Match Number\n";
+        } else if (key === "match info:match type" &&
+          matchData[key] === "no option selected") {
+          errors += "No match type selected\n";
+        } else if ((element.type === "select" || element.type === "radio") &&
+          matchData[key] === "no option selected") {
+          errors += "No option selected for: " +
+            element.name.toLowerCase() + "\n";
+        }
+      }
+    }
+
+    return errors;
+  }
+
+  /**
    * Submit form data
    * @param {React.FormEvent<HTMLFormElement>} event form event
    */
@@ -63,6 +94,14 @@ const EventScouting: NextPage = () => {
 
     console.log("Final submit");
     console.log(matchData);
+
+    const errors = verifyData();
+    console.log("Was up my g " + errors);
+
+    if (errors != "") {
+      setError(errors.replace("\n", " | "));
+      return;
+    }
 
     const res = await fetch("/api/submiteventinfo", {
       body: JSON.stringify(matchData),
@@ -211,6 +250,8 @@ const EventScouting: NextPage = () => {
 
   return (
     <div className={styles.container}>
+      {error !== "" && <Error error={error} setError={setError}/>}
+
       <article>
         <ColorBar />
         <h1>{scoutingConfig[index].name}</h1>

@@ -1,0 +1,31 @@
+.err {
+    height: 90vh !important;
+    width: 80vw;
+    position: absolute;
+    top: 5vh !important;
+    left: 10vw;
+    background-color: #ff7777;
+    z-index: 12;
+    border-radius: 25px;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+}
+
+.err h1 {
+    height: auto !important;
+}
+
+.err svg {
+    position: absolute;
+    height: 6vh;
+    width: 6vh;
+    top: 4vh;
+    right: 3vw;
+}
+
+.err svg:hover {
+    opacity: 0.4;
+    cursor: pointer;
+}
