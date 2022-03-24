@@ -249,7 +249,6 @@ async function loadCompData() {
         console.log("Created match schedule");
       });
 }
-
 (async () => {
   console.clear();
 
