@@ -23,10 +23,10 @@
   height: 3vw !important;
   font-size: 0.8rem !important;
   padding: 0.4rem !important;
-  border-top: 0.3vw solid #56CBF9 !important;
-  border-left: 0.3vw solid #56CBF9 !important;
-  border-right: 0.3vw solid #56CBF9 !important;
-  border-bottom: 0.3vw solid #56CBF9 !important;
+  border-top: 0.3vw solid var(--outline) !important;
+  border-left: 0.3vw solid var(--outline) !important;
+  border-right: 0.3vw solid var(--outline) !important;
+  border-bottom: 0.3vw solid var(--outline) !important;
   font-family: 'SushiSans', sans-serif !important;
   font-weight: 400 !important;
   text-align: center !important;
@@ -37,7 +37,7 @@
     width: 2.2vw;
     height: 1.7vw;
     border-left: 0.3vw solid transparent;
-    border-bottom: 0.31vw solid #56CBF9;
+    border-bottom: 0.31vw solid var(--outline);
 }
 .button-input div,
 .button-input div::before {
@@ -50,8 +50,8 @@
     position: absolute;
     width: 2vw;
     height: 2vw;
-    border-left: 0.3vw solid #56CBF9;
-    border-top: 0.3vw solid #56CBF9;
+    border-left: 0.3vw solid var(--outline);
+    border-top: 0.3vw solid var(--outline);
     border-bottom: 0.3vw solid transparent;
     transform: rotate(45deg) skew(10deg,10deg);
     left: -0.2vw;

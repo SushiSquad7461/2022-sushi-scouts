@@ -12,7 +12,7 @@
   .rectangle2 {
     height: 3vh;
     width: 8vw;
-    background-color: black;
+    background-color: var(--text);
   }
   .rectangle3 {
     height: 3vh;

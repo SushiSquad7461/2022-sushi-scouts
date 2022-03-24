@@ -5,9 +5,24 @@
 .title {
   height: 100vh;
   width: 100vw;
-  background-color: white;
+  background-color: var(--background);
   overflow-x: hidden;
   overflow-y: hidden;
+}
+
+.toggle {
+  height: 5vh !important;
+  width: 5vh !important;
+  z-index: 10 !important;
+  position: absolute;
+  top: 87%;
+  left: 96.5%;
+  color: var(--text);
+}
+
+.toggle:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }
 
 .text1 {
@@ -18,21 +33,23 @@
   font-size: 5rem;
   letter-spacing: -5%;
   line-height: auto;
-  color: black;
+  color: var(--text);
   top: 3vh;
   left: 51.3vw;
   width: auto;
   font-family: SushiSans;
 }
+
 .text2 {
   text-align: left;
   vertical-align: top;
   font-size: 2rem;
   line-height: auto;
-  color: black;
+  color: var(--text);
   font-weight: bold;
   font-family: 'Mohave', sans-serif;
 }
+
 .button1 {
   border-radius: 15px;
   display: flex;
@@ -40,11 +57,11 @@
   justify-content: center;
   align-items: center;
   padding: 0px 16px;
-  background-color: white;
-  border: 0.3rem solid #56cbf9;
+  background-color: var(--background);
+  border: 0.3rem solid var(--outline);
   position: absolute;
   top:84%;
-  left:78%;
+  left:76%;
   height: 12vh;
   width: 19vw;
 }
@@ -58,6 +75,7 @@
   opacity: 0.7;
   cursor: pointer;
 }
+
 .button2 {
   border-radius: 15px;
   display: flex;
@@ -65,25 +83,27 @@
   justify-content: center;
   align-items: center;
   padding: 0px 16px;
-  background-color: white;
-  border: 0.3rem solid #56cbf9;
+  background-color: var(--background);
+  border: 0.3rem solid var(--outline);
   position: absolute;
   top:84%;
-  left:54%;
+  left:52%;
   height: 12vh;
   width: 19vw;
 }
+
 .text3 {
   text-align: left;
   vertical-align: top;
   font-size: 2rem;
   line-height: auto;
-  color: black;
+  color: var(--text);
   font-weight: bold;
   font-family: 'Mohave', sans-serif;
 }
+
 .maki7 {
   height: 67vh;
   width: 50.2vw;
-  background-color: #ffffff;
+  background-color: var(--background);
 }

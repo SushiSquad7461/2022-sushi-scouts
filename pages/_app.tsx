@@ -2,13 +2,22 @@ import "../styles/globals.css";
 import "../styles/ButtonInput.css";
 import "../styles/Colorbar.css";
 import "../styles/Error.css";
+import "../styles/mode.css";
 import type {AppProps} from "next/app";
 import Head from "next/head";
 import {NextPage} from "next";
+import {useEffect, useState} from "react";
 
 const MyApp: NextPage<AppProps> = ({Component, pageProps}: AppProps) => {
+  const [mode, setMode] = useState<string | null>(null);
+
+  useEffect(() => {
+    setMode(localStorage.getItem("MODE"));
+  }, []);
+
   return (
-    <div>
+    <div className={mode === null || mode.toString() === "light" ?
+      "light" : "dark"}>
       <Head>
         <title>Sushi Scouts</title>
         <meta name="description" content="Sushi Scouts" />

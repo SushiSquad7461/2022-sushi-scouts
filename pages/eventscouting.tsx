@@ -27,7 +27,7 @@ const EventScouting: NextPage = () => {
   const [matchData, setMatchData] = useState<ScoutingData>({});
   const [matchNum, setMatchNum] = useState(1);
   const router: NextRouter = useRouter();
-  const [error, setError] = useState("was up g");
+  const [error, setError] = useState("");
 
   /**
    * Moves to next scouting page

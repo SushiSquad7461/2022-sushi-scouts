@@ -5,6 +5,7 @@
 .title {
     height: 100vh;
     width: 100vw;
+    background-color: var(--background);
 }
 
 .title article {
@@ -24,6 +25,7 @@
     margin-top: 10vh;
     font-weight: 200;
     font-family: SushiSans;
+    color: var(--text);
 }
 
 .image {
@@ -55,30 +57,29 @@
 .title form > article h1 {
     font-size: 3.8rem;
     font-weight: 200;
+    color: var(--text);
 }
 
 .title form input[type=number] {
     height: 8vh;
     width: 38vw;
-    /* margin-left: 5vw; */
     border-top: hidden;
     border-left: hidden;
     border-right: hidden;
     border-width: 0.5rem;
-    border-color: #4F4F4F;
-    /* padding-left: 2vw;
-    padding-right: 2vw; */
+    border-color: var(--text);
     padding-bottom: 2vh;
+    background-color: var(--background);
 }
 
 .title form input[type=number]::placeholder, .title form input[type=number] {
     font-size: 2rem;
-    color: black;
+    color: var(--text);
     letter-spacing: -5%;
     text-align: center;
 }
 
-.title input[type=number]:focus { outline: none; } 
+.title input[type=number]:focus { outline: none; }
 
 .title form section {
     width: 35vw;
@@ -105,19 +106,20 @@
     margin-left: 1vw;
     font-size: 1.8rem;
     font-family: 'Mohave', sans-serif;
+    color: var(--text);
 }
 
 .title form input[type=checkbox] {
 	-webkit-appearance: none;
-	background-color: #fafafa;
-	border: 0.3rem solid #56CBF9;
+	background-color: var(--background);
+	border: 0.3rem solid var(--outline);
 	padding: 0.6rem;
 	display: inline-block;
 	position: relative;
 }
 
 .title form input[type=checkbox]:active, .title form input[type=checkbox]:checked {
-    background-color: #56CBF9;
+    background-color: var(--outline);
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -139,17 +141,14 @@
   justify-content: center;
   align-items: center;
   padding: 0px 16px;
-  background-color: white;
-  border: 0.3rem solid #56cbf9;
+  background-color: var(--background);
+  border: 0.3rem solid var(--outline);
   position: absolute;
-    margin-top:8%;
-
-
+  margin-top:8%;
   top:75%;
   left:78%;
-    height: 10vh;
-    width: 15vw;
-
+  height: 10vh;
+  width: 15vw;
 }
 
 
@@ -160,14 +159,14 @@
   justify-content: center;
   align-items: center;
   padding: 0px 16px;
-  background-color: white;
-  border: 0.3rem solid #56cbf9;
+  background-color: var(--background);
+  border: 0.3rem solid var(--outline);
   position: absolute;
   top: 40%;
   left:78%;
   height: 10vh;
   width: 15vw;
-  color: black;
+  color: var(--text);
   margin-top:15.4%;
 }
 
@@ -180,7 +179,7 @@
     vertical-align: top;
     font-size: 1.6rem;
     line-height: auto;
-    color: black;
+    color: var(--text);
     padding: 2vw;
     font-family: 'Mohave', sans-serif;
 

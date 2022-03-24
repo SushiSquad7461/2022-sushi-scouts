@@ -1,0 +1,11 @@
+.light {
+    --background: #FFFFFF;
+    --text: #000000;
+    --outline: #56CBF9;
+}
+
+.dark {
+    --background: #000000;
+    --text: #FFFFFF;
+    --outline: #FCD6F6;
+}
