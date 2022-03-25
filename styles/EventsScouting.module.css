@@ -1,6 +1,6 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Mohave&display=swap'); */
-@font-face { font-family: SushiSans; src: url('font.ttf'); } 
-@font-face { font-family: Mohave; src: url("Mohave/static/Mohave-Regular.ttf"); }
+@font-face { font-family: SushiSans; src: url('font.ttf'); font-display: swap;}
+@font-face { font-family: Mohave; src: url("Mohave/static/Mohave-Regular.ttf"); font-display: swap;}
 
 .container {
   padding: 0 2rem;

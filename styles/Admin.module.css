@@ -1,5 +1,5 @@
-@font-face { font-family: SushiSans; src: url('font.ttf'); } 
-@font-face { font-family: Mohave; src: url("Mohave/static/Mohave-Regular.ttf"); }
+@font-face { font-family: SushiSans; src: url('font.ttf'); font-display: swap;}
+@font-face { font-family: Mohave; src: url("Mohave/static/Mohave-Regular.ttf"); font-display: swap; }
 
 .title {
     height: 100vh;
