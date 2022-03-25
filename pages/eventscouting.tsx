@@ -27,7 +27,7 @@ const EventScouting: NextPage = () => {
   const [matchData, setMatchData] = useState<ScoutingData>({});
   const [matchNum, setMatchNum] = useState(1);
   const router: NextRouter = useRouter();
-  const [error, setError] = useState("");
+  const [error, setError] = useState<Array<string>>([]);
 
   /**
    * Moves to next scouting page
@@ -61,23 +61,33 @@ const EventScouting: NextPage = () => {
    * @return {string} error message
    */
   function verifyData() {
-    let errors = "";
+    const errors = [];
 
     for (const i of scoutingConfig) {
       for (const element of i.inputs) {
         const key = i.name.toLowerCase() + ":" + element.name.toLowerCase();
 
-        console.log(key + matchData[key]);
+        console.log(key + ":" + matchData[key] + ":" + typeof(matchData[key]));
 
-        if (key === "match info:match #" && matchData[key] === 0) {
-          errors += "Invalid Match Number\n";
+        if (key === "match info:match #" && matchData[key].toString() === "0") {
+          errors.push("Invalid Match Number");
+        } else if (key === "match info:team # you're scouting" &&
+        (matchData[key].toString() === "0" ||
+        matchData[key].toString() === "0000")) {
+          errors.push("Invalid Team Number");
         } else if (key === "match info:match type" &&
           matchData[key] === "no option selected") {
-          errors += "No match type selected\n";
+          errors.push("No match type selected");
+        } else if (key === "end game:climb type" &&
+        matchData["end game:climb"] !== "no climb" &&
+        matchData[key] === "no option selected") {
+          console.log("helo? + " + matchData["end game:climb"] != "no climb");
+          errors.push("No Climb Type Selected");
         } else if ((element.type === "select" || element.type === "radio") &&
-          matchData[key] === "no option selected") {
-          errors += "No option selected for: " +
-            element.name.toLowerCase() + "\n";
+          matchData[key] === "no option selected" &&
+          key !== "end game:climb type") {
+          errors.push("No option selected for: " +
+            element.name.toLowerCase());
         }
       }
     }
@@ -91,15 +101,11 @@ const EventScouting: NextPage = () => {
    */
   async function sendData(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    console.log("Final submit");
     console.log(matchData);
-
     const errors = verifyData();
-    console.log("Was up my g " + errors);
 
-    if (errors != "") {
-      setError(errors.replace("\n", " | "));
+    if (errors.length > 0) {
+      setError(errors);
       return;
     }
 
@@ -113,14 +119,10 @@ const EventScouting: NextPage = () => {
 
     if (res.ok) {
       setIndex(0);
-      console.log("start2 " + matchNum);
       const data = matchNum + 1;
-      console.log(data);
       setMatchNum(data);
       localStorage.setItem("MN", matchNum.toString());
-      console.log("start" + matchNum);
       setMatchNum(matchNum);
-      console.log(matchNum);
       resetMatchData();
     }
 
@@ -250,7 +252,7 @@ const EventScouting: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      {error !== "" && <Error error={error} setError={setError}/>}
+      {error.length > 0 && <Error error={error} setError={setError}/>}
 
       <article>
         <ColorBar />

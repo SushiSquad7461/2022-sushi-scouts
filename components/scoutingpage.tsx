@@ -27,6 +27,11 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
 
   useEffect(() => {
     const stationData = localStorage.getItem("STATION");
+    const localStorageMatchType = localStorage.getItem("MT");
+
+    if (localStorageMatchType !== null) {
+      setMatchType(localStorageMatchType);
+    }
     setStationId(stationData !== null ? stationData.toString() : "R1");
   }, []);
 
@@ -38,9 +43,7 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
    */
   async function getTeamNumber(currMatchNum: number, currMatchType: string,
       stationId: string) {
-    console.log("in1" + currMatchNum + currMatchType);
     if (!isNaN(currMatchNum) && currMatchType !== "no option selected") {
-      console.log("in2");
       const data = await fetch(
           "/api/getteamnum?matchNum=" +
               currMatchNum +
@@ -71,7 +74,6 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
 
                     if (element.name === "MATCH #") {
                       localStorage.setItem("MN", e.target.value);
-                      console.log("changing match num");
                       props.setMatchNum(parseInt(e.target.value));
                       getTeamNumber(parseInt(e.target.value), matchType,
                           stationId);
@@ -106,11 +108,8 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
                             } else if (element.name === "MATCH TYPE") {
                               localStorage.setItem("MT", checkbox);
                               setMatchType(checkbox);
-
-                              console.log("setting match num to 1 bad");
                               localStorage.setItem("MN", "1");
                               props.setMatchNum(1);
-
                               getTeamNumber(1, checkbox, stationId);
                             }
                           }} defaultChecked={element.name === "MATCH TYPE" ?
@@ -182,7 +181,6 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
 
                     if (element.name === "STATION ID") {
                       localStorage.setItem("STATION", e.target.value);
-                      console.log("Get team num from station id");
                       getTeamNumber(props.matchNum, matchType,
                           e.target.value);
                       setStationId(e.target.value);

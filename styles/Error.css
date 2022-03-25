@@ -29,3 +29,7 @@
     opacity: 0.4;
     cursor: pointer;
 }
+
+.err p {
+    color: var(--text);
+}
