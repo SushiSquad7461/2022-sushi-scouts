@@ -4,7 +4,7 @@
     position: absolute;
     top: 5vh !important;
     left: 10vw;
-    background-color: #ff7777;
+    background-color: #ff729f;
     z-index: 12;
     border-radius: 25px;
     display: flex !important;
@@ -23,6 +23,7 @@
     width: 6vh;
     top: 4vh;
     right: 3vw;
+    color: var(--text);
 }
 
 .err svg:hover {

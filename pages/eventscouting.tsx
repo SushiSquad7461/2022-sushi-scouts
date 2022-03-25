@@ -8,6 +8,7 @@ import ScoutingPage from "../components/scoutingpage";
 import {NextRouter, useRouter} from "next/router";
 import Link from "next/link";
 import Error from "../components/error";
+import Sparkie from "../components/sparkie";
 
 export type ScoutingInput = {
   "name": string, // Name of input
@@ -28,6 +29,7 @@ const EventScouting: NextPage = () => {
   const [matchNum, setMatchNum] = useState(1);
   const router: NextRouter = useRouter();
   const [error, setError] = useState<Array<string>>([]);
+  const [success, setSuccess] = useState(false);
 
   /**
    * Moves to next scouting page
@@ -81,7 +83,6 @@ const EventScouting: NextPage = () => {
         } else if (key === "end game:climb type" &&
         matchData["end game:climb"] !== "no climb" &&
         matchData[key] === "no option selected") {
-          console.log("helo? + " + matchData["end game:climb"] != "no climb");
           errors.push("No Climb Type Selected");
         } else if ((element.type === "select" || element.type === "radio") &&
           matchData[key] === "no option selected" &&
@@ -124,6 +125,10 @@ const EventScouting: NextPage = () => {
       localStorage.setItem("MN", matchNum.toString());
       setMatchNum(matchNum);
       resetMatchData();
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 3000);
+    } else {
+      setError(["Could not submit"]);
     }
 
     if (localStorage.getItem(dbName) === null) {
@@ -253,6 +258,7 @@ const EventScouting: NextPage = () => {
   return (
     <div className={styles.container}>
       {error.length > 0 && <Error error={error} setError={setError}/>}
+      {success && <Sparkie />}
 
       <article>
         <ColorBar />

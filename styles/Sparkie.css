@@ -1,0 +1,42 @@
+
+.dancing {
+    background-color: var(--background) !important;
+    height: 97vh !important;
+    width: 97vw !important;
+    z-index: 10 !important;
+  }
+
+  .dancing svg {
+    position: absolute;
+    height: 50vh !important;
+    width: 50vh !important;
+    top: 20vh;
+    left: 70vh;
+    z-index: 10;
+    animation-name: dancing;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+
+  .dancing path {
+    fill: var(--text);
+  }
+
+  /* The animation code */
+  @keyframes dancing {
+    from {
+      margin-left: 30%;
+      transform: rotate(30deg);
+    }
+
+    50% {
+      margin-left: -30%;
+      transform: rotate(-30deg);
+    }
+
+    to {
+      margin-left: 30%;
+      transform: rotate(30deg);
+    }
+  }

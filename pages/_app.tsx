@@ -3,6 +3,7 @@ import "../styles/ButtonInput.css";
 import "../styles/Colorbar.css";
 import "../styles/Error.css";
 import "../styles/mode.css";
+import "../styles/Sparkie.css";
 import type {AppProps} from "next/app";
 import Head from "next/head";
 import {NextPage} from "next";
@@ -21,6 +22,7 @@ const MyApp: NextPage<AppProps> = ({Component, pageProps}: AppProps) => {
       <Head>
         <title>Sushi Scouts</title>
         <meta name="description" content="Sushi Scouts" />
+        <meta name="theme-color" content="#ffffff"/>
         <link rel="apple-touch-icon" sizes="180x180"
           href="/apple-touch-icon.png" color="white"
         />
