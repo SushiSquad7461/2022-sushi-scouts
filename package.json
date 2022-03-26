@@ -14,6 +14,7 @@
     "*"
   ],
   "dependencies": {
+    "@prisma/client": "^3.11.1",
     "csv": "^6.0.5",
     "csv-stringify": "^6.0.5",
     "inquirer": "^8.2.0",
@@ -34,6 +35,7 @@
     "react-xls": "^0.1.1",
     "request-ip": "^2.1.3",
     "semver": "^7.3.5",
+    "sqlite3": "^5.0.2",
     "tree-kill": "^1.2.2",
     "tsc": "^2.0.4",
     "uuid": "^8.3.2",
@@ -53,6 +55,7 @@
     "eslint-config-next": "12.0.8",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-react": "^7.28.0",
+    "prisma": "^3.11.1",
     "typescript": "4.5.4"
   },
   "version": "1.3.0"

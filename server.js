@@ -9,6 +9,7 @@ const next = require("next");
 const config = require("./data/teamconfig.json");
 const {promisify} = require("util");
 const {stringify} = require("csv-stringify/sync");
+const sqlite3 = require('sqlite3');
 
 const year = "2022";
 const dev = true;
@@ -249,6 +250,16 @@ async function loadCompData() {
         console.log("Created match schedule");
       });
 }
+
+async function createDatabase() {
+  let db = new sqlite3.Database('data/matchdata.db', sqlite3.OPEN_CREATE, (err)=> {
+    if(err) {
+      console.error(err);
+    } else {
+      console.log('Database successfuly created');
+    }}); 
+}
+
 (async () => {
   console.clear();
 
@@ -293,6 +304,7 @@ async function loadCompData() {
         "Export Data to CSV", "Reset Team Info",
         "Load Comp Data (firstinpires api access required)",
         "Load Team Data (firstinpires api access required)",
+        "Create sqlite database",
         "Quit"],
     });
 
@@ -314,6 +326,8 @@ async function loadCompData() {
       await loadCompData();
     } else if (input === "Load Team Data (firstinpires api access required)") {
       await loadTeamData();
+    } else if (input === "Create sqlite database") {
+      await createDatabase();
     }
   }
 
