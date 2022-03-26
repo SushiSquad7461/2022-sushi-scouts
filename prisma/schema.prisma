@@ -18,17 +18,17 @@ model Matchdata {
   matchType String
   teamScouted Int
   stationId String
-  auto_show Boolean
-  auto_move Boolean
+  auto_show String
+  auto_move String
   auto_lowHub Int
   auto_humanPlayer Int
   auto_upperHub Int
-  teleop_groundPickup Boolean
-  teleop_terminalPickup Boolean
+  teleop_groundPickup String
+  teleop_terminalPickup String
   teleop_lowHub Int
   teleop_highHub Int
   end_climb String
   end_climbLevel String
-  end_defense Boolean
+  end_defense String
   end_notes String
 }
