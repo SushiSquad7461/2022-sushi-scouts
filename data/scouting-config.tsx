@@ -73,12 +73,12 @@ export const scoutingConfig: ScoutingDataSection[] = [{
     "values": [],
     "className": "",
   },
-  {
-    "name": "MISSED LOWER HUB",
-    "type": "button",
-    "values": [],
-    "className": "",
-  },
+  // {
+  //   "name": "MISSED LOWER HUB",
+  //   "type": "button",
+  //   "values": [],
+  //   "className": "",
+  // },
   {
     "name": "SCORED BY HP",
     "type": "button",
@@ -91,12 +91,12 @@ export const scoutingConfig: ScoutingDataSection[] = [{
     "values": [],
     "className": "",
   },
-  {
-    "name": "MISSED UPPER HUB",
-    "type": "button",
-    "values": [],
-    "className": "",
-  },
+  // {
+  //   "name": "MISSED UPPER HUB",
+  //   "type": "button",
+  //   "values": [],
+  //   "className": "",
+  // },
   ],
 },
 {
@@ -120,24 +120,24 @@ export const scoutingConfig: ScoutingDataSection[] = [{
     "values": [],
     "className": "",
   },
-  {
-    "name": "MISSED LOWER HUB",
-    "type": "button",
-    "values": [],
-    "className": "",
-  },
+  // {
+  //   "name": "MISSED LOWER HUB",
+  //   "type": "button",
+  //   "values": [],
+  //   "className": "",
+  // },
   {
     "name": "SCORED UPPER HUB",
     "type": "button",
     "values": [],
     "className": "",
   },
-  {
-    "name": "MISSED UPPER HUB",
-    "type": "button",
-    "values": [],
-    "className": "",
-  },
+  // {
+  //   "name": "MISSED UPPER HUB",
+  //   "type": "button",
+  //   "values": [],
+  //   "className": "",
+  // },
   ],
 },
 {

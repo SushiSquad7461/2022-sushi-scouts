@@ -37,15 +37,15 @@ a {
 
 .auto {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16vw;
+  grid-template-columns: repeat(2, 0fr);
+  gap: 5vw;
   row-gap: 3vh;
   margin-top: 46vh !important;
 }
 
 .teleop {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 0.4fr);
   row-gap: 3vh;
   margin-top: 46vh !important;
   width: 70vw;
