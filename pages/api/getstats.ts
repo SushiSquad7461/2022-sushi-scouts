@@ -1,7 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from "next";
 import {readFileSync} from "fs";
 import {MatchSchedule} from "../../data/scouting-config";
-const filePath = "./data/matchschedule.json";
 
 export type currScoutingType = {
         stationId: string,
@@ -26,7 +25,8 @@ export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>,
 ) {
-  const schedule: MatchSchedule = JSON.parse(readFileSync(filePath).toString());
+  const schedule: MatchSchedule = JSON.parse(readFileSync(
+      process.env.MATCH_SCHEDULE_PATH!).toString());
   let currQual: number = parseInt(req.query["currQual"].toString());
   let maxQual: number = parseInt(req.query["maxQual"].toString());
   const lastMatch: number = schedule["matches"].length;

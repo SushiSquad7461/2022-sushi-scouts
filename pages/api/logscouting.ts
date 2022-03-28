@@ -1,7 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from "next";
 import {readFileSync, writeFileSync} from "fs";
 import {MatchSchedule} from "../../data/scouting-config";
-const filePath = "./data/matchschedule.json";
 
 type Data = {
   result: string
@@ -16,7 +15,8 @@ export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>,
 ) {
-  const schedule: MatchSchedule = JSON.parse(readFileSync(filePath).toString());
+  const schedule: MatchSchedule = JSON.parse(readFileSync(
+    process.env.MATCH_SCHEDULE_PATH!).toString());
   // Get the current match number, the the type of match (Finals, etc...)
   const matchNumString = req.query["matchNum"];
   const matchType = req.query["matchType"];
@@ -34,7 +34,8 @@ export default function handler(
 
       console.log(schedule);
 
-      writeFileSync(filePath, JSON.stringify(schedule));
+      writeFileSync(
+        process.env.MATCH_SCHEDULE_PATH!, JSON.stringify(schedule));
       res.status(200).json({result: "success"});
     }
   } else {
