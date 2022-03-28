@@ -1,11 +1,8 @@
 import type {NextApiRequest, NextApiResponse} from "next";
-// import users from "../../data/matchdata.json";
 import {readFileSync, writeFileSync} from "fs";
 import {MatchSchedule} from "../../data/scouting-config";
-import {PrismaClient} from "@prisma/client";
-
+import {prisma} from "../../lib/prisma";
 const filePath = "./data/matchschedule.json";
-const prisma = new PrismaClient();
 
 type Data = {
   result: string
@@ -20,10 +17,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>,
 ) {
-  // Add match data to json database
   const matchData = req.body;
-  // users.matchData.push(matchData);
-
   const matchType = matchData["match info:match type"];
   const matchNum = parseInt(matchData["match info:match #"]);
   const stationId = matchData["match info:station id"];
