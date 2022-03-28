@@ -2,10 +2,8 @@ import type {NextApiRequest, NextApiResponse} from "next";
 import {stringify} from "csv-stringify/sync";
 import stream from "stream";
 import {promisify} from "util";
-import {PrismaClient} from "@prisma/client";
-
+import {prisma} from "../../lib/prisma";
 const pipeline = promisify(stream.pipeline);
-const prisma = new PrismaClient();
 
 /**
  * Assigns team number for computer to scout based on match schedule
