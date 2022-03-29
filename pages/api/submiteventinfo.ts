@@ -32,6 +32,7 @@ export default async function handler(
   await prisma.matchdata.create({
     data: {
       "teamNumber": matchData["teamNumber"],
+      "name": matchData["match info:ur name"],
       "comp": matchData["comp"],
       "matchNum": parseInt(matchData["match info:match #"]),
       "matchType": matchData["match info:match type"],

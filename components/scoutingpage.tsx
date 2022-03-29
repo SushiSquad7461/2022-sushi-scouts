@@ -24,15 +24,18 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
   const [matchType, setMatchType] = useState<string>("no option selected");
   const [teamNum, setTeamNum] = useState<string>("");
   const [stationId, setStationId] = useState<string>("");
+  const [name, setName] = useState<string>("");
 
   useEffect(() => {
     const stationData = localStorage.getItem("STATION");
     const localStorageMatchType = localStorage.getItem("MT");
+    const name = localStorage.getItem("NAME");
 
     if (localStorageMatchType !== null) {
       setMatchType(localStorageMatchType);
     }
     setStationId(stationData !== null ? stationData.toString() : "R1");
+    setName(name !== null ? name.toString() : "");
   }, []);
 
   /**
@@ -84,6 +87,25 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
                   value={element.name === "MATCH #" ? props.matchNum :
                   (element.name === "TEAM # YOU'RE SCOUTING" ?
                   teamNum : undefined)}
+                />
+              </article>
+            );
+          } else if (element.type === "string") {
+            return (
+              <article key={element.name} className={element.className}>
+                <h1>{element.name}</h1>
+                <input type={"text"}
+                  name={element.name}
+                  onChange={(e) => {
+                    props.updateMatchData(e, element.name);
+
+                    if (element.name === "UR NAME") {
+                      localStorage.setItem("NAME", e.target.value);
+                      setName(e.target.value);
+                    }
+                  }}
+                  value={element.name === "UR NAME" ? name :
+                  undefined}
                 />
               </article>
             );

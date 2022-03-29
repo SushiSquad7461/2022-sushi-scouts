@@ -33,6 +33,12 @@ export const scoutingConfig: ScoutingDataSection[] = [{
     "className": "",
   },
   {
+    "name": "UR NAME",
+    "type": "string",
+    "values": [],
+    "className": "name",
+  },
+  {
     "name": "MATCH TYPE",
     "type": "radio",
     "values": ["QUALS MATCH", "SEMI-FINALS", "PRACTICE", "QUARTERFINALS",
@@ -73,12 +79,6 @@ export const scoutingConfig: ScoutingDataSection[] = [{
     "values": [],
     "className": "",
   },
-  // {
-  //   "name": "MISSED LOWER HUB",
-  //   "type": "button",
-  //   "values": [],
-  //   "className": "",
-  // },
   {
     "name": "SCORED BY HP",
     "type": "button",
@@ -91,12 +91,6 @@ export const scoutingConfig: ScoutingDataSection[] = [{
     "values": [],
     "className": "",
   },
-  // {
-  //   "name": "MISSED UPPER HUB",
-  //   "type": "button",
-  //   "values": [],
-  //   "className": "",
-  // },
   ],
 },
 {
@@ -120,24 +114,12 @@ export const scoutingConfig: ScoutingDataSection[] = [{
     "values": [],
     "className": "",
   },
-  // {
-  //   "name": "MISSED LOWER HUB",
-  //   "type": "button",
-  //   "values": [],
-  //   "className": "",
-  // },
   {
     "name": "SCORED UPPER HUB",
     "type": "button",
     "values": [],
     "className": "",
   },
-  // {
-  //   "name": "MISSED UPPER HUB",
-  //   "type": "button",
-  //   "values": [],
-  //   "className": "",
-  // },
   ],
 },
 {

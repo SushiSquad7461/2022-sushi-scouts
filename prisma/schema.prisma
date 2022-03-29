@@ -12,6 +12,7 @@ datasource db {
 
 model Matchdata {
   id Int @id @default(autoincrement())
+  name String
   teamNumber String
   comp String
   matchNum Int

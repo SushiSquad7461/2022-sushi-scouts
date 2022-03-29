@@ -89,6 +89,9 @@ const EventScouting: NextPage = () => {
           key !== "end game:climb type") {
           errors.push("No option selected for: " +
             element.name.toLowerCase());
+        } else if (element.type === "string" && matchData[key] === "") {
+          error.push("Please enter in a value for: " +
+            element.name.toLowerCase());
         }
       }
     }
@@ -198,6 +201,12 @@ const EventScouting: NextPage = () => {
           matchData[key] = "";
         } else if (element.type === "select") {
           matchData[key] = "no option selected";
+        } else if (key === "match info:ur name") {
+          const name = localStorage.getItem("NAME");
+          matchData[key] = name !== null ? name.toString().
+              toLowerCase() : "";
+        } else if (element.type === "string") {
+          matchData[key] = "";
         }
       }
     }

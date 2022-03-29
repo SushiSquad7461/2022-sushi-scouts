@@ -16,7 +16,7 @@ a {
 .matchtype {
   position: absolute;
   top: 43%;
-  left: 20%;
+  left: 33%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2vw;
@@ -120,7 +120,7 @@ a {
   outline: none;
 }
 
-.scoutingform input[type=number] {
+.scoutingform input[type=number], .scoutingform input[type=text] {
   height: 9vh;
   width: 100%;
   border-top: hidden;
@@ -156,18 +156,19 @@ a {
 }
 
 /* Firefox */
-.scoutingform input[type=number] {
+.scoutingform input[type=number], .scoutingform input[type=text] {
   -moz-appearance: textfield;
 }
 
-.scoutingform input[type=number]::placeholder, .scoutingform input[type=number] {
+.scoutingform input[type=number]::placeholder, .scoutingform input[type=number],
+.scoutingform input[type=text]::placeholder, .scoutingform input[type=text] {
   font-size: 2rem;
   color: var(--text);
   letter-spacing: -5%;
   text-align: center;
 }
 
-.scoutingform input[type=number]:focus {
+.scoutingform input[type=number]:focus, .scoutingform input[type=text]:focus {
   outline: none;
 }
 
@@ -222,4 +223,10 @@ select:focus {
   align-items: center;
   justify-content: space-evenly;
   font-size: 1.7rem;
+}
+
+.name {
+  position: absolute !important;
+  top: 27.04%;
+  left: 18%;
 }
