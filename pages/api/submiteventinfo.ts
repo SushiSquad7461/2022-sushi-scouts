@@ -29,29 +29,40 @@ export default async function handler(
     writeFileSync(filePath, JSON.stringify(schedule));
   }
 
-  await prisma.matchdata.create({
-    data: {
-      "teamNumber": matchData["teamNumber"],
-      "name": matchData["match info:ur name"],
-      "comp": matchData["comp"],
-      "matchNum": parseInt(matchData["match info:match #"]),
-      "matchType": matchData["match info:match type"],
-      "teamScouted": parseInt(matchData["match info:team # you're scouting"]),
-      "stationId": matchData["match info:station id"],
-      "auto_show": matchData["auto:no show"],
-      "auto_move": matchData["auto:move off tarmac"],
-      "auto_lowHub": matchData["auto:scored lower hub"],
-      "auto_humanPlayer": matchData["auto:scored by hp"],
-      "auto_upperHub": matchData["auto:scored upper hub"],
-      "teleop_groundPickup": matchData["teleop:ground pickup"],
-      "teleop_terminalPickup": matchData["teleop:terminal pickup"],
-      "teleop_lowHub": matchData["teleop:scored lower hub"],
-      "teleop_highHub": matchData["teleop:scored upper hub"],
-      "end_climb": matchData["end game:climb"],
-      "end_climbLevel": matchData["end game:climb type"],
-      "end_defense": matchData["end game:defense"],
-      "end_notes": matchData["end game:notes"],
+  const data = {
+    "teamNumber": matchData["teamNumber"],
+    "name": matchData["match info:ur name"],
+    "comp": matchData["comp"],
+    "matchNum": parseInt(matchData["match info:match #"]),
+    "matchType": matchData["match info:match type"],
+    "teamScouted": parseInt(matchData["match info:team # you're scouting"]),
+    "stationId": matchData["match info:station id"],
+    "auto_show": matchData["auto:no show"],
+    "auto_move": matchData["auto:move off tarmac"],
+    "auto_lowHub": matchData["auto:scored lower hub"],
+    "auto_humanPlayer": matchData["auto:scored by hp"],
+    "auto_upperHub": matchData["auto:scored upper hub"],
+    "teleop_groundPickup": matchData["teleop:ground pickup"],
+    "teleop_terminalPickup": matchData["teleop:terminal pickup"],
+    "teleop_lowHub": matchData["teleop:scored lower hub"],
+    "teleop_highHub": matchData["teleop:scored upper hub"],
+    "end_climb": matchData["end game:climb"],
+    "end_climbLevel": matchData["end game:climb type"],
+    "end_defense": matchData["end game:defense"],
+    "end_notes": matchData["end game:notes"],
+  };
+
+  await prisma.matchdata.upsert({
+    where: {
+      matchid: {
+        teamScouted: data.teamScouted,
+        comp: data.comp,
+        stationId: data.stationId,
+        matchNum: data.matchNum,
+      },
     },
+    update: data,
+    create: data,
   });
 
   // Successfully added data

@@ -32,4 +32,6 @@ model Matchdata {
   end_climbLevel String
   end_defense String
   end_notes String
+
+  @@unique([teamScouted, stationId, matchNum, comp], name: "matchid")
 }
