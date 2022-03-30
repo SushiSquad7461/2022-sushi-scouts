@@ -22,7 +22,7 @@ const Home: NextPage = () => {
       </button>
 
       <button className={styles.button2}>
-        <Link href = "/admin" passHref>
+        <Link href = "/admin/data" passHref>
           <p className={styles.text3}>Admin</p>
         </Link>
       </button>

@@ -14,7 +14,19 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse,
 ) {
-  const matchData = await prisma.matchdata.findMany();
+  const compSelection: string = req.query["comp"].toString();
+
+  let matchData;
+
+  if (compSelection === "All") {
+    matchData = await prisma.matchdata.findMany();
+  } else {
+    matchData = await prisma.matchdata.findMany({
+      where: {
+        comp: compSelection,
+      },
+    });
+  }
 
   const headers = Object.keys(matchData[0]);
   const allValues = matchData.map((match: { [s: string]: unknown; } |

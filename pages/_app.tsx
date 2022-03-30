@@ -4,6 +4,7 @@ import "../styles/Colorbar.css";
 import "../styles/Error.css";
 import "../styles/mode.css";
 import "../styles/Sparkie.css";
+import "../styles/Adminnav.css";
 import type {AppProps} from "next/app";
 import Head from "next/head";
 import {NextPage} from "next";

@@ -1,0 +1,103 @@
+@font-face { font-family: SushiSans; src: url('font.ttf'); font-display: swap;}
+@font-face { font-family: Mohave; src: url("Mohave/static/Mohave-Regular.ttf"); font-display: swap; }
+
+.comps {
+    position: absolute;
+    top: 27vh;
+    left: 3vw;
+}
+
+.comps h1, .local h1, .data h1 {
+    font-size: 2.5rem;
+    letter-spacing: -5%;
+    font-stretch: ultra-expanded;
+    width: auto;
+    font-weight: 200;
+    font-family: Mohave;
+    color: var(--text);
+    margin-bottom: 1vh;
+}
+
+.comps section {
+    margin-left: 2vw;
+    margin-top: 2vh;
+    display: flex;
+    align-items: center;
+}
+
+.comps label {
+    font-size: 1.4rem;
+    font-family: Mohave;
+    margin-left: 1vw;
+    margin-top: 0.5vh;
+    color: var(--text);
+}
+
+.comps input[type=radio], .comps input[type=checkbox] {
+    -webkit-appearance: none;
+    background-color: var(--background);
+    border: 0.3rem solid var(--outline);
+    padding: 0.6rem;
+    display: inline-block;
+    position: relative;
+}
+
+.comps input[type=radio]:active, .comps input[type=checkbox]:active, .comps input[type=radio]:checked, .comps input[type=checkbox]:checked {
+    background-color: var(--outline);
+}
+
+.local {
+    position: absolute;
+    top: 27vh;
+    left: 26vw;
+}
+
+.local p {
+    font-size: 1.4rem;
+    letter-spacing: -5%;
+    font-weight: 300;
+    font-family: Mohave;
+    color: var(--text);
+    margin-top: 1vh;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 27vh;
+    left: 44vw;
+    width: auto !important;
+    height: 30vh !important;
+}
+
+.data article {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2vw;
+    row-gap: 0vh;
+    margin-top: 13vh;
+}
+
+.data button {
+    height: 6vh;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background);
+    border: 0.3rem solid var(--outline);
+    color: var(--text);
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: "Mohave";
+    width: 12vw !important;
+}
+
+.data button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}

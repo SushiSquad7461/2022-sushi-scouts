@@ -1,0 +1,134 @@
+
+.stats {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10vh;
+    left: 2.9%;
+    top: 58%;
+    width: 39vw;
+}
+
+.stats h1 {
+    font-size: 2.5rem;
+    width: auto;
+    font-weight: 200;
+    font-family: Mohave;
+    color: var(--text);
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.stats p {
+    font-size: 1.8rem;
+    font-family: "Mohave";
+    color: var(--text);
+    margin: 0;
+}
+
+.stations {
+    position: absolute;
+    left: 2.7%;
+    width: 80vw;
+    top: 74%;
+    display: flex;
+    justify-content: flex-start;
+    background-color: var(--background);
+    height: 10vh;
+}
+
+.stations article {
+    margin-right: 6vw;
+    position: relative !important;
+    display: flex;
+    width: auto;
+    display: flex;
+    height: auto !important;
+}
+
+.stations .laptop {
+    transform: scale(3);
+    color: var(--text);
+}
+
+.stations .status {
+    transform: scale(2.2);
+    margin-left: 3vw;
+}
+
+.stations p {
+    z-index: 10;
+    font-size: 1.2rem;
+    position: absolute;
+    top: -38%;
+    left: -2%;
+    color: var(--text);
+}
+
+.input {
+    position: absolute;
+    left: 2.4%;
+    top: 28%;
+    width: 25vw;
+    height: auto;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+}
+
+.input input[type=number] {
+    height: 6vh;
+    width: 100%;
+    border-top: hidden;
+    border-left: hidden;
+    border-right: hidden;
+    border-width: 0.3rem;
+    border-color: var(--text);
+    font-size: 0.8rem;
+    text-align: center;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+.input article {
+    font-family: 'Mohave', sans-serif;
+    position: relative;
+    width: auto;
+    height: 4vh;
+    margin-right: 3vw;
+}
+
+.input > article h1 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    letter-spacing: -5%;
+    font-stretch: ultra-expanded;
+    width: auto;
+    margin-top: 8vh;
+    margin-bottom: 1vh;
+    font-weight: 200;
+    font-family: Mohave;
+    color: var(--text);
+}
+
+.input form input[type=number]::placeholder {
+    font-size: 2rem;
+    color: var(--text);
+    letter-spacing: -5%;
+    text-align: center;
+}
+
+.input input[type=number]:focus { outline: none; }
+
+/* Chrome, Safari, Edge, Opera */
+.input input::-webkit-outer-spin-button,
+.input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.input input[type=number] {
+  -moz-appearance: textfield;
+}

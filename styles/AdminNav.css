@@ -1,0 +1,33 @@
+.adminnav {
+    width: 35vw;
+    left: 32.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 8vh;
+    top: 88vh;
+    position: absolute;
+    border-radius: 15px;
+    background-color: var(--background);
+    border: 0.3rem solid var(--outline);
+    color: var(--text);
+}
+
+.adminnav svg {
+    height: 4.8vh;
+    width: 4.8vh;
+}
+
+.adminnav > * {
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+.adminnav > * {
+    left:60%;
+}
+
+.adminnav > *:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
