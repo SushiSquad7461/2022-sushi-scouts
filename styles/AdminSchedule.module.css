@@ -1,0 +1,169 @@
+
+.input {
+    position: absolute;
+    left: 2.4%;
+    top: 25%;
+    width: 25vw;
+    height: auto;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+}
+
+.input input[type=text], .events input[type=text] {
+    height: 6vh;
+    width: 100%;
+    border-top: hidden;
+    border-left: hidden;
+    border-right: hidden;
+    border-width: 0.3rem;
+    border-color: var(--text);
+    font-size: 0.8rem;
+    text-align: center;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+.input article {
+    font-family: 'Mohave', sans-serif;
+    position: relative;
+    width: auto;
+    height: 4vh;
+    margin-right: 3vw;
+}
+
+.input > article h1 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    letter-spacing: -5%;
+    font-stretch: ultra-expanded;
+    width: auto;
+    margin-top: 8vh;
+    margin-bottom: 1vh;
+    font-weight: 200;
+    font-family: Mohave;
+    color: var(--text);
+}
+
+.input form input[type=text]::placeholder, .events form input[type=text]::placeholder {
+    font-size: 2rem;
+    color: var(--text);
+    letter-spacing: -5%;
+    text-align: center;
+}
+
+.input input[type=text]:focus, .events input[type=text]:focus { outline: none; }
+
+/* Chrome, Safari, Edge, Opera */
+.input input::-webkit-outer-spin-button,
+.input input::-webkit-inner-spin-button,
+.events input::-webkit-outer-spin-button,
+.events input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.input input[type=text], .events input[type=text] {
+  -moz-appearance: textfield;
+}
+
+.events {
+    position: absolute;
+    left: 2.4%;
+    top: 56%;
+    width: 80vw;
+    height: 20vh;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.events > h1 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    letter-spacing: -5%;
+    font-weight: 200;
+    font-family: Mohave;
+    color: var(--text);
+    margin: 0;
+}
+
+.events article {
+    height: 8vh;
+    margin-top: 9vh;
+    width: 9vw;
+    margin-left: -2.4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.events article h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-weight: 200;
+    font-family: Mohave;
+    color: var(--text);
+    margin: 0;
+}
+.button {
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 16px;
+    background-color: var(--background);
+    border: 0.3rem solid var(--outline);
+    position: absolute;
+    width: 12vw;
+    color: var(--text);
+    height: 8vh;
+    top: 88vh;
+    left: 85vw;
+    font-size: 1.3rem;
+    font-family: Mohave;
+}
+
+.button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.eventslist {
+    width: 50vw;
+    display: flex !important;
+    flex-direction: row;
+    overflow-x: scroll;
+    white-space: nowrap;
+    overflow-y: hidden;
+    margin-left: 10vw;
+    margin-top: 1vh;
+}
+
+.eventslist p {
+    margin-right: 1vw;
+}
+
+.eventslist::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+.eventslist::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px white; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.eventslist::-webkit-scrollbar-thumb {
+  background: var(--outline); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.eventslist::-webkit-scrollbar-thumb:hover {
+  background: var(--outline); 
+}
