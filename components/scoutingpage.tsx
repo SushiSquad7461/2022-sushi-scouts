@@ -36,7 +36,16 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
     }
     setStationId(stationData !== null ? stationData.toString() : "R1");
     setName(name !== null ? name.toString() : "");
-  }, []);
+
+    setTimeout(() => {
+      const matchNum = localStorage.getItem("MN") === null ?
+      1 : parseInt(localStorage.getItem("MN")?.toString()!);
+      const matchType = localStorage.getItem("MT") === null ?
+      "QUALS MATCH" : localStorage.getItem("MT");
+
+      getTeamNumber(matchNum, matchType!, stationId);
+    }, 0);
+  }, [props.matchNum]);
 
   /**
    * Get team scouting assigment

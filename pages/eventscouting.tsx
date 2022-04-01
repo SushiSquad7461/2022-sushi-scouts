@@ -127,11 +127,10 @@ const EventScouting: NextPage = () => {
 
     if (res.ok) {
       setIndex(0);
-      const data = matchNum + 1;
-      setMatchNum(data);
-      localStorage.setItem("MN", matchNum.toString());
-      setMatchNum(matchNum);
-      resetMatchData();
+      setMatchNum(matchNum + 1);
+      localStorage.setItem("MN", (matchNum+1).toString());
+      // Wait for localStorage to update
+      setTimeout(() => resetMatchData(), 0);
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
     } else {
@@ -184,7 +183,8 @@ const EventScouting: NextPage = () => {
         const key = i.name.toLowerCase() + ":" + element.name.toLowerCase();
 
         if (key === "match info:match #") {
-          matchData[key] = matchNum;
+          matchData[key] = localStorage.getItem("MN") === null ?
+            1 : parseInt(localStorage.getItem("MN")?.toString()!);
         } else if (key === "match info:station id") {
           const stationVal = localStorage.getItem("STATION");
           matchData[key] = stationVal !== null ? stationVal.toString() : "R1";
