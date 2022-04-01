@@ -1,8 +1,5 @@
 import type {NextApiRequest, NextApiResponse} from "next";
-import {readFileSync, writeFileSync} from "fs";
-import {MatchSchedule} from "../../data/scouting-config";
 import {prisma} from "../../lib/prisma";
-const filePath = "./data/matchschedule.json";
 
 type Data = {
   result: string
@@ -21,12 +18,21 @@ export default async function handler(
   const matchType = matchData["match info:match type"];
   const matchNum = parseInt(matchData["match info:match #"]);
   const stationId = matchData["match info:station id"];
-  const schedule: MatchSchedule = JSON.parse(readFileSync(filePath).toString());
+  const comp = matchData["comp"];
 
-  if (matchType.toLowerCase() == "quals match" && schedule["matches"][
-      matchNum-1][stationId]["submitted"] === false) {
-    schedule["matches"][matchNum-1][stationId]["submitted"] = true;
-    writeFileSync(filePath, JSON.stringify(schedule));
+  if (matchType.toLowerCase() == "quals match") {
+    await prisma.schedule.update({
+      where: {
+        match: {
+          matchNum: matchNum,
+          stationId: stationId,
+          event: comp,
+        },
+      },
+      data: {
+        completed: true,
+      },
+    });
   }
 
   const data = {

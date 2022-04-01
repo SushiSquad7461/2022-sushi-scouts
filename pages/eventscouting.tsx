@@ -36,12 +36,16 @@ const EventScouting: NextPage = () => {
    */
   function next() {
     if (index === 0) {
+      console.log(localStorage.getItem("C"));
       fetch("/api/logscouting?matchNum=" +
         matchNum +
         "&matchType=" +
               getData("match type") +
               "&station=" +
-              getData("station id"));
+              getData("station id") +
+        "&code=" +
+        (localStorage.getItem("C") === null ?
+        "" : localStorage.getItem("C")));
     }
 
     if (index !== scoutingConfig.length-1) {

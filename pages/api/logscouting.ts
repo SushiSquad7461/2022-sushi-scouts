@@ -1,7 +1,5 @@
 import type {NextApiRequest, NextApiResponse} from "next";
-import {readFileSync, writeFileSync} from "fs";
-import {MatchSchedule} from "../../data/scouting-config";
-const filePath = "./data/matchschedule.json";
+import {prisma} from "../../lib/prisma";
 
 type Data = {
   result: string
@@ -12,31 +10,30 @@ type Data = {
  * @param {NextApiRequest} req Api request object
  * @param {NextApiResponse} res Api response object
  */
-export default function handler(
+export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>,
 ) {
-  const schedule: MatchSchedule = JSON.parse(readFileSync(filePath).toString());
-  // Get the current match number, the the type of match (Finals, etc...)
-  const matchNumString = req.query["matchNum"];
+  const matchNumString = req.query["matchNum"].toString();
   const matchType = req.query["matchType"];
   const station = req.query["station"];
+  const code = req.query["code"];
 
   if (matchType.toString().toLowerCase() == "quals match") {
-    if (schedule["matches"][
-        parseInt(matchNumString.toString())-1][station.
-        toString()]["numScouting"] > 0) {
-      res.status(400).json({result: "match is already scouted"});
-    } else {
-      schedule["matches"][
-          parseInt(matchNumString.toString())-1][station.
-          toString()]["numScouting"] = 1;
+    await prisma.schedule.update({
+      where: {
+        match: {
+          matchNum: parseInt(matchNumString),
+          stationId: station,
+          event: code,
+        },
+      },
+      data: {
+        numScouting: {increment: 1},
+      },
+    });
 
-      console.log(schedule);
-
-      writeFileSync(filePath, JSON.stringify(schedule));
-      res.status(200).json({result: "success"});
-    }
+    res.status(200).json({result: "success"});
   } else {
     res.status(400).json({result: "only quals matches are supported"});
   }
