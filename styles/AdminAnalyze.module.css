@@ -1,0 +1,104 @@
+.input {
+    position: absolute;
+    left: 2.4%;
+    top: 25%;
+    width: 35vw;
+    height: auto;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+}
+
+.input input[type=text], .events input[type=text] {
+    height: 6vh;
+    width: 100%;
+    border-top: hidden;
+    border-left: hidden;
+    border-right: hidden;
+    border-width: 0.3rem;
+    border-color: var(--text);
+    font-size: 0.8rem;
+    text-align: center;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+.input article {
+    font-family: 'Mohave', sans-serif;
+    position: relative;
+    width: auto;
+    height: 10vh;
+    margin-right: 3vw;
+    width: auto !important;
+}
+
+.input > article h1 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    letter-spacing: -5%;
+    font-stretch: ultra-expanded;
+    width: auto;
+    margin-top: 8vh;
+    margin-bottom: 1vh;
+    font-weight: 200;
+    font-family: Mohave;
+    color: var(--text);
+}
+
+.input form input[type=text]::placeholder, .events form input[type=text]::placeholder {
+    font-size: 2rem;
+    color: var(--text);
+    letter-spacing: -5%;
+    text-align: center;
+}
+
+.input input[type=text]:focus, .events input[type=text]:focus { outline: none; }
+
+/* Chrome, Safari, Edge, Opera */
+.input input::-webkit-outer-spin-button,
+.input input::-webkit-inner-spin-button,
+.events input::-webkit-outer-spin-button,
+.events input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.events input[type=text] {
+    height: 10vh !important;
+    margin-left: 0.5vw;
+    padding: 0px !important;
+    position: relative;
+}
+
+/* Firefox */
+.input input[type=text], .events input[type=text] {
+  -moz-appearance: textfield;
+}
+
+.code h1 {
+    white-space: nowrap; 
+}
+
+.button {
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 16px;
+    background-color: var(--background);
+    border: 0.3rem solid var(--outline);
+    position: absolute;
+    width: 14vw;
+    color: var(--text);
+    height: 8vh;
+    top: 88vh;
+    right: 5vw;
+    font-size: 1.3rem;
+    font-family: Mohave;
+}
+
+.button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
