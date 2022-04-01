@@ -35,3 +35,14 @@ model Matchdata {
 
   @@unique([teamScouted, stationId, matchNum, comp], name: "matchid")
 }
+
+model Schedule {
+  id Int @id @default(autoincrement())
+  matchNum Int
+  stationId String
+  teamNum Int
+  completed Boolean
+  numScouting Int
+  event String
+  @@unique([matchNum, stationId, event], name: "match")
+}

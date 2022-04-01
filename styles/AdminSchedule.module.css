@@ -3,7 +3,7 @@
     position: absolute;
     left: 2.4%;
     top: 25%;
-    width: 25vw;
+    width: 35vw;
     height: auto;
     display: flex;
     margin: 0px;
@@ -28,8 +28,9 @@
     font-family: 'Mohave', sans-serif;
     position: relative;
     width: auto;
-    height: 4vh;
+    height: 10vh;
     margin-right: 3vw;
+    width: auto !important;
 }
 
 .input > article h1 {
@@ -63,6 +64,13 @@
   margin: 0;
 }
 
+.events input[type=text] {
+    height: 10vh !important;
+    margin-left: 0.5vw;
+    padding: 0px !important;
+    position: relative;
+}
+
 /* Firefox */
 .input input[type=text], .events input[type=text] {
   -moz-appearance: textfield;
@@ -70,10 +78,10 @@
 
 .events {
     position: absolute;
-    left: 2.4%;
-    top: 56%;
+    left: 3%;
+    top: 52%;
     width: 80vw;
-    height: 20vh;
+    height: 24vh;
     margin: 0px;
     padding: 0px;
     display: flex;
@@ -93,7 +101,7 @@
 .events article {
     height: 8vh;
     margin-top: 9vh;
-    width: 9vw;
+    width: 8vw;
     margin-left: -2.4vw;
     display: flex;
     flex-direction: column;
@@ -108,7 +116,8 @@
     color: var(--text);
     margin: 0;
 }
-.button {
+
+.button, .button2 {
     border-radius: 15px;
     display: flex;
     flex-direction: row;
@@ -118,16 +127,20 @@
     background-color: var(--background);
     border: 0.3rem solid var(--outline);
     position: absolute;
-    width: 12vw;
+    width: 14vw;
     color: var(--text);
     height: 8vh;
     top: 88vh;
-    left: 85vw;
+    right: 5vw;
     font-size: 1.3rem;
     font-family: Mohave;
 }
 
-.button:hover {
+.button2 {
+    left: 5vw !important;
+}
+
+.button:hover, .button2:hover {
     opacity: 0.7;
     cursor: pointer;
 }
@@ -153,17 +166,21 @@
 
 /* Track */
 .eventslist::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px white; 
+  box-shadow: inset 0 0 5px white;
   border-radius: 10px;
 }
- 
+
 /* Handle */
 .eventslist::-webkit-scrollbar-thumb {
-  background: var(--outline); 
+  background: var(--outline);
   border-radius: 10px;
 }
 
 /* Handle on hover */
 .eventslist::-webkit-scrollbar-thumb:hover {
-  background: var(--outline); 
+  background: var(--outline);
+}
+
+.code h1 {
+    white-space: nowrap; 
 }

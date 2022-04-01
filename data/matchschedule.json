@@ -1,1 +1,1412 @@
-{"matches":[{"R1":{"teamNumber":7461,"numScouting":1,"submitted":true},"R2":{"teamNumber":3876,"numScouting":0,"submitted":false},"R3":{"teamNumber":4104,"numScouting":0,"submitted":false},"B1":{"teamNumber":4061,"numScouting":1,"submitted":true},"B2":{"teamNumber":4125,"numScouting":1,"submitted":true},"B3":{"teamNumber":5920,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":3826,"numScouting":0,"submitted":false},"R2":{"teamNumber":3711,"numScouting":1,"submitted":true},"R3":{"teamNumber":2522,"numScouting":0,"submitted":false},"B1":{"teamNumber":2910,"numScouting":1,"submitted":true},"B2":{"teamNumber":4692,"numScouting":1,"submitted":true},"B3":{"teamNumber":2930,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":8532,"numScouting":0,"submitted":false},"R2":{"teamNumber":2811,"numScouting":0,"submitted":false},"R3":{"teamNumber":4980,"numScouting":0,"submitted":false},"B1":{"teamNumber":2926,"numScouting":0,"submitted":false},"B2":{"teamNumber":4060,"numScouting":0,"submitted":false},"B3":{"teamNumber":1595,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4513,"numScouting":0,"submitted":false},"R2":{"teamNumber":6076,"numScouting":0,"submitted":false},"R3":{"teamNumber":3711,"numScouting":0,"submitted":false},"B1":{"teamNumber":2147,"numScouting":0,"submitted":false},"B2":{"teamNumber":5295,"numScouting":0,"submitted":false},"B3":{"teamNumber":4125,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":2910,"numScouting":0,"submitted":false},"R2":{"teamNumber":7461,"numScouting":0,"submitted":false},"R3":{"teamNumber":3826,"numScouting":0,"submitted":false},"B1":{"teamNumber":3876,"numScouting":0,"submitted":false},"B2":{"teamNumber":2930,"numScouting":0,"submitted":false},"B3":{"teamNumber":1595,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4692,"numScouting":0,"submitted":false},"R2":{"teamNumber":8532,"numScouting":0,"submitted":false},"R3":{"teamNumber":5295,"numScouting":0,"submitted":false},"B1":{"teamNumber":4104,"numScouting":0,"submitted":false},"B2":{"teamNumber":2811,"numScouting":0,"submitted":false},"B3":{"teamNumber":2147,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4513,"numScouting":0,"submitted":false},"R2":{"teamNumber":4980,"numScouting":0,"submitted":false},"R3":{"teamNumber":2926,"numScouting":0,"submitted":false},"B1":{"teamNumber":6076,"numScouting":0,"submitted":false},"B2":{"teamNumber":5920,"numScouting":0,"submitted":false},"B3":{"teamNumber":4060,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":2522,"numScouting":0,"submitted":false},"R2":{"teamNumber":2930,"numScouting":0,"submitted":false},"R3":{"teamNumber":7461,"numScouting":0,"submitted":false},"B1":{"teamNumber":4061,"numScouting":0,"submitted":false},"B2":{"teamNumber":4104,"numScouting":0,"submitted":false},"B3":{"teamNumber":2147,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4980,"numScouting":0,"submitted":false},"R2":{"teamNumber":4125,"numScouting":0,"submitted":false},"R3":{"teamNumber":3711,"numScouting":0,"submitted":false},"B1":{"teamNumber":2811,"numScouting":0,"submitted":false},"B2":{"teamNumber":3826,"numScouting":0,"submitted":false},"B3":{"teamNumber":4060,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4513,"numScouting":0,"submitted":false},"R2":{"teamNumber":5920,"numScouting":0,"submitted":false},"R3":{"teamNumber":4692,"numScouting":0,"submitted":false},"B1":{"teamNumber":1595,"numScouting":0,"submitted":false},"B2":{"teamNumber":8532,"numScouting":0,"submitted":false},"B3":{"teamNumber":6076,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":2926,"numScouting":0,"submitted":false},"R2":{"teamNumber":3876,"numScouting":0,"submitted":false},"R3":{"teamNumber":2522,"numScouting":0,"submitted":false},"B1":{"teamNumber":5295,"numScouting":0,"submitted":false},"B2":{"teamNumber":2910,"numScouting":0,"submitted":false},"B3":{"teamNumber":4061,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":3711,"numScouting":0,"submitted":false},"R2":{"teamNumber":4060,"numScouting":0,"submitted":false},"R3":{"teamNumber":4692,"numScouting":0,"submitted":false},"B1":{"teamNumber":2930,"numScouting":0,"submitted":false},"B2":{"teamNumber":5920,"numScouting":0,"submitted":false},"B3":{"teamNumber":3826,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4980,"numScouting":0,"submitted":false},"R2":{"teamNumber":8532,"numScouting":0,"submitted":false},"R3":{"teamNumber":3876,"numScouting":0,"submitted":false},"B1":{"teamNumber":5295,"numScouting":0,"submitted":false},"B2":{"teamNumber":7461,"numScouting":0,"submitted":false},"B3":{"teamNumber":2147,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":2522,"numScouting":0,"submitted":false},"R2":{"teamNumber":4125,"numScouting":0,"submitted":false},"R3":{"teamNumber":2910,"numScouting":0,"submitted":false},"B1":{"teamNumber":6076,"numScouting":0,"submitted":false},"B2":{"teamNumber":4104,"numScouting":0,"submitted":false},"B3":{"teamNumber":2811,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":2926,"numScouting":0,"submitted":false},"R2":{"teamNumber":4513,"numScouting":0,"submitted":false},"R3":{"teamNumber":3826,"numScouting":0,"submitted":false},"B1":{"teamNumber":4692,"numScouting":0,"submitted":false},"B2":{"teamNumber":4061,"numScouting":0,"submitted":false},"B3":{"teamNumber":1595,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":2930,"numScouting":0,"submitted":false},"R2":{"teamNumber":2910,"numScouting":0,"submitted":false},"R3":{"teamNumber":4980,"numScouting":0,"submitted":false},"B1":{"teamNumber":5920,"numScouting":0,"submitted":false},"B2":{"teamNumber":3876,"numScouting":0,"submitted":false},"B3":{"teamNumber":4125,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4061,"numScouting":0,"submitted":false},"R2":{"teamNumber":2147,"numScouting":0,"submitted":false},"R3":{"teamNumber":3711,"numScouting":0,"submitted":false},"B1":{"teamNumber":7461,"numScouting":0,"submitted":false},"B2":{"teamNumber":1595,"numScouting":0,"submitted":false},"B3":{"teamNumber":4060,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":2926,"numScouting":0,"submitted":false},"R2":{"teamNumber":8532,"numScouting":0,"submitted":false},"R3":{"teamNumber":4513,"numScouting":0,"submitted":false},"B1":{"teamNumber":4104,"numScouting":0,"submitted":false},"B2":{"teamNumber":2522,"numScouting":0,"submitted":false},"B3":{"teamNumber":5295,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":2811,"numScouting":0,"submitted":false},"R2":{"teamNumber":4061,"numScouting":0,"submitted":false},"R3":{"teamNumber":3876,"numScouting":0,"submitted":false},"B1":{"teamNumber":2147,"numScouting":0,"submitted":false},"B2":{"teamNumber":4692,"numScouting":0,"submitted":false},"B3":{"teamNumber":6076,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":5295,"numScouting":0,"submitted":false},"R2":{"teamNumber":2522,"numScouting":0,"submitted":false},"R3":{"teamNumber":4980,"numScouting":0,"submitted":false},"B1":{"teamNumber":3711,"numScouting":0,"submitted":false},"B2":{"teamNumber":1595,"numScouting":0,"submitted":false},"B3":{"teamNumber":4104,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":8532,"numScouting":0,"submitted":false},"R2":{"teamNumber":4060,"numScouting":0,"submitted":false},"R3":{"teamNumber":5920,"numScouting":0,"submitted":false},"B1":{"teamNumber":2910,"numScouting":0,"submitted":false},"B2":{"teamNumber":6076,"numScouting":0,"submitted":false},"B3":{"teamNumber":7461,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4125,"numScouting":0,"submitted":false},"R2":{"teamNumber":2930,"numScouting":0,"submitted":false},"R3":{"teamNumber":2926,"numScouting":0,"submitted":false},"B1":{"teamNumber":3826,"numScouting":0,"submitted":false},"B2":{"teamNumber":2811,"numScouting":0,"submitted":false},"B3":{"teamNumber":4513,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4060,"numScouting":0,"submitted":false},"R2":{"teamNumber":2522,"numScouting":0,"submitted":false},"R3":{"teamNumber":5295,"numScouting":0,"submitted":false},"B1":{"teamNumber":5920,"numScouting":0,"submitted":false},"B2":{"teamNumber":7461,"numScouting":0,"submitted":false},"B3":{"teamNumber":4692,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":2930,"numScouting":0,"submitted":false},"R2":{"teamNumber":3711,"numScouting":0,"submitted":false},"R3":{"teamNumber":8532,"numScouting":0,"submitted":false},"B1":{"teamNumber":2147,"numScouting":0,"submitted":false},"B2":{"teamNumber":2910,"numScouting":0,"submitted":false},"B3":{"teamNumber":4980,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4513,"numScouting":0,"submitted":false},"R2":{"teamNumber":3826,"numScouting":0,"submitted":false},"R3":{"teamNumber":3876,"numScouting":0,"submitted":false},"B1":{"teamNumber":1595,"numScouting":0,"submitted":false},"B2":{"teamNumber":4061,"numScouting":0,"submitted":false},"B3":{"teamNumber":2811,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4125,"numScouting":0,"submitted":false},"R2":{"teamNumber":6076,"numScouting":0,"submitted":false},"R3":{"teamNumber":8532,"numScouting":0,"submitted":false},"B1":{"teamNumber":4104,"numScouting":0,"submitted":false},"B2":{"teamNumber":4692,"numScouting":0,"submitted":false},"B3":{"teamNumber":2926,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":5295,"numScouting":0,"submitted":false},"R2":{"teamNumber":4513,"numScouting":0,"submitted":false},"R3":{"teamNumber":3876,"numScouting":0,"submitted":false},"B1":{"teamNumber":4060,"numScouting":0,"submitted":false},"B2":{"teamNumber":2147,"numScouting":0,"submitted":false},"B3":{"teamNumber":2930,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":6076,"numScouting":0,"submitted":false},"R2":{"teamNumber":2522,"numScouting":0,"submitted":false},"R3":{"teamNumber":4061,"numScouting":0,"submitted":false},"B1":{"teamNumber":3711,"numScouting":0,"submitted":false},"B2":{"teamNumber":2811,"numScouting":0,"submitted":false},"B3":{"teamNumber":2910,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4980,"numScouting":0,"submitted":false},"R2":{"teamNumber":3826,"numScouting":0,"submitted":false},"R3":{"teamNumber":7461,"numScouting":0,"submitted":false},"B1":{"teamNumber":5920,"numScouting":0,"submitted":false},"B2":{"teamNumber":2926,"numScouting":0,"submitted":false},"B3":{"teamNumber":4104,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":2910,"numScouting":0,"submitted":false},"R2":{"teamNumber":5295,"numScouting":0,"submitted":false},"R3":{"teamNumber":1595,"numScouting":0,"submitted":false},"B1":{"teamNumber":4692,"numScouting":0,"submitted":false},"B2":{"teamNumber":4060,"numScouting":0,"submitted":false},"B3":{"teamNumber":4125,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":3876,"numScouting":0,"submitted":false},"R2":{"teamNumber":2147,"numScouting":0,"submitted":false},"R3":{"teamNumber":4513,"numScouting":0,"submitted":false},"B1":{"teamNumber":3826,"numScouting":0,"submitted":false},"B2":{"teamNumber":4104,"numScouting":0,"submitted":false},"B3":{"teamNumber":8532,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":7461,"numScouting":0,"submitted":false},"R2":{"teamNumber":2926,"numScouting":0,"submitted":false},"R3":{"teamNumber":4061,"numScouting":0,"submitted":false},"B1":{"teamNumber":3711,"numScouting":0,"submitted":false},"B2":{"teamNumber":6076,"numScouting":0,"submitted":false},"B3":{"teamNumber":2930,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":2522,"numScouting":0,"submitted":false},"R2":{"teamNumber":4125,"numScouting":0,"submitted":false},"R3":{"teamNumber":2811,"numScouting":0,"submitted":false},"B1":{"teamNumber":1595,"numScouting":0,"submitted":false},"B2":{"teamNumber":4980,"numScouting":0,"submitted":false},"B3":{"teamNumber":5920,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4104,"numScouting":0,"submitted":false},"R2":{"teamNumber":4513,"numScouting":0,"submitted":false},"R3":{"teamNumber":2910,"numScouting":0,"submitted":false},"B1":{"teamNumber":4060,"numScouting":0,"submitted":false},"B2":{"teamNumber":4061,"numScouting":0,"submitted":false},"B3":{"teamNumber":2930,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":3826,"numScouting":0,"submitted":false},"R2":{"teamNumber":1595,"numScouting":0,"submitted":false},"R3":{"teamNumber":4125,"numScouting":0,"submitted":false},"B1":{"teamNumber":7461,"numScouting":0,"submitted":false},"B2":{"teamNumber":3711,"numScouting":0,"submitted":false},"B3":{"teamNumber":8532,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":3876,"numScouting":0,"submitted":false},"R2":{"teamNumber":4980,"numScouting":0,"submitted":false},"R3":{"teamNumber":6076,"numScouting":0,"submitted":false},"B1":{"teamNumber":2522,"numScouting":0,"submitted":false},"B2":{"teamNumber":4692,"numScouting":0,"submitted":false},"B3":{"teamNumber":2147,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":2811,"numScouting":0,"submitted":false},"R2":{"teamNumber":2926,"numScouting":0,"submitted":false},"R3":{"teamNumber":7461,"numScouting":0,"submitted":false},"B1":{"teamNumber":5920,"numScouting":0,"submitted":false},"B2":{"teamNumber":5295,"numScouting":0,"submitted":false},"B3":{"teamNumber":3711,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4125,"numScouting":0,"submitted":false},"R2":{"teamNumber":2930,"numScouting":0,"submitted":false},"R3":{"teamNumber":4104,"numScouting":0,"submitted":false},"B1":{"teamNumber":4692,"numScouting":0,"submitted":false},"B2":{"teamNumber":4980,"numScouting":0,"submitted":false},"B3":{"teamNumber":4061,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":6076,"numScouting":0,"submitted":false},"R2":{"teamNumber":2926,"numScouting":0,"submitted":false},"R3":{"teamNumber":5295,"numScouting":0,"submitted":false},"B1":{"teamNumber":1595,"numScouting":0,"submitted":false},"B2":{"teamNumber":4513,"numScouting":0,"submitted":false},"B3":{"teamNumber":2522,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":8532,"numScouting":0,"submitted":false},"R2":{"teamNumber":2147,"numScouting":0,"submitted":false},"R3":{"teamNumber":3826,"numScouting":0,"submitted":false},"B1":{"teamNumber":2811,"numScouting":0,"submitted":false},"B2":{"teamNumber":2910,"numScouting":0,"submitted":false},"B3":{"teamNumber":5920,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":3876,"numScouting":0,"submitted":false},"R2":{"teamNumber":3711,"numScouting":0,"submitted":false},"R3":{"teamNumber":4692,"numScouting":0,"submitted":false},"B1":{"teamNumber":4980,"numScouting":0,"submitted":false},"B2":{"teamNumber":4104,"numScouting":0,"submitted":false},"B3":{"teamNumber":4060,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":2930,"numScouting":0,"submitted":false},"R2":{"teamNumber":5295,"numScouting":0,"submitted":false},"R3":{"teamNumber":2811,"numScouting":0,"submitted":false},"B1":{"teamNumber":2147,"numScouting":0,"submitted":false},"B2":{"teamNumber":1595,"numScouting":0,"submitted":false},"B3":{"teamNumber":2926,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4061,"numScouting":0,"submitted":false},"R2":{"teamNumber":3826,"numScouting":0,"submitted":false},"R3":{"teamNumber":6076,"numScouting":0,"submitted":false},"B1":{"teamNumber":8532,"numScouting":0,"submitted":false},"B2":{"teamNumber":5920,"numScouting":0,"submitted":false},"B3":{"teamNumber":2522,"numScouting":0,"submitted":false}},{"R1":{"teamNumber":4125,"numScouting":0,"submitted":false},"R2":{"teamNumber":7461,"numScouting":0,"submitted":false},"R3":{"teamNumber":4513,"numScouting":0,"submitted":false},"B1":{"teamNumber":4060,"numScouting":0,"submitted":false},"B2":{"teamNumber":3876,"numScouting":0,"submitted":false},"B3":{"teamNumber":2910,"numScouting":0,"submitted":false}}]}
+{
+    "matches": [
+        {
+            "R1": {
+                "teamNumber": 7461,
+                "numScouting": 1,
+                "submitted": true
+            },
+            "R2": {
+                "teamNumber": 3876,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 4104,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 4061,
+                "numScouting": 1,
+                "submitted": true
+            },
+            "B2": {
+                "teamNumber": 4125,
+                "numScouting": 1,
+                "submitted": true
+            },
+            "B3": {
+                "teamNumber": 5920,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 3826,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 3711,
+                "numScouting": 1,
+                "submitted": true
+            },
+            "R3": {
+                "teamNumber": 2522,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 2910,
+                "numScouting": 1,
+                "submitted": true
+            },
+            "B2": {
+                "teamNumber": 4692,
+                "numScouting": 1,
+                "submitted": true
+            },
+            "B3": {
+                "teamNumber": 2930,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 8532,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 2811,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 4980,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 2926,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4060,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 1595,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4513,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 6076,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 3711,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 2147,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 5295,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 4125,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 2910,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 7461,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 3826,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 3876,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 2930,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 1595,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4692,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 8532,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 5295,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 4104,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 2811,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2147,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4513,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 4980,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 2926,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 6076,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 5920,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 4060,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 2522,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 2930,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 7461,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 4061,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4104,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2147,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4980,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 4125,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 3711,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 2811,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 3826,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 4060,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4513,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 5920,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 4692,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 1595,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 8532,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 6076,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 2926,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 3876,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 2522,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 5295,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 2910,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 4061,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 3711,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 4060,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 4692,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 2930,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 5920,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 3826,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4980,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 8532,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 3876,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 5295,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 7461,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2147,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 2522,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 4125,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 2910,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 6076,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4104,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2811,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 2926,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 4513,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 3826,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 4692,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4061,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 1595,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 2930,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 2910,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 4980,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 5920,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 3876,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 4125,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4061,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 2147,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 3711,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 7461,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 1595,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 4060,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 2926,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 8532,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 4513,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 4104,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 2522,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 5295,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 2811,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 4061,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 3876,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 2147,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4692,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 6076,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 5295,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 2522,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 4980,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 3711,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 1595,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 4104,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 8532,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 4060,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 5920,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 2910,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 6076,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 7461,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4125,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 2930,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 2926,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 3826,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 2811,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 4513,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4060,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 2522,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 5295,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 5920,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 7461,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 4692,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 2930,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 3711,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 8532,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 2147,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 2910,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 4980,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4513,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 3826,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 3876,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 1595,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4061,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2811,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4125,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 6076,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 8532,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 4104,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4692,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2926,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 5295,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 4513,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 3876,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 4060,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 2147,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2930,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 6076,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 2522,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 4061,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 3711,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 2811,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2910,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4980,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 3826,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 7461,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 5920,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 2926,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 4104,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 2910,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 5295,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 1595,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 4692,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4060,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 4125,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 3876,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 2147,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 4513,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 3826,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4104,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 8532,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 7461,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 2926,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 4061,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 3711,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 6076,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2930,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 2522,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 4125,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 2811,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 1595,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4980,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 5920,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4104,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 4513,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 2910,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 4060,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4061,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2930,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 3826,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 1595,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 4125,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 7461,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 3711,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 8532,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 3876,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 4980,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 6076,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 2522,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4692,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2147,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 2811,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 2926,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 7461,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 5920,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 5295,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 3711,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4125,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 2930,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 4104,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 4692,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4980,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 4061,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 6076,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 2926,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 5295,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 1595,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4513,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2522,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 8532,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 2147,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 3826,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 2811,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 2910,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 5920,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 3876,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 3711,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 4692,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 4980,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 4104,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 4060,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 2930,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 5295,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 2811,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 2147,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 1595,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2926,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4061,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 3826,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 6076,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 8532,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 5920,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2522,
+                "numScouting": 0,
+                "submitted": false
+            }
+        },
+        {
+            "R1": {
+                "teamNumber": 4125,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R2": {
+                "teamNumber": 7461,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "R3": {
+                "teamNumber": 4513,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B1": {
+                "teamNumber": 4060,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B2": {
+                "teamNumber": 3876,
+                "numScouting": 0,
+                "submitted": false
+            },
+            "B3": {
+                "teamNumber": 2910,
+                "numScouting": 0,
+                "submitted": false
+            }
+        }
+    ]
+}

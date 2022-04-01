@@ -3,6 +3,7 @@ import Image from "next/image";
 import {useState} from "react";
 import AdminNav from "../../components/adminnav";
 import ColorBar from "../../components/colorbar";
+import Error from "../../components/error";
 import styles from "../../styles/Admin.module.css";
 import schedulestyles from "../../styles/AdminSchedule.module.css";
 
@@ -12,6 +13,8 @@ const Data: NextPage = () => {
   const [search, setSearch] = useState<string>("");
   const [events, setEvents] = useState<Array<{name: string,
     code: string, show: boolean}>>([]);
+  const [code, setCode] = useState<string>("");
+  const [error, setError] = useState<Array<string>>([]);
 
   /**
    * Get all of the first events
@@ -39,13 +42,36 @@ const Data: NextPage = () => {
       setEvents(newlist);
       console.log(newlist);
     } else {
-      // TODO: ERROR SCREEN
-      console.error("Invalid creds");
+      setError(["Invalid Credentials Dumbass"]);
+    }
+  }
+
+  /**
+   * Creates new schedule based on event code
+   */
+  async function newSchedule() {
+    const params = JSON.stringify({username: username,
+      password: password,
+      year: new Date().getFullYear(),
+      code: code});
+
+    const res = await fetch("/api/newschedule", {
+      body: params,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    if (!res.ok) {
+      setError([(await res.json()).response]);
     }
   }
 
   return (
     <div className={styles.title}>
+      {error.length > 0 && <Error error={error} setError={setError}/>}
+
       <article>
         <ColorBar />
         <h1>ADMIN</h1>
@@ -69,6 +95,16 @@ const Data: NextPage = () => {
           <input type={"text"}
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+          />
+        </article>
+
+        <article className={schedulestyles.code}>
+          <h1>EVENT CODE</h1>
+          <input type={"text"}
+            onChange={(e) => {
+              setCode(e.target.value);
+            }}
+            value={code}
           />
         </article>
       </section>
@@ -114,8 +150,12 @@ const Data: NextPage = () => {
         </section>
       </section>
 
+      <button className={schedulestyles.button2} onClick={newSchedule}>
+        <p>Save Schedule</p>
+      </button>
+
       <button className={schedulestyles.button} onClick={getEventData}>
-        <p>Save</p>
+        <p>Save Credentials</p>
       </button>
 
       <AdminNav />

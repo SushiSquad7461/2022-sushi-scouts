@@ -53,7 +53,10 @@ const ScoutingPage: NextPage<PropsData> = (props: PropsData) => {
               "&matchType=" +
               currMatchType +
               "&station=" +
-              stationId,
+              stationId +
+              "&code=" +
+              (localStorage.getItem("C") === null ?
+                "" : localStorage.getItem("C")),
       );
       const jsonData = await data.json();
       setTeamNum(jsonData.num);
