@@ -158,6 +158,7 @@
 
 .eventslist p {
     margin-right: 1vw;
+    color: var(--text);
 }
 
 .eventslist::-webkit-scrollbar {
