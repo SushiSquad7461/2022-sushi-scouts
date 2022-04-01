@@ -10,13 +10,13 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse,
 ) {
-  const matchData = await prisma.matchdata.findMany({
+  const schedule = await prisma.schedule.findMany({
     select: {
-      comp: true,
+      event: true,
     },
   });
 
-  const allValues = matchData.map((match: { [s: string]: string; } |
+  const allValues = schedule.map((match: { [s: string]: string; } |
     ArrayLike<string>) => Object.values(match));
 
   const uniqueComps: Array<string> = [];

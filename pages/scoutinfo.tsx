@@ -1,16 +1,14 @@
 import type {NextPage} from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect, useMemo, useState} from "react";
+import {useEffect, useState} from "react";
 import ColorBar from "../components/colorbar";
 import styles from "../styles/ScoutInfo.module.css";
 
 const ScoutInfo: NextPage = () => {
   const [comp, setComp] = useState<number>(0);
   const [teamNum, setTeamNum] = useState<string>("");
-  const comps : Array<string> = useMemo(() => {
-    return ["GC", "SD", "PDC"];
-  }, []);
+  const [comps, setComps] = useState<Array<Array<string>>>([]);
 
   // Set team number and store in local storage
   const setTeamNumWrapper = (val: string) => {
@@ -21,23 +19,47 @@ const ScoutInfo: NextPage = () => {
   // Set comp number and store in local storage
   const setCompWrapper = (val: number) => {
     setComp(val);
-    localStorage.setItem("C", comps[val]);
+    localStorage.setItem("C", comps[val][0]);
     console.log(comps);
   };
+
+  /**
+   * Get all of the comps
+   */
+  async function getAllComps() {
+    const data = await fetch("/api/getallcomps");
+    const compCodes: Array<string> = await data.json();
+    const newComps: Array<Array<string>> = [];
+
+    for (const i of compCodes) {
+      if (i === "WASNO") {
+        newComps.push([i, "GLACIER PEAK"]);
+      } else if (i === "WAYAK") {
+        newComps.push([i, "SUNDOME"]);
+      } else if (i === "PNCMP") {
+        newComps.push([i, "DISTRICTS LES GO"]);
+      } else {
+        newComps.push([i, i]);
+      }
+    }
+    setComps(newComps);
+
+    if (localStorage.getItem("C") !== null) {
+      for (let i: number = 0; i < comps.length; ++i) {
+        if (comps[i][0] === localStorage.getItem("C")) {
+          setComp(i);
+        }
+      }
+    }
+  }
+
 
   useEffect(() => {
     // Get current info from local storage
     if (localStorage.getItem("TM") !== null) {
       setTeamNum(localStorage.getItem("TM") || "");
     }
-
-    if (localStorage.getItem("C") !== null) {
-      for (let i: number = 0; i < comps.length; ++i) {
-        if (comps[i] === localStorage.getItem("C")) {
-          setComp(i);
-        }
-      }
-    }
+    getAllComps();
   }, [comps, teamNum]);
 
   return (
@@ -63,38 +85,38 @@ const ScoutInfo: NextPage = () => {
         </article>
 
         <section>
-          <article>
+          { comps.length === 1 && <article>
             <input type="checkbox"
               id="1"
               name="comp"
-              value="GP"
+              value={comps[0][0]}
               checked={comp == 0}
               onChange={() => setCompWrapper(0)}
             />
-            <label>GLACIER PEAK</label>
-          </article>
+            <label>{comps[0][1]}</label>
+          </article>}
 
-          <article>
+          { comps.length === 2 && <article>
             <input type="checkbox"
               id="1"
               name="comp"
-              value="SD"
+              value={comps[1][1]}
               checked={comp == 1}
               onChange={() => setCompWrapper(1)}
             />
-            <label>SUNDOME</label>
-          </article>
+            <label>{comps[1][0]}</label>
+          </article> }
 
-          <article>
+          { comps.length === 3 && <article>
             <input type="checkbox"
               id="1"
               name="comp"
-              value="PDC"
+              value={comps[2][1]}
               checked={comp == 2}
               onChange={() => setCompWrapper(2)}
             />
-            <label>PNW DISTRICT CHAMPIONSHIP</label>
-          </article>
+            <label>{comps[2][0]}</label>
+          </article> }
         </section>
 
         <button className={styles.button1}>
@@ -105,8 +127,9 @@ const ScoutInfo: NextPage = () => {
 
         <button className={styles.button2}>
           { teamNum !== undefined ?
-            <Link href={"/eventscouting?tm=" + teamNum + "&c=" + comps[comp]}
-              passHref>
+            <Link href={"/eventscouting?tm=" + teamNum + "&c=" +
+              (comps.length > 0 ? comps[comp][0] : "")}
+            passHref>
               <p className={styles.text3}>Continue</p>
             </Link> :
             <p className={styles.text3}>Continue</p> }
