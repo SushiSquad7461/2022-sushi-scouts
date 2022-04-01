@@ -21,14 +21,14 @@ export default async function handler(
       where: {
         match: {
           matchNum: parseInt(matchNumString),
-          stationId: station,
-          event: code,
+          stationId: station.toString(),
+          event: code.toString(),
         },
       },
     });
 
     if (getMatch !== null) {
-      teamNum = getMatch.teamNum;
+      teamNum = getMatch.teamNum.toString();
     }
   }
 

@@ -24,8 +24,8 @@ export default async function handler(
       where: {
         match: {
           matchNum: parseInt(matchNumString),
-          stationId: station,
-          event: code,
+          stationId: station.toString(),
+          event: code.toString(),
         },
       },
       data: {
