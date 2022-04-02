@@ -85,7 +85,7 @@
     padding: 0px;
 }
 
-.input input[type=number] {
+.input input {
     height: 6vh;
     width: 100%;
     border-top: hidden;
@@ -97,6 +97,7 @@
     text-align: center;
     background-color: var(--background);
     color: var(--text);
+    font-size: 1.3rem !important;
 }
 
 .input article {
@@ -118,16 +119,17 @@
     font-weight: 200;
     font-family: Mohave;
     color: var(--text);
+    white-space: nowrap; 
 }
 
-.input form input[type=number]::placeholder {
+.input form input::placeholder {
     font-size: 2rem;
     color: var(--text);
     letter-spacing: -5%;
     text-align: center;
 }
 
-.input input[type=number]:focus { outline: none; }
+.input input:focus { outline: none; }
 
 /* Chrome, Safari, Edge, Opera */
 .input input::-webkit-outer-spin-button,
@@ -137,6 +139,6 @@
 }
 
 /* Firefox */
-.input input[type=number] {
+.input input{
   -moz-appearance: textfield;
 }

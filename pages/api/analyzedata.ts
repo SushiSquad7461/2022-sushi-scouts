@@ -41,6 +41,9 @@ export default async function handler(
         },
       });
 
+      for (let i of scoutingDataResults) {
+      }
+
       res.status(200).send({result: "Success"});
     } else {
       res.status(400).send({result: "Invalid Credentials"});

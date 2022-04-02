@@ -27,8 +27,9 @@ export default async function handler(
 ) {
   const currQual: number = parseInt(req.query["currQual"].toString());
   const maxQual: number = parseInt(req.query["maxQual"].toString());
+  const code: string = req.query["code"].toString();
 
-  if (isNaN(currQual) || isNaN(maxQual)) {
+  if (isNaN(currQual) || isNaN(maxQual) || code === null) {
     res.status(400).json({"currScouting": [], "stats": []});
   } else {
     const currScouting: Array<currScoutingType> = [];
@@ -39,6 +40,7 @@ export default async function handler(
       where: {
         matchNum: currQual,
         completed: true,
+        event: code,
       },
     });
     stats.push({"CSR": Math.round((submittedCurrQual.length / 6) * 100) + "%"});
@@ -50,6 +52,7 @@ export default async function handler(
           lte: maxQual,
         },
         completed: true,
+        event: code,
       },
     });
 
@@ -66,6 +69,7 @@ export default async function handler(
           lte: maxQual,
         },
         completed: true,
+        event: code,
       },
     });
 
@@ -96,6 +100,7 @@ export default async function handler(
     const currMatches = await prisma.schedule.findMany({
       where: {
         matchNum: currQual,
+        event: code,
       },
     });
 

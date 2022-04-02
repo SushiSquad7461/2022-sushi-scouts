@@ -9,22 +9,32 @@ import {currScoutingType, statsType} from "../api/getstats";
 
 const Stats: NextPage = () => {
   const [scoutMatchNum, setScoutMatchNum] = useState<number>(1);
+  const [code, setCode] = useState("");
   const [stats, setSats] = useState({"currScouting": [], "stats": []});
 
   useEffect(() => {
-    getCurrentStats(scoutMatchNum, scoutMatchNum);
-  }, [scoutMatchNum]);
+    setCode(localStorage.getItem("C") === null ? "" :
+    localStorage.getItem("C")!);
+
+    getCurrentStats(scoutMatchNum, scoutMatchNum,
+      localStorage.getItem("C") === null ? "" :
+      localStorage.getItem("C")!);
+  }, []);
 
   /**
    * Get stats from api
    * @param {number} currNum the quals match we are getting data for`
-   * @param {number } maxNum the latest quals match
+   * @param {number} maxNum the latest quals match
+   * @param {string} code event code
    */
-  async function getCurrentStats(currNum: number, maxNum: number) {
+  async function getCurrentStats(currNum: number,
+      maxNum: number, code: string) {
     const data = await fetch("/api/getstats?currQual=" +
       currNum +
       "&maxQual=" +
-      maxNum);
+      maxNum +
+      "&code=" +
+      code);
 
     const jsonData = await data.json();
     setSats(jsonData);
@@ -49,7 +59,7 @@ const Stats: NextPage = () => {
               if (parseInt(e.target.value) > 0) {
                 setScoutMatchNum(parseInt(e.target.value));
                 getCurrentStats(parseInt(e.target.value),
-                    parseInt(e.target.value));
+                    parseInt(e.target.value), code);
               } else if (e.target.value === "") {
                 setScoutMatchNum(parseInt(e.target.value));
               }
@@ -57,10 +67,22 @@ const Stats: NextPage = () => {
             value={scoutMatchNum}
           />
         </article>
+
+        <article>
+          <h1>EVENT CODE</h1>
+          <input type={"text"}
+            onChange={(e) => {
+              setCode(e.target.value);
+              getCurrentStats(scoutMatchNum, scoutMatchNum,
+                  e.target.value);
+            }}
+            value={code}
+          />
+        </article>
       </section>
 
       <section className={statstyles.stats}>
-        <h1>Stats:</h1>
+        <h1>STATS:</h1>
         { stats["stats"].map((element: statsType) => {
           return (
             <p key={Object.keys(element)[0]}>
