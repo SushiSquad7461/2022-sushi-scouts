@@ -251,15 +251,6 @@ async function loadCompData() {
       });
 }
 
-async function createDatabase() {
-  let db = new sqlite3.Database('data/matchdata.db', sqlite3.OPEN_CREATE, (err)=> {
-    if(err) {
-      console.error(err);
-    } else {
-      console.log('Database successfuly created');
-    }}); 
-}
-
 (async () => {
   console.clear();
 

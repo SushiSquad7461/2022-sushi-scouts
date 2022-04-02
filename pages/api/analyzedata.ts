@@ -35,16 +35,38 @@ export default async function handler(
 
     if (data.ok) {
       const matchResults = (await data.json()).MatchScores;
-      const scoutingDataResults = await prisma.matchdata.findMany({
-        where: {
-          comp: params.code,
-        },
-      });
+      const analysis: {[index: string]: string} = {};
 
-      for (let i of scoutingDataResults) {
+      for (const i of matchResults) {
+        const scoutingMatchResults = await prisma.matchdata.findMany({
+          where: {
+            matchNum: i.matchNumber,
+            comp: params.code,
+          },
+        });
+
+        if (scoutingMatchResults.length > 0) {
+          let redCargo = 0;
+          let blueCargo = 0;
+
+          for (const j of scoutingMatchResults) {
+            if (j.stationId[0] === "B") {
+              blueCargo += j.auto_lowHub + j.auto_upperHub +
+                j.teleop_lowHub + j.teleop_highHub;
+            } else {
+              redCargo += j.auto_lowHub + j.auto_upperHub +
+                j.teleop_lowHub + j.teleop_highHub;
+            }
+          }
+
+          analysis["Red " + i.matchNumber] = (redCargo /
+            i.alliances[1].matchCargoTotal).toString();
+          analysis["Blue " + i.matchNumber] = (blueCargo /
+            i.alliances[0].matchCargoTotal).toString();
+        }
       }
 
-      res.status(200).send({result: "Success"});
+      res.status(200).send(analysis);
     } else {
       res.status(400).send({result: "Invalid Credentials"});
     }

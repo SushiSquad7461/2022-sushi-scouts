@@ -1,6 +1,6 @@
 import type {NextPage} from "next";
 import Image from "next/image";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import AdminNav from "../../components/adminnav";
 import ColorBar from "../../components/colorbar";
 import styles from "../../styles/Admin.module.css";
@@ -12,6 +12,7 @@ const Analysis: NextPage = () => {
   const [password, setPassword] = useState<string>("");
   const [code, setCode] = useState<string>("");
   const [error, setError] = useState<Array<string>>([]);
+  const [averageAccuracy, setAverageAccuracy] = useState("");
 
   /**
    * Get data analysis from api
@@ -32,8 +33,25 @@ const Analysis: NextPage = () => {
 
     if (!res.ok) {
       setError([(await res.json()).response]);
+    } else {
+      const data: Array<Array<string>> = Object.entries(await res.json());
+      console.log(data);
+      let sum = 0;
+
+      for (const i of data) {
+        if (i[1] !== "NaN") sum += parseFloat(i[1]);
+      }
+
+      console.log(sum);
+
+      setAverageAccuracy((sum / data.length * 100).toString() + "%");
     }
   }
+
+  useEffect(() => {
+    setCode(localStorage.getItem("C") === null ? "" :
+      localStorage.getItem("C")!);
+  }, []);
 
   return (
     <div className={styles.title}>
@@ -79,6 +97,10 @@ const Analysis: NextPage = () => {
       <button className={analysisstyles.button} onClick={analyzeData}>
         <p>Analyze Data</p>
       </button>
+
+      <h1 className={analysisstyles.text}>
+        AVERAGE ACCURACY: {averageAccuracy}
+      </h1>
 
       <AdminNav />
     </div>

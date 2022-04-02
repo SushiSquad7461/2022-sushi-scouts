@@ -14,7 +14,7 @@ const Stats: NextPage = () => {
 
   useEffect(() => {
     setCode(localStorage.getItem("C") === null ? "" :
-    localStorage.getItem("C")!);
+      localStorage.getItem("C")!);
 
     getCurrentStats(scoutMatchNum, scoutMatchNum,
       localStorage.getItem("C") === null ? "" :
