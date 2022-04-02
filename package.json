@@ -1,6 +1,5 @@
 {
   "name": "sushiscouts",
-  "main": "./server.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
