@@ -27,8 +27,5 @@ export default async function handler(
     }
   }
 
-  uniqueComps.push("WASUP");
-  uniqueComps.push("WASUP2");
-
   res.status(200).send(uniqueComps);
 }
