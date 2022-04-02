@@ -42,6 +42,7 @@ const ScoutInfo: NextPage = () => {
         newComps.push([i, i]);
       }
     }
+    console.log(newComps);
     setComps(newComps);
 
     if (localStorage.getItem("C") !== null) {
@@ -60,7 +61,7 @@ const ScoutInfo: NextPage = () => {
       setTeamNum(localStorage.getItem("TM") || "");
     }
     getAllComps();
-  }, [comps, teamNum]);
+  }, [teamNum]);
 
   return (
     <div className={styles.title}>
@@ -85,7 +86,8 @@ const ScoutInfo: NextPage = () => {
         </article>
 
         <section>
-          { comps.length === 1 && <article>
+          {comps}
+          { comps.length >= 1 && <article>
             <input type="checkbox"
               id="1"
               name="comp"
@@ -94,9 +96,9 @@ const ScoutInfo: NextPage = () => {
               onChange={() => setCompWrapper(0)}
             />
             <label>{comps[0][1]}</label>
-          </article>}
+          </article> }
 
-          { comps.length === 2 && <article>
+          { comps.length >= 2 && <article>
             <input type="checkbox"
               id="1"
               name="comp"
@@ -107,7 +109,7 @@ const ScoutInfo: NextPage = () => {
             <label>{comps[1][0]}</label>
           </article> }
 
-          { comps.length === 3 && <article>
+          { comps.length >= 3 && <article>
             <input type="checkbox"
               id="1"
               name="comp"
