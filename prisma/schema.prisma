@@ -24,8 +24,8 @@ model Matchdata {
   auto_lowHub Int
   auto_humanPlayer Int
   auto_upperHub Int
-  teleop_groundPickup String
-  teleop_terminalPickup String
+  shootAnywhere String
+  swerveDrive String
   teleop_lowHub Int
   teleop_highHub Int
   end_climb String

@@ -97,13 +97,13 @@ export const scoutingConfig: ScoutingDataSection[] = [{
   "name": "TELEOP",
   "parentClassName": "teleop",
   "inputs": [{
-    "name": "GROUND PICKUP",
+    "name": "SHOOT ANYWHERE",
     "type": "checkbox",
     "values": [],
     "className": "auto-check auto-check-right",
   },
   {
-    "name": "TERMINAL PICKUP",
+    "name": "SWERVE DRIVE",
     "type": "checkbox",
     "values": [],
     "className": "auto-check",

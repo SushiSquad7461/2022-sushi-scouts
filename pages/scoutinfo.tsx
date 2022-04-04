@@ -86,7 +86,6 @@ const ScoutInfo: NextPage = () => {
         </article>
 
         <section>
-          {comps}
           { comps.length >= 1 && <article>
             <input type="checkbox"
               id="1"
