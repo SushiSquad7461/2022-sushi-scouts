@@ -55,7 +55,7 @@ export default async function handler(
     "end_climb": matchData["end game:climb"],
     "end_climbLevel": matchData["end game:climb type"],
     "end_defense": matchData["end game:defense"],
-    "end_notes": matchData["end game:notes"],
+    "end_notes": matchData["end game:notes"].replace("\n", " "),
   };
 
   await prisma.matchdata.upsert({
